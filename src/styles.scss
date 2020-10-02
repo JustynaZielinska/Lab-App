@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+*{box-sizing: border-box;
+    margin:0;
+    padding:0;
+    border:0;
+}
+$main-color: #3582a3;
+@mixin hamburger-line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: .16rem;
+    background-color: white;
+};
+@mixin square($square){
+    width: $square;
+    height: $square;
+}
+@mixin flex($direction, $justify-content) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+}

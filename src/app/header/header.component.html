@@ -1,0 +1,6 @@
+<header class="header">
+    <a href="index.html"><img class="header__logo" src="../../assets/images/Logo.svg" alt="logo aplikacji"></a>
+    <button class="header__burger" [ngClass] = "{'header__burger--active': isActive}" (click)="isActive = !isActive">
+        <span class="header__burger--inner"></span>
+    </button>
+</header>

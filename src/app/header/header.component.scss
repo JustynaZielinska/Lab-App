@@ -1,0 +1,54 @@
+@import '../../styles.scss';
+.header {
+    @include flex (row, space-between);
+    width: 100vw;
+    height: 2.6rem;
+    padding: .5rem 1rem;
+    background-color: $main-color;
+
+&__logo{
+    height: 1.6rem;
+    margin: auto 0;
+}
+&__burger {
+    position: relative;
+    @include square(1.6rem);
+    background-color: transparent;
+    transition: 0.5s;
+    cursor: pointer;
+    margin: auto 0;
+    outline: 0;
+
+    &--inner {
+        @include hamburger-line;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: .2s .2s;
+
+        &::before {
+            top: -0.5rem;
+        }
+
+        &::after {
+            top: 0.5rem;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            @include hamburger-line;
+            transition: .3s .2s;
+        }
+    }
+    &--active .header__burger--inner {
+        background-color: transparent;
+    }
+
+    &--active .header__burger--inner::before {
+        transform: translateY(0.5rem) rotate(45deg);
+    }
+
+    &--active .header__burger--inner::after {
+        transform: translateY(-0.5rem) rotate(-45deg);
+    }
+}}
