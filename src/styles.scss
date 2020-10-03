@@ -2,8 +2,19 @@
     margin:0;
     padding:0;
     border:0;
+    font-family:'NotoSans', sans-serif;
+}
+span {
+    display: block;
 }
 $main-color: #3582a3;
+
+@mixin text($font-size, $line-height){
+    font-size: $font-size;
+    line-height: $line-height;
+    text-align: center;
+}
+
 @mixin hamburger-line {
     position: absolute;
     left: 0;

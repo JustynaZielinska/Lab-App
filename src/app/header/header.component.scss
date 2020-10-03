@@ -6,17 +6,18 @@
     padding: .5rem 1rem;
     background-color: $main-color;
 
+    @media (orientation:landscape) and (min-width:1024px){
+        @include flex (row, space-around)}
+
 &__logo{
-    height: 1.6rem;
-    margin: auto 0;
-}
+    height: 1.6rem}
+
 &__burger {
     position: relative;
     @include square(1.6rem);
     background-color: transparent;
     transition: 0.5s;
     cursor: pointer;
-    margin: auto 0;
     outline: 0;
 
     &--inner {

@@ -1,0 +1,33 @@
+@import '../../styles.scss';
+:host {
+    @include flex(column, space-around);
+    width:100vw;
+    height: calc(100vh - (2.6rem*2));
+    padding: 1rem 0;
+    @media (orientation:landscape) and (max-width:1024px) {
+        justify-content: space-around;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+    }
+}
+.title {
+    @include text(1.2rem, 1.6rem);
+    @media (min-width:1024px){
+        @include text(1.8rem, 2.2rem);
+    }
+}
+.descritpion {
+    @include text(.8rem, 1.4rem);
+    @media (min-width:1024px){
+        @include text(1.2rem, 2rem);
+    }
+}
+.result-logo{
+   height: 10rem;
+    @media (orientation:landscape) and (max-width:1024px) {     
+        margin: 3rem auto;
+        order: -1}
+    @media (orientation:portrait) and (min-width:640px) {
+      height: 18rem;
+}
+}
