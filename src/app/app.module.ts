@@ -7,6 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ResultIconComponent } from './home-page/result-icon/result-icon.component';
 
 @NgModule({
   declarations: [
@@ -14,14 +15,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeaderComponent,
     NavigationComponent,
     HomePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ResultIconComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
