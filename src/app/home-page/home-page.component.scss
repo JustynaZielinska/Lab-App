@@ -22,13 +22,3 @@
         @include text(1.2rem, 2.4rem);
     }
 }
-
-.result-logo{
-   height: 10rem;
-    @media (orientation:landscape) and (max-width:1024px) {     
-        margin: 3rem auto;
-        order: -1}
-    @media (orientation:portrait) and (min-width:640px) {
-      height: 18rem;
-    }
-}
