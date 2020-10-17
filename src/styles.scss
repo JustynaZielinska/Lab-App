@@ -4,6 +4,12 @@
     border:0;
     font-family:'NotoSans', sans-serif;
 }
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 span {
     display: block;
 }
@@ -30,4 +36,15 @@ $main-color: #3582a3;
     display: flex;
     flex-direction: $direction;
     justify-content: $justify-content;
+}
+
+li {
+    list-style: none;
+}
+
+.title {
+    @include text(1.2rem, 1.6rem);
+    @media (min-width:1024px){
+        @include text(1.8rem, 2.2rem);
+    }
 }
