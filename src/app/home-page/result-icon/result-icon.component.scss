@@ -21,13 +21,13 @@
 }
 
 .mouth {
-  transition: .7s 7.3s;
+  transition: .7s 7s;
   transform: scaleX(0) rotateX(45deg);
   transform-origin: center;
   opacity:0;
 }
 .eye{
-  transition: .6s 6.5s;
+  transition: .5s 6.3s;
   opacity:0
 }
 .svg--active .mouth{
@@ -41,6 +41,6 @@
 
 .line{
   stroke: #5b5b5b;
-  stroke-width:4;
+  stroke-width:3;
   transform-origin: left;
 }

@@ -9,7 +9,7 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
       query('.line', [
       style({transform: 'translateX(-4rem)'}),
       stagger(500, [
-        animate('.7s 4s', style ({transform: 'none'}))
+        animate('.7s 3.8s', style ({transform: 'none'}))
       ])
       ])
     ])
@@ -23,4 +23,5 @@ export class ResultIconComponent implements OnInit {
 
   ngOnInit (): void{
     this.isLoad = true;
-    setTimeout(()=>{this.isActive = true}, 100)}}
+    setTimeout(()=>{this.isActive = true}, 100)}
+}
