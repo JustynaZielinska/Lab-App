@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test-choice-page.component.scss']
 })
 export class TestChoicePageComponent implements OnInit {
-
+  
   constructor() { }
 
   ngOnInit(): void {
+  
   }
 
 }
