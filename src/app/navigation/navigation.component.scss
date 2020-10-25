@@ -4,33 +4,38 @@
     position: fixed;
     left: 0;
     bottom: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
     @include flex (row, space-between);
     width: 100vw;
     height: 2.6rem;
     padding: .5rem 0;
+    color: white;
     background-color: $main-color;
     @media (orientation:landscape) and (min-width:1024px){
         @include flex (row, space-around)}
 }
-    
-a {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 0 auto;
-    transition: .3s;
-    }
 .arrow{
     height: .8rem;
     margin: 0 .4rem;
-    opacity: 0.6;
+    opacity: 0.8;
     transition: .3s;
     &--previous {
         transform: rotate(180deg);
     }
 }
+a {
+    margin: auto;
+    transition: .3s;
+}
 .small {
     margin: auto 0;
-    font-size: 1rem;
+    font-size: 1rem;;
+}
+.disabled {
+    margin: auto 0;
+    opacity: .5;
+    cursor: auto;
 }
 a:hover{
     opacity:1;
