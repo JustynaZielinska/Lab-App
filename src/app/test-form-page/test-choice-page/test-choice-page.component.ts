@@ -8,12 +8,12 @@ import { NavigationService } from 'src/app/navigation.service';
 })
 export class TestChoicePageComponent{
 
-constructor(private service:NavigationService) {}
+constructor(private service: NavigationService) {}
 
-selectedTest : 'lipids'|'thyroid';
+selectedTest: 'lipids'|'thyroid';
 
 selectTest(test){
   this.selectedTest = test;
-  this.service.isValid.next('test');
-};
+  this.service.lastValidPage.next('test');
+}
 }

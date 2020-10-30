@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
@@ -10,16 +10,25 @@ import { NavigationService } from 'src/app/navigation.service';
 export class GenderChoicePageComponent {
 
   genderForm: FormGroup;
-  gender : 'female' | 'male';
-  
-  constructor(private service:NavigationService) {
+  gender: 'female' | 'male';
+
+  constructor(private service: NavigationService) {
+    // TODO: użyć walidacji np. Validators.required, valueChanges, .valid
     this.genderForm = new FormGroup({
-      gender: new FormControl()
+      gender: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+      ziemniak: new FormControl(null, [Validators.required]),
     });
+
+    this.genderForm.valueChanges.subscribe((newFormValue => {
+      if (this.genderForm.valid) {
+        // TODO: przekazać parentowi nową wartość .emit Output
+      }
+    }));
+
    }
-   
+
 changeGender(choosenGender){
   this.gender = choosenGender;
-  this.service.isValid.next('gender');
+  this.service.changeIsValid('gender');
 }
 }
