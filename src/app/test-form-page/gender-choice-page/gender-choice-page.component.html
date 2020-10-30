@@ -1,0 +1,10 @@
+<div class="form-box">
+    <h2 class="title">Wybierz płeć</h2>
+    <form [formGroup]="genderForm" class="list">
+    <label class="list__item" [style.background-color]="isFemale? 'rgb(200, 81, 81)':'#3582a3cb'">Kobieta
+        <input type="radio" formControlName="gender" value="female" (change)="isFemale=true ; isMale=false"></label>
+    <label class="list__item" [style.background-color]="isMale? 'rgb(200, 81, 81)':'#3582a3cb'">Mężczyzna
+        <input type="radio" formControlName="gender" value="male" (change)="isMale=true ; isFemale=false"></label>
+    </form>
+    <span>*interpretacja wyników dotyczy wyłącznie osób dorosłych</span>
+</div>

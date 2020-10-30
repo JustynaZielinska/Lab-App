@@ -10,8 +10,9 @@ export class NavigationComponent implements DoCheck {
 
   constructor(private currentRoute: Router) {
   }
-
+isEnabled: boolean;
 isHidden: boolean;
+isDisabled : boolean;
 nextPath: string;
 pageTitle: string;
 previousPath: string;
@@ -22,13 +23,14 @@ previousPath: string;
     }else this.isHidden = false;
     switch (this.currentRoute.url) {
       case '/test-choice-page':
+        this.isEnabled = true;
         this.pageTitle = 'Wybierz płeć';
-        this.previousPath = '/home-page'
-        this.nextPath = '/test-form-page'
+        this.previousPath = '/home-page';
+        this.nextPath = '/gender-choice-page';
         break;
-      case '/test-form-page':
+      case '/gender-choice-page':
         this.pageTitle = 'Wpisz wyniki';
-        this.previousPath ='test-choice-page'
+        this.previousPath ='/test-choice-page'
         break
     } 
   }
