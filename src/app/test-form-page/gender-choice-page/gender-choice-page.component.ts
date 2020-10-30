@@ -1,23 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
   selector: 'app-gender-choice-page',
   templateUrl: './gender-choice-page.component.html',
   styleUrls: ['./gender-choice-page.component.scss']
 })
-export class GenderChoicePageComponent implements OnInit {
+export class GenderChoicePageComponent {
 
   genderForm: FormGroup;
-  isMale: boolean;
-  isFemale: boolean;
-  constructor() {
+  gender : 'female' | 'male';
+  
+  constructor(private service:NavigationService) {
     this.genderForm = new FormGroup({
       gender: new FormControl()
     });
    }
-
-  ngOnInit(): void {
-  }
-
+   
+changeGender(choosenGender){
+  this.gender = choosenGender;
+  this.service.isValid.next('gender');
+}
 }

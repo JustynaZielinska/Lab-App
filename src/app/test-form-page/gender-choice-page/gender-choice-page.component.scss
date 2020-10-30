@@ -1,5 +1,9 @@
-@import "../test-form-page.component.scss";
+@import "../../../styles.scss";
 
 input{
     opacity:0
 }
+
+.list__item.choosen{
+    background-color: rgb(200, 81, 81);
+  }

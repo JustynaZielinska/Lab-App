@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
+import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
   selector: 'app-test-choice-page',
   templateUrl: './test-choice-page.component.html',
   styleUrls: ['./test-choice-page.component.scss']
 })
-export class TestChoicePageComponent {
+export class TestChoicePageComponent{
 
-choosenTest: string
-btnThyroid: boolean;
-btnLipids:boolean;
-chooseTest(test){
-  this.choosenTest = test;
- }
+constructor(private service:NavigationService) {}
 
+selectedTest : 'lipids'|'thyroid';
+
+selectTest(test){
+  this.selectedTest = test;
+  this.service.isValid.next('test');
+};
 }
