@@ -9,8 +9,8 @@ import { Router } from '@angular/router'
 })
 export class NavigationComponent implements DoCheck, OnInit {
 
-  constructor(private service: NavigationService, private currentRoute: Router) {
-  }
+constructor(private service: NavigationService, private currentRoute: Router) {}
+
 isEnabled: boolean;
 isHidden: boolean;
 isDisabled : boolean;
@@ -19,11 +19,11 @@ pageTitle: string;
 previousPath: string;
 isValid: string;
 
-resetValidation(){
-  this.service.isValid.next('')
+goBack(){
+  this.service.changeIsValid(null);
 }
 ngOnInit(){
-  this.service.isValid.subscribe(isValid => {this.isValid= isValid});
+  this.service.lastValidPage.subscribe(isValid => {this.isValid= isValid});
 }
 
 ngDoCheck() {
@@ -36,16 +36,20 @@ ngDoCheck() {
          this.isEnabled = true
        } else this.isEnabled = false;
        this.pageTitle = 'Wybierz płeć';
-       this.previousPath = '/home-page'
-       this.nextPath = '/gender-choice-page'
+       this.previousPath = '/home-page';
+       this.nextPath = '/gender-choice-page';
+       this.goBack();
        break;
      case '/gender-choice-page':
       if (this.isValid == 'gender'){
         this.isEnabled = true
       } else this.isEnabled = false;
        this.pageTitle = 'Wpisz wyniki';
-       this.previousPath ='test-choice-page'
-       break
+       this.previousPath ='test-choice-page';
+       this.goBack();
+       break;
+      default: this.goBack();
+      this.previousPath ='home-page';
    } 
  }
 }

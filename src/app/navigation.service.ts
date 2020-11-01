@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationService {
 
-isValid = new Subject<string>()
+  lastValidPage = new Subject<null | 'gender' | 'test' | 'results'>()
+
+  public getIsValid(): Observable<null | 'gender' | 'test' | 'results'> {
+    return this.lastValidPage.asObservable();
+  }
+  
+  public changeIsValid(newValue: null | 'gender' | 'test' | 'results') {
+    this.lastValidPage.next(newValue)
+  }
 }
 

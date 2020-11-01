@@ -1,5 +1,5 @@
 <header class="header">
-    <a routerLink="/home-page"><img class="header__logo" src="../../assets/images/Logo.svg" alt="logo aplikacji"></a>
+    <a routerLink="/home-page" (click)="goBack()"><img class="header__logo" src="../../assets/images/Logo.svg" alt="logo aplikacji"></a>
     <button class="header__burger" [class.header__burger--active]="isActive" (click)="isActive = !isActive">
         <span class="header__burger--inner"></span>
     </button>
