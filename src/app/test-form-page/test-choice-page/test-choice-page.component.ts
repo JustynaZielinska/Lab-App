@@ -14,6 +14,6 @@ selectedTest : 'lipids'|'thyroid';
 
 selectTest(test){
   this.selectedTest = test;
-  this.service.lastValidPage.next('test');
+  this.service.changeIsValid('test');
 };
 }

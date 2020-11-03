@@ -7,13 +7,17 @@ import { Subject, Observable } from 'rxjs';
 export class NavigationService {
 
   lastValidPage = new Subject<null | 'gender' | 'test' | 'results'>()
-
-  public getIsValid(): Observable<null | 'gender' | 'test' | 'results'> {
-    return this.lastValidPage.asObservable();
-  }
   
   public changeIsValid(newValue: null | 'gender' | 'test' | 'results') {
     this.lastValidPage.next(newValue)
   }
+
+  currentForm = new Subject<null | 'gender-choice' | 'test-choice' | 'entering-results'>()
+
+  public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results') {
+    this.currentForm.next(newValue)
+  }
+
 }
+
 

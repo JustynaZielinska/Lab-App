@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
   selector: 'app-test-form-page',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestFormPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: NavigationService){}
+  
+  formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
 
   ngOnInit(): void {
+    this.service.currentForm.subscribe(currentForm => {this.formPage = currentForm});
   }
 
 }
+  

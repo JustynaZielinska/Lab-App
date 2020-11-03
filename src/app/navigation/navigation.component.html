@@ -1,8 +1,8 @@
 <div class = "navigation">
     <a [routerLink]='[previousPath]' class="small" (click)="goBack()" [style.display]="isHidden? 'none' : 'block'">
         <img class="arrow arrow--previous" src="../../assets/images/Arrow.svg" alt="strzałka wstecz">Wstecz</a>
-    <a routerLink="/test-choice-page" [style.display]="isHidden? 'block' : 'none'">Wybierz badanie</a>
-    <a *ngIf="isEnabled" [routerLink]='[nextPath]' class="small" [style.display]="isHidden? 'none' : 'block'">
+    <a routerLink="/test-form-page" [style.display]="isHidden? 'block' : 'none'" (click)="changeCurrentForm('test-choice')">Wybierz badanie</a>
+    <a *ngIf="isEnabled" routerLink="/test-form-page" (click)="changeCurrentForm(nextForm)" class="small" [style.display]="isHidden? 'none' : 'block'">
         {{pageTitle}}<img class="arrow" src="../../assets/images/Arrow.svg" alt="strzałka dalej"></a>
     <div *ngIf="!isEnabled" class="small disabled" [style.display]="isHidden? 'none' : 'block'">
         {{pageTitle}}<img class="arrow" src="../../assets/images/Arrow.svg" alt="strzałka dalej"></div>
