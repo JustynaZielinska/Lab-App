@@ -8,12 +8,9 @@ import { NavigationService } from 'src/app/navigation.service';
 })
 export class TestFormPageComponent implements OnInit {
 
-  constructor(private service: NavigationService){}
+  constructor(public service: NavigationService){}
   
-  formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
-
   ngOnInit(): void {
-    this.service.currentForm.subscribe(currentForm => {this.formPage = currentForm});
   }
 
 }
