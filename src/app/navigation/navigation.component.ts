@@ -9,16 +9,17 @@ import { Router } from '@angular/router'
 })
 export class NavigationComponent implements DoCheck, OnInit {
 
-constructor(private service: NavigationService, private currentRoute: Router) {}
+constructor(public service: NavigationService, private currentRoute: Router) {}
 
 isEnabled: boolean;
 isHidden: boolean;
 isDisabled : boolean;
-pageTitle: string;
-previousPath: string;
-isValid: string;
+pageTitle: 'Wybierz płeć' | 'Wpisz wyniki' | 'Interpretacja';
+previousPath: 'home-page' | 'test-form-page';
+isValid:  null | 'gender' | 'test' | 'results';
+previousForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
+nextForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
 currentForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
-nextForm: null | 'gender-choice' | 'test-choice' | 'entering-results'
 
 goBack(){
   this.service.changeIsValid(null);
@@ -26,8 +27,10 @@ goBack(){
 changeCurrentForm(form){
   this.service.changeCurrentForm(form)
 }
+
 ngOnInit(){
-  this.service.lastValidPage.subscribe(isValid => {this.isValid= isValid});
+  this.service.lastValidPage.subscribe(isValid => {this.isValid = isValid});
+  this.service.currentForm.subscribe(currentForm => {this.currentForm = currentForm})
 }
 
 ngDoCheck() {
@@ -35,33 +38,37 @@ ngDoCheck() {
     this.isHidden = true;
    }else if (this.currentRoute.url === '/test-form-page') { 
    this.isHidden = false;
-   this.previousPath === '/home-page';
    switch (this.currentForm) {
      case 'test-choice':
+       this.previousPath = 'home-page';
+       this.previousForm = null;
        if (this.isValid === 'test'){
          this.isEnabled = true
-         this.nextForm === 'gender-choice';
+         this.nextForm = 'gender-choice';
        } else this.isEnabled = false;
-       this.pageTitle === 'Wybierz płeć';
+       this.pageTitle = 'Wybierz płeć';
        this.goBack();
        break;
      case 'gender-choice':
+       this.previousPath = 'test-form-page';
+       this.previousForm = 'test-choice';
       if (this.isValid === 'gender'){
         this.isEnabled = true
       } else this.isEnabled = false;
-      this.nextForm === 'entering-results';
-       this.pageTitle === 'Wpisz wyniki';
+      this.nextForm = 'entering-results';
+       this.pageTitle = 'Wpisz wyniki';
        this.goBack();
        break;
       case 'entering-results':
+        this.previousPath = 'test-form-page';
+        this.previousForm = 'gender-choice';
       if (this.isValid ==='results'){
         this.isEnabled = true
       } else this.isEnabled = false;
-       this.pageTitle === 'Interpretacja';
+       this.pageTitle = 'Interpretacja';
        this.goBack();
-       break}
+       break};
    } else this.isHidden = false;
       this.goBack();
-      this.previousPath === '/home-page';
- }
+ } 
 }
