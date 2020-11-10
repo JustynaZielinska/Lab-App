@@ -6,15 +6,26 @@ import { NavigationService } from 'src/app/navigation.service';
   templateUrl: './test-form-page.component.html',
   styleUrls: ['./test-form-page.component.scss']
 })
-export class TestFormPageComponent implements OnInit {
+export class TestFormPageComponent implements OnInit{
 
   constructor(public service: NavigationService){}
   
+  test: null | 'lipids'|'thyroid';
+  gender: null | 'male'|'female';
   formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
 
   ngOnInit(): void {
     this.service.currentForm.subscribe(currentForm => {this.formPage = currentForm});
-    console.log(this.formPage)
+  }
+
+  validTest(test){
+    this.test = test
+    this.service.changeIsValid('test');
+  }
+
+  validGender(gender){
+    this.gender = gender;
+    this.service.changeIsValid('gender');
   }
 }
   

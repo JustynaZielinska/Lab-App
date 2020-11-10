@@ -1,10 +1,10 @@
 <div class="form-box">
     <h2 class="title">Wybierz płeć</h2>
     <form [formGroup]="genderForm" class="list">
-    <label class="list__item" [class.choosen]="gender === 'female'">Kobieta
-        <input type="radio" formControlName="gender" value="female" (change)="changeGender('female')"></label>
-    <label class="list__item" [class.choosen]="gender === 'male'">Mężczyzna
-        <input type="radio" formControlName="gender" value="male" (change)="changeGender('male')"></label>
+    <label class="list__item" [class.choosen]="gender === 'female'" (change)="changeGender('female')">Kobieta
+        <input type="radio" formControlName="gender" value="female"></label>
+    <label class="list__item" [class.choosen]="gender === 'male'" (change)="changeGender('male')">Mężczyzna
+        <input type="radio" formControlName="gender" value="male"></label>
     </form>
     <span class="description">*interpretacja wyników dotyczy wyłącznie osób dorosłych</span>
 </div>

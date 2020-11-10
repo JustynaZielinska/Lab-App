@@ -1,9 +1,9 @@
 <div class="form-box">
 <h2 class="title">Wybierz badanie</h2>
 <ul class="list">
-    <li class="list__item"><button [class.choosen]="selectedTest === 'thyroid'"
+    <li class="list__item"><button [class.choosen]="test === 'thyroid'"
         (click)="selectTest('thyroid')">Hormony tarczycy</button></li>
-    <li class="list__item"><button [class.choosen]="selectedTest === 'lipids'"
+    <li class="list__item"><button [class.choosen]="test === 'lipids'"
         (click)="selectTest('lipids')">Profil lipidowy</button></li>
 </ul>
 <span class="description">Więcej badań wkrótce!</span>

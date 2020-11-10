@@ -42,23 +42,23 @@ ngDoCheck() {
      case 'test-choice':
        this.previousPath = 'home-page';
        this.previousForm = null;
+       this.nextForm = 'gender-choice';
+       this.pageTitle = 'Wybierz płeć';
        if (this.isValid === 'test'){
          this.isEnabled = true
-         this.nextForm = 'gender-choice';
        } else this.isEnabled = false;
-       this.pageTitle = 'Wybierz płeć';
        this.goBack();
        break;
      case 'gender-choice':
        this.previousPath = 'test-form-page';
        this.previousForm = 'test-choice';
+       this.nextForm = 'entering-results';
+       this.pageTitle = 'Wpisz wyniki';
       if (this.isValid === 'gender'){
         this.isEnabled = true
       } else this.isEnabled = false;
-      this.nextForm = 'entering-results';
-       this.pageTitle = 'Wpisz wyniki';
-       this.goBack();
-       break;
+      this.goBack();
+      break;
       case 'entering-results':
         this.previousPath = 'test-form-page';
         this.previousForm = 'gender-choice';

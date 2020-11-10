@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { NavigationService } from 'src/app/navigation.service';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-test-choice-page',
@@ -8,12 +7,14 @@ import { NavigationService } from 'src/app/navigation.service';
 })
 export class TestChoicePageComponent{
 
-constructor(private service:NavigationService) {}
+constructor() {}
 
-selectedTest : 'lipids'|'thyroid';
+@Input() test
+
+@Output() selectedTest= new EventEmitter<string>();
 
 selectTest(test){
-  this.selectedTest = test;
-  this.service.changeIsValid('test');
+  this.test = test;
+  this.selectedTest.emit(test);
 };
 }
