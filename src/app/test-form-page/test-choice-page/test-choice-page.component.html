@@ -1,10 +1,10 @@
 <div class="form-box">
-<h2 class="title">Wybierz badanie</h2>
-<ul class="list">
-    <li class="list__item"><button [class.choosen]="test === 'thyroid'"
-        (click)="selectTest('thyroid')">Hormony tarczycy</button></li>
-    <li class="list__item"><button [class.choosen]="test === 'lipids'"
-        (click)="selectTest('lipids')">Profil lipidowy</button></li>
-</ul>
-<span class="description">Więcej badań wkrótce!</span>
+    <h2 class="title">Wybierz badanie</h2>
+    <form [formGroup]="testForm" class="list">
+    <label class="list__item" [class.choosen]="test === 'thyroid'">Hormony tarczycy
+        <input type="radio" formControlName="test" value="female" (change)="changeTest('thyroid')"></label>
+    <label class="list__item" [class.choosen]="test === 'lipids'">Profil lipidowy
+        <input type="radio" formControlName="test" value="lipids" (change)="changeTest('lipids')"></label>
+    </form>
+    <span class="description">Więcej badań wkrótce!</span>
 </div>

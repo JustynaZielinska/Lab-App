@@ -45,9 +45,8 @@ ngDoCheck() {
        this.nextForm = 'gender-choice';
        this.pageTitle = 'Wybierz płeć';
        if (this.isValid === 'test'){
-         this.isEnabled = true
-       } else this.isEnabled = false;
-       this.goBack();
+         this.isEnabled = true;
+       } else this.isEnabled = false
        break;
      case 'gender-choice':
        this.previousPath = 'test-form-page';
@@ -55,9 +54,8 @@ ngDoCheck() {
        this.nextForm = 'entering-results';
        this.pageTitle = 'Wpisz wyniki';
       if (this.isValid === 'gender'){
-        this.isEnabled = true
-      } else this.isEnabled = false;
-      this.goBack();
+        this.isEnabled = true;
+      } else this.isEnabled = false
       break;
       case 'entering-results':
         this.previousPath = 'test-form-page';
@@ -66,9 +64,7 @@ ngDoCheck() {
         this.isEnabled = true
       } else this.isEnabled = false;
        this.pageTitle = 'Interpretacja';
-       this.goBack();
        break};
    } else this.isHidden = false;
-      this.goBack();
  } 
 }

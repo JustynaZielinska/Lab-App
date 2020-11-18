@@ -1,0 +1,40 @@
+<div class="form">
+    <h2 class="form__title">Wpisz wyniki</h2>
+    <div class="form__description">
+        <span class="form__description--item">Badanie</span>
+        <span class="form__description--item">Twój wynik</span>
+        <span class="form__description--item">Jednostka</span>
+        <span class="form__description--item">Zakres prawidłowy</span></div>
+    <form [formGroup]="lipidsForm" class="form--lipids">
+    <label class="form__label">
+        <span class="form__item">Cholesterol</span>
+        <input class="form__input" type="number" formControlName="chol">
+        <span class="form__item">{{ chol.unit }}</span>
+        <span class="form__item">{{ getRange(chol) }}</span>
+    </label>
+    <label class="form__label">
+        <span class="form__item">Cholesterol HDL</span>
+        <input class="form__input" type="number" formControlName="hdl">
+        <span class="form__item">{{ hdl.unit }}</span>
+        <span class="form__item">{{ getRange(hdl) }}</span>
+    </label>
+    <label class="form__label">
+        <span class="form__item">Cholesterol LDL</span>
+        <input class="form__input" type="number" formControlName="ldl">
+        <span class="form__item">{{ ldl.unit }}</span>
+        <span class="form__item">{{ getRange(ldl) }}</span>
+    </label>
+    <label class="form__label">
+        <span class="form__item">Cholesterol nie-HDL</span>
+        <input class="form__input" type="number" formControlName="nhdl">
+        <span class="form__item">{{ nhdl.unit }}</span>
+        <span class="form__item">{{ getRange(nhdl) }}</span>
+    </label>
+    <label class="form__label">
+        <span class="form__item">Trigliecerydy</span>
+        <input class="form__input" type="number" formControlName="tg">
+        <span class="form__item">{{ tg.unit }}</span>
+        <span class="form__item">{{ getRange(tg) }}</span>
+    </label>
+</form>
+</div>

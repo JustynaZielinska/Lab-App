@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-test-choice-page',
@@ -7,14 +8,16 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 })
 export class TestChoicePageComponent{
 
-constructor() {}
+  testForm: FormGroup;
+  @Input() test;
+  @Output() selectedTest= new EventEmitter<string>();
 
-@Input() test
+  constructor() {
+    this.testForm = new FormGroup({
+      test: new FormControl()
+    });}
 
-@Output() selectedTest= new EventEmitter<string>();
-
-selectTest(test){
-  this.test = test;
-  this.selectedTest.emit(test);
-};
-}
+   changeTest(test){
+    this.test = test;
+      this.selectedTest.emit(test);
+}}

@@ -14,6 +14,8 @@ import { GenderChoicePageComponent } from './test-form-page/gender-choice-page/g
 import { ReactiveFormsModule } from '@angular/forms';
 import { EnteringResultsPageComponent } from './test-form-page/entering-results-page/entering-results-page.component';
 import { NavigationService } from './navigation.service';
+import { ThyroidFormPageComponent } from './test-form-page/entering-results-page/thyroid-form-page/thyroid-form-page.component';
+import { LipidsFormPageComponent } from './test-form-page/entering-results-page/lipids-form-page/lipids-form-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { NavigationService } from './navigation.service';
     TestFormPageComponent,
     GenderChoicePageComponent,
     EnteringResultsPageComponent,
+    ThyroidFormPageComponent,
+    LipidsFormPageComponent,
   ],
   imports: [
     BrowserModule,
