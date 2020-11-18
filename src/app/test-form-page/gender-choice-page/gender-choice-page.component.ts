@@ -20,6 +20,6 @@ export class GenderChoicePageComponent {
    
 changeGender(choosenGender){
   this.gender = choosenGender;
-  this.service.isValid.next('gender');
+  this.service.changeIsValid('gender');
 }
 }

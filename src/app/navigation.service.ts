@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NavigationService {
 
-isValid = new Subject<string>()
+  lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'results'>(null)
+  
+  public changeIsValid(newValue: null | 'gender' | 'test' | 'results') {
+    this.lastValidPage.next(newValue);
+  }
+
+  currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'entering-results'>(null)
+
+  public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results') {
+    this.currentForm.next(newValue);
+  }
 }
+
 

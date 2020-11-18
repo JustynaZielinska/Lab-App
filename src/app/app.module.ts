@@ -12,6 +12,8 @@ import { TestChoicePageComponent } from './test-form-page/test-choice-page/test-
 import { TestFormPageComponent } from './test-form-page/test-form-page.component';
 import { GenderChoicePageComponent } from './test-form-page/gender-choice-page/gender-choice-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EnteringResultsPageComponent } from './test-form-page/entering-results-page/entering-results-page.component';
+import { NavigationService } from './navigation.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TestChoicePageComponent,
     TestFormPageComponent,
     GenderChoicePageComponent,
+    EnteringResultsPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [ ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

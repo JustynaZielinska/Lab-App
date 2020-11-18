@@ -1,1 +1,3 @@
-<p>test-form-page works!</p>
+<app-gender-choice-page *ngIf="(service.currentForm | async) === 'gender-choice'"></app-gender-choice-page>
+<app-test-choice-page *ngIf="(service.currentForm | async) === 'test-choice'"></app-test-choice-page>
+<app-entering-results-page *ngIf="(service.currentForm | async) === 'entering-results'"></app-entering-results-page>

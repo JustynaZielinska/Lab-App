@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from 'src/app/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
  })
 
 export class HeaderComponent{
+
+constructor(private service:NavigationService) {}
+  
 isActive = false;
 
+goBack(){
+  this.service.changeIsValid(null);
+}
 }
