@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavigationService } from 'src/app/navigation.service';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-test-choice-page',
@@ -8,12 +8,16 @@ import { NavigationService } from 'src/app/navigation.service';
 })
 export class TestChoicePageComponent{
 
-constructor(private service:NavigationService) {}
+  testForm: FormGroup;
+  @Input() test;
+  @Output() selectedTest= new EventEmitter<string>();
 
-selectedTest : 'lipids'|'thyroid';
+  constructor() {
+    this.testForm = new FormGroup({
+      test: new FormControl()
+    });}
 
-selectTest(test){
-  this.selectedTest = test;
-  this.service.changeIsValid('test');
-};
-}
+   changeTest(test){
+    this.test = test;
+      this.selectedTest.emit(test);
+}}

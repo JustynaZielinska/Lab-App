@@ -42,23 +42,21 @@ ngDoCheck() {
      case 'test-choice':
        this.previousPath = 'home-page';
        this.previousForm = null;
-       if (this.isValid === 'test'){
-         this.isEnabled = true
-         this.nextForm = 'gender-choice';
-       } else this.isEnabled = false;
+       this.nextForm = 'gender-choice';
        this.pageTitle = 'Wybierz płeć';
-       this.goBack();
+       if (this.isValid === 'test'){
+         this.isEnabled = true;
+       } else this.isEnabled = false
        break;
      case 'gender-choice':
        this.previousPath = 'test-form-page';
        this.previousForm = 'test-choice';
-      if (this.isValid === 'gender'){
-        this.isEnabled = true
-      } else this.isEnabled = false;
-      this.nextForm = 'entering-results';
+       this.nextForm = 'entering-results';
        this.pageTitle = 'Wpisz wyniki';
-       this.goBack();
-       break;
+      if (this.isValid === 'gender'){
+        this.isEnabled = true;
+      } else this.isEnabled = false
+      break;
       case 'entering-results':
         this.previousPath = 'test-form-page';
         this.previousForm = 'gender-choice';
@@ -66,9 +64,7 @@ ngDoCheck() {
         this.isEnabled = true
       } else this.isEnabled = false;
        this.pageTitle = 'Interpretacja';
-       this.goBack();
        break};
    } else this.isHidden = false;
-      this.goBack();
  } 
 }
