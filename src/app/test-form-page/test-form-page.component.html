@@ -1,3 +1,3 @@
 <app-gender-choice-page *ngIf="(service.currentForm | async) === 'gender-choice'" gender="'male'|'female'" (selectedGender)="validGender($event)"></app-gender-choice-page>
 <app-test-choice-page *ngIf="(service.currentForm | async) === 'test-choice'" test="'lipids'|'thyroid'" (selectedTest)="validTest($event)"></app-test-choice-page>
-<app-entering-results-page *ngIf="(service.currentForm | async) === 'entering-results'"></app-entering-results-page>
+<app-entering-results-page *ngIf="(service.currentForm | async) === 'entering-results'" currentTest="'lipids'|'thyroid'" currentGender="'male'|'female'"></app-entering-results-page>

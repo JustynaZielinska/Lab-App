@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-entering-results-page',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnteringResultsPageComponent implements OnInit {
 
+  @Input() currentGender;
+  @Input() currentTest;
+
   constructor() { }
 
   ngOnInit(): void {
+  console.log(this.currentTest);
+  console.log(this.currentGender)
   }
 
 }

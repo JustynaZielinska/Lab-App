@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 interface Test{
@@ -43,6 +43,8 @@ const tg: Test ={
   styleUrls: ['./lipids-form-page.component.scss']
 })
 export class LipidsFormPageComponent {
+
+@Input() currentTest;
 
 lipidsForm: FormGroup;
 chol: Test;
