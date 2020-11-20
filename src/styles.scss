@@ -51,7 +51,7 @@ li {
     }
 }
 
-.form-box{
+.box{
     display: grid;
     height: calc(100vh - (2.6rem*2));
     width: 100vw;
@@ -71,10 +71,10 @@ place-items: center;
 height: 7rem;}
 }
 
-label.list__item{
-    line-height: 3rem;
-    width: 12rem;
+.list__item{
     height: 3rem;
+    width: 12rem;
+    line-height: 3rem;
     font-size: 1rem;
     color: white;
     background-color: #3582a3cb;
@@ -88,7 +88,7 @@ label.list__item{
         }
 }
 
-label.list__item:hover{
+.list__item:hover{
         transform: scale(0.95);
         transform-origin: center;
         box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.3);
@@ -96,7 +96,7 @@ label.list__item:hover{
 
 .description{
     color: rgb(87, 87, 87);
-    font-size: 18px;
+    font-size: .8rem;
 }
 
 input{
