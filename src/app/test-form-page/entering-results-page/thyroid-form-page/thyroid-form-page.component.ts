@@ -37,7 +37,6 @@ thyroidForm: FormGroup;
 tsh: Test;
 ft3: Test;
 ft4: Test;
-test: Test;
 
   constructor(form:FormBuilder) { 
     this.thyroidForm = form.group({
@@ -50,7 +49,6 @@ test: Test;
   this.ft4 = ft4;
 } 
 getRange(test):string{
-this.test = test;
-return `${this.test.min} - ${this.test.max}`
+return `${test.min} - ${test.max}`
 }
 }

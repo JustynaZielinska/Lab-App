@@ -50,7 +50,6 @@ hdl: Test;
 ldl: Test;
 nhdl: Test;
 tg: Test;
-test: Test;
 
   constructor(form:FormBuilder) { 
     this.lipidsForm = form.group({
@@ -67,11 +66,10 @@ test: Test;
     this.tg = tg;
 } 
 getRange(test):string{
-this.test = test;
 if (test===chol)
-return `${this.test.min} - ${this.test.max}`;
+return `${test.min} - ${test.max}`;
 else if(test===hdl)
-return `> ${this.test.min}`;
-else return `< ${this.test.max}`
+return `> ${test.min}`;
+else return `< ${test.max}`
 }
 }

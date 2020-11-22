@@ -1,0 +1,30 @@
+@import '../entering-results-page.component.scss';
+.box{
+    grid-template-rows: 2fr 3.5fr .5fr;
+    @media (orientation:landscape) and (max-width:640px) {
+        grid-template-rows: 1.6rem 1fr;
+        }
+}
+
+.form{
+    grid-template-rows: 2rem 2rem 2.6rem 2.6rem 2.6rem 2.6rem 2.4rem;
+    @media (orientation:landscape) and (max-width:640px) {
+        font-size: 0.8rem;
+        grid-template-rows: 1.4rem 1.4rem 1.6rem 1.6rem 1.6rem 1.6rem 1.4rem;
+        }
+}
+.form__description, .form__label{
+        grid-template-columns: 1.4fr 80px 1fr 1fr;
+    }
+
+.form__input{
+    @media (orientation:landscape) and (max-width:640px) {
+    font-size: .8rem;
+    height: .9rem;}
+}
+.submit{
+    @media (orientation:landscape) and (max-width:640px) {
+        height:1.4rem;
+        line-height: 1.4rem;
+        font-size: .8rem;
+    }} 
