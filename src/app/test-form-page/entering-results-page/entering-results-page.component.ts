@@ -7,14 +7,12 @@ import { Component, OnInit, Input, Output } from '@angular/core';
 })
 export class EnteringResultsPageComponent implements OnInit {
 
-  @Input() currentGender;
   @Input() currentTest;
+  @Input() currentGender;
 
   constructor() { }
 
   ngOnInit(): void {
-  console.log(this.currentTest);
-  console.log(this.currentGender)
   }
 
 }

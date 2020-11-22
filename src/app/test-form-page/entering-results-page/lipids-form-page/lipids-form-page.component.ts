@@ -44,15 +44,14 @@ const tg: Test ={
 })
 export class LipidsFormPageComponent {
 
-@Input() currentTest;
-
 lipidsForm: FormGroup;
 chol: Test;
 hdl: Test;
 ldl: Test;
 nhdl: Test;
 tg: Test;
-
+@Input() gender;
+ 
   constructor(form:FormBuilder) { 
     this.lipidsForm = form.group({
       chol: [''],
@@ -70,8 +69,10 @@ tg: Test;
 getRange(test):string{
 if (test===chol)
 return `${test.min} - ${test.max}`;
-else if(test===hdl)
-return `> ${test.min}`;
-else return `< ${test.max}`
+else if(test===hdl){
+  if (this.gender === 'male')
+  return `> ${test.minMale}`;
+  else return `> ${test.minFemale}`;
+} else return `< ${test.max}`;
 }
 }

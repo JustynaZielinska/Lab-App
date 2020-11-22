@@ -7,7 +7,7 @@
 }
 
 .form{
-    grid-template-rows: 2rem 2rem 2.6rem 2.6rem 2.6rem 2.6rem 2.4rem;
+    grid-template-rows: 2rem 2.6rem 2.6rem 2.6rem 2.6rem 2.6rem 2.4rem;
     @media (orientation:landscape) and (max-width:800px) {
         font-size: 0.8rem;
         grid-template-rows: 1.4rem 1.4rem 1.6rem 1.6rem 1.6rem 1.6rem 1.4rem;

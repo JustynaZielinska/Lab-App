@@ -12,8 +12,6 @@ export class TestFormPageComponent implements OnInit{
   
   test: null | 'lipids'|'thyroid';
   gender: null | 'male'|'female';
-  currentTest: null | 'lipids'|'thyroid';
-  currentGender: null | 'male'|'female';
   formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
 
   ngOnInit(): void {
@@ -21,13 +19,11 @@ export class TestFormPageComponent implements OnInit{
   }
 
   validTest(test){
-    this.currentTest = test;
-    console.log(this.currentTest);
+    this.test = test;
     this.service.changeIsValid('test');
   }
   validGender(gender){
-    this.currentGender = gender;
-    console.log(this.currentGender);
+    this.gender = gender;
     this.service.changeIsValid('gender');
   }
 }

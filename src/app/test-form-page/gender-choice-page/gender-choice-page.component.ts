@@ -9,8 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class GenderChoicePageComponent {
 
   genderForm: FormGroup;
-  @Input() gender;
   @Output() selectedGender= new EventEmitter<string>();
+  gender: null|'male'|'female';
 
   constructor() {
     this.genderForm = new FormGroup({
