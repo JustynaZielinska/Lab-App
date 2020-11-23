@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, DoCheck, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Test{
   name: string;
@@ -51,14 +51,15 @@ ldl: Test;
 nhdl: Test;
 tg: Test;
 @Input() gender;
+isDisabled: boolean;
  
   constructor(form:FormBuilder) { 
     this.lipidsForm = form.group({
-      chol: [''],
-      hdl: [''],
-      ldl: [''],
-      nhdl: [''],
-      tg: ['']
+      chol: ['', Validators.min(0.0001)],
+      hdl: ['', Validators.min(0.0001)],
+      ldl: ['', Validators.min(0.0001)],
+      nhdl: ['', Validators.min(0.0001)],
+      tg: ['', Validators.min(0.0001)]
     })
     this.chol = chol;
     this.hdl = hdl;
@@ -75,4 +76,16 @@ else if(test===hdl){
   else return `> ${test.minFemale}`;
 } else return `< ${test.max}`;
 }
+
+ngDoCheck(){
+  if (this.lipidsForm.pristine){
+    this.isDisabled = true
+  }else {if (((this.lipidsForm.controls['chol'].dirty && !(this.lipidsForm.controls['chol'].value>0)) ||
+  (this.lipidsForm.controls['hdl'].touched && !(this.lipidsForm.controls['hdl'].value>0)) ||
+  (this.lipidsForm.controls['ldl'].touched && !(this.lipidsForm.controls['ldl'].value>0)) ||
+  (this.lipidsForm.controls['nhdl'].touched && !(this.lipidsForm.controls['nhdl'].value>0)) ||
+  (this.lipidsForm.controls['tg'].touched && !(this.lipidsForm.controls['tg'].value>0)))){
+    this.isDisabled = true
+  }else this.isDisabled = false
 }
+}}

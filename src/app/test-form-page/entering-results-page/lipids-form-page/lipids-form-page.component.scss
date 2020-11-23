@@ -27,4 +27,13 @@
         height:1.4rem;
         line-height: 1.4rem;
         font-size: .8rem;
-    }} 
+    }
+    &:disabled{
+    background-color: grey;
+    cursor: none;
+        &:hover{
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
