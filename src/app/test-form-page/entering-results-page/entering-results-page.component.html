@@ -1,2 +1,9 @@
-<app-thyroid-form-page *ngIf='(currentTest === "thyroid")'></app-thyroid-form-page>
-<app-lipids-form-page *ngIf='(currentTest === "lipids")' [gender]="currentGender"></app-lipids-form-page>
+<app-thyroid-form-page
+    *ngIf='(currentTest === "thyroid")'
+    (validResults)="submitResults($event)">>
+</app-thyroid-form-page>
+<app-lipids-form-page
+    *ngIf='(currentTest === "lipids")'
+    [gender]="currentGender"
+    (validResults)="submitResults($event)">
+</app-lipids-form-page>

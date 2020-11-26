@@ -1,6 +1,6 @@
 <div class="box">
     <h2 class="title">Wpisz wyniki</h2>
-    <form [formGroup]="lipidsForm" class="form">
+    <form [formGroup]="lipidsForm" class="form"(ngSubmit)="submitLipids()" >
         <div class="form__description">
             <span class="form__description--item">Badanie</span>
             <span class="form__description--item">Twój wynik</span>
@@ -41,7 +41,7 @@
         <span class="form__item">{{ tg.unit }}</span>
         <span class="form__item">{{ getRange(tg) }}</span>
     </label>
+    <span class="form__description--item">wartość musi być większa niż 0</span>
     <button class="submit" [disabled]="isDisabled" type="submit">Wyślij</button>
-    <span class="form__description--item" *ngIf="lipidsForm.invalid">wartość musi być większa niż 0</span>
 </form>
 </div>

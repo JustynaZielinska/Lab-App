@@ -1,10 +1,12 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { positiveNumberValidator } from '../positive-number.directive';
 
 interface Test{
   name: string;
   min: number;
   max: number;
+  value?: number;
   unit: string
 }  
 const tsh: Test ={
@@ -38,29 +40,39 @@ tsh: Test;
 ft3: Test;
 ft4: Test;
 alert: string;
+@Output() validResults= new EventEmitter<string>(); 
 
-  constructor(form:FormBuilder) { 
-    this.thyroidForm = form.group({
-      tsh: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
-      ft3: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
-      ft4: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
-    })
+  constructor(private form:FormBuilder) { 
   this.tsh = tsh;
   this.ft3 = ft3;
   this.ft4 = ft4;
-} 
+}
+
+ngOnInit(){
+  this.thyroidForm = this.form.group({
+    tsh: ['', Validators.compose([Validators.required, positiveNumberValidator()])],
+    ft3: ['', Validators.compose([Validators.required, positiveNumberValidator()])],
+    ft4: ['', Validators.compose([Validators.required, positiveNumberValidator()])],
+  }); this.onChanges()
+}
 getRange(test):string{
 return `${test.min} - ${test.max}`
 }
-
 ngDoCheck(){
-if((this.thyroidForm.controls['tsh'].value === null)||
-(this.thyroidForm.controls['ft3'].value === null) ||
-(this.thyroidForm.controls['ft4'].value === null))
-this.alert = "wypełnij wszystkie pola";
-else if((this.thyroidForm.controls['tsh'].dirty && !(this.thyroidForm.controls['tsh'].value > 0)) ||
-(this.thyroidForm.controls['ft3'].dirty && !(this.thyroidForm.controls['ft3'].value > 0)) ||
-(this.thyroidForm.controls['ft4'].dirty && !(this.thyroidForm.controls['ft4'].value > 0))
-) this.alert = "wartość musi być większa niż 0";
-else this.alert = "wypełnij wszystkie pola"
+  if(((this.tsh.value === 0) || (this.tsh.value < 0)) || 
+  ((this.ft3.value === 0) || (this.ft3.value < 0)) ||
+  ((this.ft4.value === 0) || (this.ft4.value < 0)))
+  this.alert = "wartość musi być większa niż 0";
+  else this.alert = "wypełnij wszystkie pola"
+}
+onChanges(){
+  this.thyroidForm.valueChanges.subscribe(thyroid => {
+    this.tsh.value = thyroid.tsh;
+    this.ft3.value = thyroid.ft3;
+    this.ft4.value = thyroid.ft4;
+  })
+}
+
+submitThyroid(){
+  this.validResults.emit('thyroid')
 }}

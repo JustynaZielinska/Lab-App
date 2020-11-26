@@ -5,12 +5,17 @@
     height: 2.6rem;
     padding: .5rem 1rem;
     background-color: $main-color;
-
+    @media (orientation: landscape) and (max-width : 640px){
+        height: 2.2rem
+    }
     @media (orientation:landscape) and (min-width:1024px){
         @include flex (row, space-around)}
 
 &__logo{
-    height: 1.6rem}
+    height: 1.6rem;
+    @media (orientation: landscape) and (max-width : 640px){
+        height: 1.4rem
+    }}
 
     &__burger {
     position: relative;
@@ -19,6 +24,9 @@
     transition: 0.5s;
     cursor: pointer;
     outline: 0;
+    @media (orientation: landscape) and (max-width : 640px){
+        @include square(1.4rem);
+    }
 
     &--inner {
         @include hamburger-line;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -9,8 +9,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class GenderChoicePageComponent {
 
   genderForm: FormGroup;
-  @Output() selectedGender= new EventEmitter<string>();
   gender: null|'male'|'female';
+  @Output() selectedGender= new EventEmitter<string>();
+  
 
   constructor() {
     this.genderForm = new FormGroup({

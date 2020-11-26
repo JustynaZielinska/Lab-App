@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavigationService {
 
-  lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'results'>(null)
+  lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'lipids' | 'thyroid'>(null)
   
-  public changeIsValid(newValue: null | 'gender' | 'test' | 'results') {
+  public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid') {
     this.lastValidPage.next(newValue);
   }
 

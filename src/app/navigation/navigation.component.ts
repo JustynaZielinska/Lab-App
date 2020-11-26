@@ -16,7 +16,7 @@ isHidden: boolean;
 isDisabled : boolean;
 pageTitle: 'Wybierz płeć' | 'Wpisz wyniki' | 'Interpretacja';
 previousPath: 'home-page' | 'test-form-page';
-isValid:  null | 'gender' | 'test' | 'results';
+isValid:  null | 'gender' | 'test' | 'lipids' | 'thyroid';
 previousForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
 nextForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
 currentForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
@@ -60,10 +60,10 @@ ngDoCheck() {
       case 'entering-results':
         this.previousPath = 'test-form-page';
         this.previousForm = 'gender-choice';
-      if (this.isValid ==='results'){
+        this.pageTitle = 'Interpretacja';
+      if (this.isValid ===('lipids'||'thyroid')){
         this.isEnabled = true
-      } else this.isEnabled = false;
-       this.pageTitle = 'Interpretacja';
+      } else this.isEnabled = false
        break};
    } else this.isHidden = false;
  } 
