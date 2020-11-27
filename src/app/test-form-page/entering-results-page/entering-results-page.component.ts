@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-entering-results-page',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./entering-results-page.component.scss']
 })
 export class EnteringResultsPageComponent implements OnInit {
+
+  @Input() currentTest;
+  @Input() currentGender;
 
   constructor() { }
 

@@ -17,6 +17,6 @@ export class NavigationService {
   public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results') {
     this.currentForm.next(newValue);
   }
-}
+} 
 
 

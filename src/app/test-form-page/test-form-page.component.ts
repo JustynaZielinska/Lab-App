@@ -19,10 +19,9 @@ export class TestFormPageComponent implements OnInit{
   }
 
   validTest(test){
-    this.test = test
+    this.test = test;
     this.service.changeIsValid('test');
   }
-
   validGender(gender){
     this.gender = gender;
     this.service.changeIsValid('gender');

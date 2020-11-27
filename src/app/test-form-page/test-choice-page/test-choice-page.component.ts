@@ -9,7 +9,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class TestChoicePageComponent{
 
   testForm: FormGroup;
-  @Input() test;
+  test: null | 'lipids' | 'thyroid';
+  gender: null | 'lipids' | 'thyroid';
   @Output() selectedTest= new EventEmitter<string>();
 
   constructor() {

@@ -2,7 +2,7 @@
     grid-template-rows: 2fr 3fr 1fr;
     width: 90vw;
     margin: 0 auto;
-    @media (orientation:landscape) and (max-width:640px) {
+    @media (orientation:landscape) and (max-width:800px) {
         grid-template-rows: 1.6rem 1fr;
         }
 }
@@ -19,7 +19,7 @@
     font-size: 1rem;
     align-self: flex-start;
     grid-template-rows: 2rem 3rem 3rem 3rem 3rem;
-    @media (orientation:landscape) and (max-width:640px) {
+    @media (orientation:landscape) and (max-width:800px) {
         grid-template-rows: 1.5rem 2rem 2rem 2rem 1.5rem;
         align-self: center;
         }
@@ -42,7 +42,7 @@
     transition: .3s linear;
     &:focus {
         outline-style: none;
-        border-bottom: 3px solid #1a5f7c}
+        border-bottom: 3px solid #2287b3}
 }
 
 .submit{
