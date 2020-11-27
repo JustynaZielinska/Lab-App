@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { positiveNumberValidator } from '../positive-number.directive';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { positiveNumberValidator } from '../positive-number.module';
 
 interface Test{
   name: string;
@@ -9,35 +9,35 @@ interface Test{
   minFemale?: number;
   minMale?: number;
   value?: number;
-  unit: string
-}  
-const chol: Test ={
+  unit: string;
+}
+const chol: Test = {
   name: 'chol',
   min: 115,
   max: 190,
   unit: 'mg/dl'
-}
-const hdl: Test ={
+};
+const hdl: Test = {
   name: 'hdl',
   minFemale: 45,
   minMale: 40,
   unit: 'mg/dl'
-}
-const ldl: Test ={
+};
+const ldl: Test = {
   name: 'ldl',
   max: 115,
   unit: 'mg/dl'
-}
-const nhdl: Test ={
+};
+const nhdl: Test = {
   name: 'nhdl',
   max: 145,
   unit: 'mg/dl'
-}
-const tg: Test ={
+};
+const tg: Test = {
   name: 'tg',
   max: 150,
   unit: 'mg/dl'
-}
+};
 
 @Component({
   selector: 'app-lipids-form-page',
@@ -54,62 +54,56 @@ nhdl: Test;
 tg: Test;
 isDisabled: boolean;
 @Input() gender;
-@Output() validResults= new EventEmitter<string>();
-@Output() cholResult= new EventEmitter<number>();
-@Output() hdlResult= new EventEmitter<number>();
-@Output() ldlResult= new EventEmitter<number>();
-@Output() nhdlResult= new EventEmitter<number>();
-@Output() tgResult= new EventEmitter<number>();
- 
-  constructor(private form:FormBuilder) {
-    this.chol = chol;
-    this.hdl = hdl;
-    this.ldl = ldl;
-    this.nhdl = nhdl;
-    this.tg = tg;
+@Output() validResults = new EventEmitter<string>();
+@Output() lipidsResults = new EventEmitter<object>();
+
+constructor(private form: FormBuilder) {
+  this.chol = chol;
+  this.hdl = hdl;
+  this.ldl = ldl;
+  this.nhdl = nhdl;
+  this.tg = tg;
 }
-getRange(test):string{
-  if (test===chol)
+
+getRange(test): string{
+  if (test === chol){
   return `${test.min} - ${test.max}`;
-  else if(test===hdl){
-    if (this.gender === 'male')
+} else if (test === hdl){
+    if (this.gender === 'male'){
     return `> ${test.minMale}`;
-    else return `> ${test.minFemale}`;
-  } else return `< ${test.max}`;
+  } else { return `> ${test.minFemale}`; }
+  } else { return `< ${test.max}`; }
   }
 
-ngOnInit(){
+ngOnInit(): void {
   this.lipidsForm = this.form.group({
-    chol: ['', positiveNumberValidator()],
-    hdl: ['', positiveNumberValidator()],
-    ldl: ['', positiveNumberValidator()],
-    nhdl: ['', positiveNumberValidator()],
-    tg: ['', positiveNumberValidator()]
+    chol: [null],
+    hdl: [null],
+    ldl: [null],
+    nhdl: [null],
+    tg: [null],
   });
-  this.onChanges()
+  this.onChanges();
 }
 
-ngDoCheck(){
-  if (this.lipidsForm.pristine)
-    this.isDisabled = true;
-  else if(((this.chol.value === 0) || (this.chol.value < 0)) || 
-  ((this.hdl.value === 0) || (this.hdl.value < 0)) ||
-  ((this.ldl.value === 0) || (this.ldl.value < 0)) ||
-  ((this.nhdl.value === 0) || (this.nhdl.value < 0)) ||
-  ((this.tg.value === 0) || (this.tg.value < 0)))
-  this.isDisabled = true;
-  else this.isDisabled = false;
-  this.validResults.emit(null)
-}
+ngDoCheck(): void{
+  if (this.lipidsForm.pristine){
+    this.isDisabled = true; }
+  this.validResults.emit(null);
+ }
+
 onChanges(): void {
   this.lipidsForm.valueChanges.subscribe(lipids => {
-    this.chol.value = lipids.chol;
-    this.hdl.value = lipids.hdl;
-    this.ldl.value = lipids.ldl;
-    this.nhdl.value = lipids.nhdl;
-    this.tg.value = lipids.tg
-  })}
+  if ((lipids.chol === null) && (lipids.hdl === null) && (lipids.ldl === null) && (lipids.nhdl === null) && (lipids.tg === null)){
+    this.isDisabled = true;
+  } else if ((lipids.chol === 0 ) || (lipids.hdl === 0) || (lipids.ldl === 0 ) || (lipids.nhdl === 0) || (lipids.tg === 0)){
+    this.isDisabled = true;
+  }  else if ((lipids.chol < 0 ) || (lipids.hdl < 0) || (lipids.ldl < 0 ) || (lipids.nhdl < 0) || (lipids.tg < 0)){
+      this.isDisabled = true;
+  } else {this.isDisabled = false; }
+ }); }
 
-submitLipids(){
+submitLipids(): void{
   this.validResults.emit('lipids');
+  this.lipidsResults.emit(this.lipidsForm.value);
 }}

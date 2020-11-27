@@ -1,24 +1,19 @@
-import { Component, OnInit, Input, Output, DoCheck, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-entering-results-page',
   templateUrl: './entering-results-page.component.html',
   styleUrls: ['./entering-results-page.component.scss']
 })
-export class EnteringResultsPageComponent implements DoCheck {
+export class EnteringResultsPageComponent {
 
   @Input() currentTest;
   @Input() currentGender;
-  @Output() validResults= new EventEmitter<string>(); 
-  validTest: null | 'lipids' | 'thyroid'
+  @Output() validResults = new EventEmitter<string>();
+  validTest: null | 'lipids' | 'thyroid';
 
-  constructor() { }
-
-  ngDoCheck(): void {
-    }
-
-submitResults(results){
+submitResults(results): void{
 this.validTest = results;
-this.validResults.emit(this.validTest)
+this.validResults.emit(this.validTest);
 }
 }
