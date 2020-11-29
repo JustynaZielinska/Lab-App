@@ -1,6 +1,5 @@
 import { Component, DoCheck, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { positiveNumberValidator } from '../positive-number.module';
 
 interface Test{
   name: string;
@@ -28,11 +27,6 @@ const ldl: Test = {
   max: 115,
   unit: 'mg/dl'
 };
-const nhdl: Test = {
-  name: 'nhdl',
-  max: 145,
-  unit: 'mg/dl'
-};
 const tg: Test = {
   name: 'tg',
   max: 150,
@@ -50,7 +44,6 @@ lipidsForm: FormGroup;
 chol: Test;
 hdl: Test;
 ldl: Test;
-nhdl: Test;
 tg: Test;
 isDisabled: boolean;
 @Input() gender;
@@ -61,7 +54,6 @@ constructor(private form: FormBuilder) {
   this.chol = chol;
   this.hdl = hdl;
   this.ldl = ldl;
-  this.nhdl = nhdl;
   this.tg = tg;
 }
 
@@ -80,7 +72,6 @@ ngOnInit(): void {
     chol: [null],
     hdl: [null],
     ldl: [null],
-    nhdl: [null],
     tg: [null],
   });
   this.onChanges();
@@ -94,11 +85,11 @@ ngDoCheck(): void{
 
 onChanges(): void {
   this.lipidsForm.valueChanges.subscribe(lipids => {
-  if ((lipids.chol === null) && (lipids.hdl === null) && (lipids.ldl === null) && (lipids.nhdl === null) && (lipids.tg === null)){
+  if ((lipids.chol === null) && (lipids.hdl === null) && (lipids.ldl === null) && (lipids.tg === null)){
     this.isDisabled = true;
-  } else if ((lipids.chol === 0 ) || (lipids.hdl === 0) || (lipids.ldl === 0 ) || (lipids.nhdl === 0) || (lipids.tg === 0)){
+  } else if ((lipids.chol === 0 ) || (lipids.hdl === 0) || (lipids.ldl === 0 ) || (lipids.tg === 0)){
     this.isDisabled = true;
-  }  else if ((lipids.chol < 0 ) || (lipids.hdl < 0) || (lipids.ldl < 0 ) || (lipids.nhdl < 0) || (lipids.tg < 0)){
+  }  else if ((lipids.chol < 0 ) || (lipids.hdl < 0) || (lipids.ldl < 0 ) || (lipids.tg < 0)){
       this.isDisabled = true;
   } else {this.isDisabled = false; }
  }); }
