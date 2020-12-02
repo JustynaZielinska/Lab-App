@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, DoCheck } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface Test{
   name: string;
@@ -31,18 +31,19 @@ const ft4: Test ={
   templateUrl: './thyroid-form-page.component.html',
   styleUrls: ['./thyroid-form-page.component.scss']
 })
-export class ThyroidFormPageComponent {
+export class ThyroidFormPageComponent implements DoCheck {
 
 thyroidForm: FormGroup;
 tsh: Test;
 ft3: Test;
 ft4: Test;
+alert: string;
 
   constructor(form:FormBuilder) { 
     this.thyroidForm = form.group({
-      tsh: [''],
-      ft3: [''],
-      ft4: ['']
+      tsh: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
+      ft3: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
+      ft4: ['', Validators.compose([Validators.required, Validators.min(0.0001)])],
     })
   this.tsh = tsh;
   this.ft3 = ft3;
@@ -51,4 +52,15 @@ ft4: Test;
 getRange(test):string{
 return `${test.min} - ${test.max}`
 }
-}
+
+ngDoCheck(){
+if((this.thyroidForm.controls['tsh'].value === null)||
+(this.thyroidForm.controls['ft3'].value === null) ||
+(this.thyroidForm.controls['ft4'].value === null))
+this.alert = "wypełnij wszystkie pola";
+else if((this.thyroidForm.controls['tsh'].dirty && !(this.thyroidForm.controls['tsh'].value > 0)) ||
+(this.thyroidForm.controls['ft3'].dirty && !(this.thyroidForm.controls['ft3'].value > 0)) ||
+(this.thyroidForm.controls['ft4'].dirty && !(this.thyroidForm.controls['ft4'].value > 0))
+) this.alert = "wartość musi być większa niż 0";
+else this.alert = "wypełnij wszystkie pola"
+}}

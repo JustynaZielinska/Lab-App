@@ -10,9 +10,11 @@
 .form__description{
     display: grid;
     grid-template-columns: 1fr 90px 1.5fr 2fr;
-    font-size: .8rem;
     justify-items: center ;
-    color: rgb(90, 90, 90);}
+    &--item{
+        font-size: .8rem;
+        color: rgb(90, 90, 90);
+}}
     
 .form{
     display: grid;
@@ -40,6 +42,9 @@
     text-align: center;
     border-bottom: 2px solid grey;
     transition: .3s linear;
+    &--alert {
+        border-bottom: 3px solid #8f0f0f
+    }
     &:focus {
         outline-style: none;
         border-bottom: 3px solid #2287b3}
