@@ -16,6 +16,7 @@ import { EnteringResultsPageComponent } from './test-form-page/entering-results-
 import { NavigationService } from './navigation.service';
 import { ThyroidFormPageComponent } from './test-form-page/entering-results-page/thyroid-form-page/thyroid-form-page.component';
 import { LipidsFormPageComponent } from './test-form-page/entering-results-page/lipids-form-page/lipids-form-page.component';
+import { InterpretationComponent } from './interpretation/interpretation.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { LipidsFormPageComponent } from './test-form-page/entering-results-page/
     EnteringResultsPageComponent,
     ThyroidFormPageComponent,
     LipidsFormPageComponent,
+    InterpretationComponent,
   ],
   imports: [
     BrowserModule,

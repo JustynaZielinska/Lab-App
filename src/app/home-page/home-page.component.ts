@@ -9,7 +9,7 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
     query('.description span', [
       style({opacity: 0, transform: 'translateY(1.5rem)'}),
       stagger(900, [
-        animate('1.1s 1.2s', style ({opacity: 1, transform:'none'}))
+        animate('1.1s 1.2s', style ({opacity: 1, transform: 'none'}))
       ])
     ])
     ])
@@ -21,6 +21,6 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
 export class HomePageComponent implements OnInit {
 isVisible = false;
 
-ngOnInit (): void{
+ngOnInit(): void{
   this.isVisible = true;
 }}

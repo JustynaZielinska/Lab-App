@@ -10,15 +10,15 @@ export class GenderChoicePageComponent {
 
   genderForm: FormGroup;
   gender: null|'male'|'female';
-  @Output() selectedGender= new EventEmitter<string>();
-  
+  @Output() selectedGender = new EventEmitter<string>();
+
 
   constructor() {
     this.genderForm = new FormGroup({
       gender: new FormControl()
-    });}
+    }); }
 
-   changeGender(gender){
+   changeGender(gender): void{
     this.gender = gender;
-      this.selectedGender.emit(gender);
+    this.selectedGender.emit(gender);
 }}

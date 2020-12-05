@@ -14,8 +14,9 @@ constructor(public service: NavigationService, private currentRoute: Router) {}
 isEnabled: boolean;
 isHidden: boolean;
 isDisabled: boolean;
-pageTitle: 'Wybierz płeć' | 'Wpisz wyniki' | 'Interpretacja';
+pageTitle: 'Wybierz badanie' | 'Wybierz płeć' | 'Wpisz wyniki' | 'Interpretacja' | 'Wybierz badanie ponownie';
 previousPath: 'home-page' | 'test-form-page';
+nextPath: 'test-form-page' | 'interpretation';
 isValid: null | 'gender' | 'test' | 'lipids' | 'thyroid';
 previousForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
 nextForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
@@ -36,6 +37,7 @@ ngOnInit(): void{
 
 ngDoCheck(): void{
   if (this.currentRoute.url === '/home-page') {
+    this.pageTitle = 'Wybierz badanie';
     this.isHidden = true;
    }else if (this.currentRoute.url === '/test-form-page') {
    this.isHidden = false;
@@ -43,6 +45,7 @@ ngDoCheck(): void{
      case 'test-choice':
        this.previousPath = 'home-page';
        this.previousForm = null;
+       this.nextPath = 'test-form-page';
        this.nextForm = 'gender-choice';
        this.pageTitle = 'Wybierz płeć';
        if (this.isValid === 'test'){
@@ -52,6 +55,7 @@ ngDoCheck(): void{
      case 'gender-choice':
        this.previousPath = 'test-form-page';
        this.previousForm = 'test-choice';
+       this.nextPath = 'test-form-page';
        this.nextForm = 'entering-results';
        this.pageTitle = 'Wpisz wyniki';
        if (this.isValid === 'gender'){
@@ -61,11 +65,15 @@ ngDoCheck(): void{
       case 'entering-results':
         this.previousPath = 'test-form-page';
         this.previousForm = 'gender-choice';
+        this.nextPath = 'interpretation';
         this.pageTitle = 'Interpretacja';
         if ((this.isValid === 'lipids') || (this.isValid === 'thyroid')){
         this.isEnabled = true;
       } else { this.isEnabled = false; }
         break; }
-   } else { this.isHidden = false; }
+   } else if (this.currentRoute.url === '/interpretation') {
+    this.isHidden = true;
+    this.pageTitle = 'Wybierz badanie ponownie';
+  }else { this.isHidden = false; }
  }
 }

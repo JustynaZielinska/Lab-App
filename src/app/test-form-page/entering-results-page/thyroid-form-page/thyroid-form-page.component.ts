@@ -1,27 +1,21 @@
-import { Component, OnInit,  DoCheck, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { positiveNumberValidator } from '../positive-number.module';
+import { ITest } from '../InterfaceTest';
 
-interface Test{
-  name: string;
-  min: number;
-  max: number;
-  value?: number;
-  unit: string;
-}
-const tsh: Test = {
+const tsh: ITest = {
   name: 'tsh',
   min: 0.27,
   max: 4.20,
   unit: 'mIU/ml'
 };
-const ft3: Test = {
+const ft3: ITest = {
   name: 'ft3',
   min: 3.13,
   max: 6.76,
   unit: 'pmol/L'
 };
-const ft4: Test = {
+const ft4: ITest = {
   name: 'ft4',
   min: 12,
   max: 22,
@@ -33,12 +27,13 @@ const ft4: Test = {
   templateUrl: './thyroid-form-page.component.html',
   styleUrls: ['./thyroid-form-page.component.scss']
 })
-export class ThyroidFormPageComponent implements OnInit, DoCheck {
+export class ThyroidFormPageComponent implements OnInit {
 
 thyroidForm: FormGroup;
-tsh: Test;
-ft3: Test;
-ft4: Test;
+tsh: ITest;
+ft3: ITest;
+ft4: ITest;
+results: ITest[];
 alert: string;
 @Output() validResults = new EventEmitter<string>();
 @Output() thyroidResults = new EventEmitter<object>();
@@ -50,6 +45,7 @@ alert: string;
 }
 
 ngOnInit(): void{
+  this.alert = 'wypełnij wszystkie pola';
   this.thyroidForm = this.form.group({
     tsh: [null, Validators.compose([Validators.required, positiveNumberValidator()])],
     ft3: [null, Validators.compose([Validators.required, positiveNumberValidator()])],
@@ -62,25 +58,25 @@ getRange(test): string{
 return `${test.min} - ${test.max}`;
 }
 
-ngDoCheck(): void{
-  if (((this.tsh.value === 0) || (this.tsh.value < 0)) ||
-  ((this.ft3.value === 0) || (this.ft3.value < 0)) ||
-  ((this.ft4.value === 0) || (this.ft4.value < 0))) {
-  this.alert = 'wartość musi być większa niż 0';
-  }
-  else { this.alert = 'wypełnij wszystkie pola'; }
-  this.validResults.emit(null);
-}
-
 onChanges(): void{
   this.thyroidForm.valueChanges.subscribe(thyroid => {
     this.tsh.value = thyroid.tsh;
     this.ft3.value = thyroid.ft3;
     this.ft4.value = thyroid.ft4;
-  });
+    if (((this.tsh.value === 0) || (this.tsh.value < 0)) ||
+    ((this.ft3.value === 0) || (this.ft3.value < 0)) ||
+    ((this.ft4.value === 0) || (this.ft4.value < 0))) {
+    this.alert = 'wartość musi być większa niż 0';
+  }else { this.alert = 'wypełnij wszystkie pola'; }
+    this.validResults.emit(null);
+    this.tsh.value = thyroid.tsh;
+    this.ft3.value = thyroid.ft3;
+    this.ft4.value = thyroid.ft4; });
 }
 
 submitThyroid(): void{
   this.validResults.emit('thyroid');
-  this.thyroidResults.emit(this.thyroidForm.value);
+  this.results = [this.tsh, this.ft3, this.ft4];
+  console.log(this.results);
+  this.thyroidResults.emit(this.results);
 }}
