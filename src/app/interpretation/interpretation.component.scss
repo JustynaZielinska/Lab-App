@@ -1,0 +1,46 @@
+@import '../../styles.scss';
+
+.box {
+    width: 85vw;
+    min-height: calc(100vh - (2.6rem*2));
+    @media (min-width:1024px){
+        width: 52vw
+    }
+    @media (orientation: landscape) and (max-width : 640px){
+        height: calc(100vh - (2.2rem*2));
+    }
+}
+.title {
+    margin: 2rem auto 1rem auto;
+}
+.results__item{
+    display: grid;
+    grid-template-columns: 1fr 3rem 2.5rem 2rem;
+    @include text(.8rem, 1.4rem);
+    @media (min-width:1024px){
+        @include text(.9rem, 1.6rem);
+    }
+}
+.icon {
+    width: .9rem;
+    justify-self: center;
+    &--toHigh{
+        transform: rotate(180deg);
+    }
+    &--check {
+    width: 1.3rem
+    }
+
+}
+.interpretation {
+    color: rgb(87, 87, 87);
+    padding: 1rem 0 4rem 0;
+    @include text(.8rem, 1.2rem);
+    @media (min-width:1024px){
+        @include text(.9rem, 1.4rem);
+    }
+}
+.interpretation p{
+    text-align: justify;
+    text-align-last: center;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationService } from 'src/app/navigation.service';
+import { ResultsService } from 'src/app/results.service';
+import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 
 @Component({
   selector: 'app-test-form-page',
@@ -8,26 +10,32 @@ import { NavigationService } from 'src/app/navigation.service';
 })
 export class TestFormPageComponent implements OnInit{
 
-  constructor(public service: NavigationService){}
+  constructor(public navigationService: NavigationService, public resultsService: ResultsService ){}
 
   test: null | 'lipids'|'thyroid';
   gender: null | 'male'|'female';
-  results: null | 'lipids' | 'thyroid';
+  form: null | 'lipids' | 'thyroid';
   formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
+  userResults: ITest[];
 
   ngOnInit(): void {
-    this.service.currentForm.subscribe(currentForm => {this.formPage = currentForm; });
+    this.navigationService.currentForm.subscribe(currentForm => {this.formPage = currentForm; });
   }
 
   validTest(test): void{
     this.test = test;
-    this.service.changeIsValid('test');
+    this.navigationService.changeIsValid('test');
   }
   validGender(gender): void{
     this.gender = gender;
-    this.service.changeIsValid('gender');
+    this.navigationService.changeIsValid('gender');
   }
-  validResults(results): void{
-    this.results = results;
-    this.service.changeIsValid(this.results); }
+  validForm(form): void{
+    this.form = form;
+    this.navigationService.changeIsValid(this.form);
   }
+  sendResults(results): void{
+    this.userResults = results;
+    this.resultsService.pushResults(this.userResults);
+  }
+}

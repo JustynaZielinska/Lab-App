@@ -12,11 +12,11 @@
     padding: .5rem 0;
     color: white;
     background-color: $main-color;
-    @media (orientation:landscape) and (min-width:1024px){
-        @include flex (row, space-around)}
     @media (orientation: landscape) and (max-width : 640px){
         height: 2.2rem
     }
+    @media (orientation:landscape) and (min-width:1024px){
+        @include flex (row, space-around)}
 }
 .arrow{
     height: .8rem;

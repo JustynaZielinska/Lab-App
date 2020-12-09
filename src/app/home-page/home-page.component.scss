@@ -1,19 +1,11 @@
 @import '../../styles.scss';
-:host {
+.box {
     @include flex(column, space-around);
     width:100vw;
-    height: calc(100vh - (2.6rem*2));
     padding: 1rem 0;
     @media (orientation:landscape) and (max-width:1024px) {
         justify-content: space-around;
         flex-wrap: wrap-reverse;
         align-items: center;
-    }
-}
-
-.description {
-    @include text(.8rem, 1.8rem);
-    @media (min-width:1024px){
-        @include text(1.2rem, 2.4rem);
     }
 }

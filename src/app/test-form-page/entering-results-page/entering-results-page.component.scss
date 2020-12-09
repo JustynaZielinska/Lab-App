@@ -1,7 +1,6 @@
 .box{
     grid-template-rows: 2fr 3fr 1fr;
     width: 90vw;
-    margin: 0 auto;
     @media (orientation:landscape) and (max-width:800px) {
         grid-template-rows: 1.6rem 1fr;
         }
@@ -18,7 +17,7 @@
     
 .form{
     display: grid;
-    font-size: 1rem;
+    font-size: .9rem;
     align-self: flex-start;
     grid-template-rows: 2rem 3rem 3rem 3rem 3rem;
     @media (orientation:landscape) and (max-width:800px) {
@@ -26,6 +25,7 @@
         align-self: center;
         }
     @media (min-width:1024px){
+        font-size: 1rem;
         grid-template-rows: 2.2rem 3.5rem 3.5rem 3.5rem 3rem;
         }
     }
@@ -37,8 +37,8 @@
 .form__input{
     opacity: 1;
     width: 70px;
-    height: 1.2rem;
-    font-size: 1rem;
+    height: 1rem;
+    font-size: .9rem;
     text-align: center;
     border-bottom: 2px solid grey;
     transition: .3s linear;

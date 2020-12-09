@@ -4,19 +4,19 @@ import { positiveNumberValidator } from '../positive-number.module';
 import { ITest } from '../InterfaceTest';
 
 const tsh: ITest = {
-  name: 'tsh',
+  name: 'TSH',
   min: 0.27,
   max: 4.20,
   unit: 'mIU/ml'
 };
 const ft3: ITest = {
-  name: 'ft3',
+  name: 'FT3',
   min: 3.13,
   max: 6.76,
   unit: 'pmol/L'
 };
 const ft4: ITest = {
-  name: 'ft4',
+  name: 'FT4',
   min: 12,
   max: 22,
   unit: 'pmol/L'
@@ -35,8 +35,8 @@ ft3: ITest;
 ft4: ITest;
 results: ITest[];
 alert: string;
-@Output() validResults = new EventEmitter<string>();
-@Output() thyroidResults = new EventEmitter<object>();
+@Output() validTest = new EventEmitter<string>();
+@Output() submitResults = new EventEmitter<ITest[]>();
 
   constructor(private form: FormBuilder) {
   this.tsh = tsh;
@@ -47,9 +47,9 @@ alert: string;
 ngOnInit(): void{
   this.alert = 'wypełnij wszystkie pola';
   this.thyroidForm = this.form.group({
-    tsh: [null, Validators.compose([Validators.required, positiveNumberValidator()])],
-    ft3: [null, Validators.compose([Validators.required, positiveNumberValidator()])],
-    ft4: [null, Validators.compose([Validators.required, positiveNumberValidator()])],
+    tsh: [null, Validators.compose([Validators.required, Validators.max(999), positiveNumberValidator()])],
+    ft3: [null, Validators.compose([Validators.required, Validators.max(999), positiveNumberValidator()])],
+    ft4: [null, Validators.compose([Validators.required, Validators.max(999), positiveNumberValidator()])],
   });
   this.onChanges();
 }
@@ -68,15 +68,14 @@ onChanges(): void{
     ((this.ft4.value === 0) || (this.ft4.value < 0))) {
     this.alert = 'wartość musi być większa niż 0';
   }else { this.alert = 'wypełnij wszystkie pola'; }
-    this.validResults.emit(null);
+    this.validTest.emit(null);
     this.tsh.value = thyroid.tsh;
     this.ft3.value = thyroid.ft3;
     this.ft4.value = thyroid.ft4; });
 }
 
 submitThyroid(): void{
-  this.validResults.emit('thyroid');
+  this.validTest.emit('thyroid');
   this.results = [this.tsh, this.ft3, this.ft4];
-  console.log(this.results);
-  this.thyroidResults.emit(this.results);
+  this.submitResults.emit(this.results);
 }}

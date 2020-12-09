@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ITest } from '../entering-results-page/InterfaceTest';
 
 @Component({
   selector: 'app-entering-results-page',
@@ -9,24 +10,18 @@ export class EnteringResultsPageComponent {
 
   @Input() currentTest;
   @Input() currentGender;
-  @Output() validResults = new EventEmitter<string>();
-  @Output() lipidsResults = new EventEmitter<object>();
-  @Output() thyroidResults = new EventEmitter<object>();
-  validTest: null | 'lipids' | 'thyroid';
-  lipids: object;
-  thyroid: object;
+  @Output() validForm = new EventEmitter<string>();
+  @Output() userResults = new EventEmitter<ITest[]>();
+  test: null | 'lipids' | 'thyroid';
+  results: ITest[];
 
-submitResults(results): void{
-  this.validTest = results;
-  this.validResults.emit(this.validTest);
+validTest(test): void{
+  this.test = test;
+  this.validForm.emit(this.test);
 }
 
-sendLipids(lipids): void{
-  this.lipids = lipids;
-  this.lipidsResults.emit(this.lipids);
-}
-sendThyroid(thyroid): void{
-  this.thyroid = thyroid;
-  this.thyroidResults.emit(this.thyroid);
+sendResults(results): void{
+  this.results = results;
+  this.userResults.emit(this.results);
 }
 }
