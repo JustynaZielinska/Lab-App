@@ -1,6 +1,9 @@
 @import '../../styles.scss';
 .header {
     @include flex (row, space-between);
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 2.6rem;
     padding: .5rem 1rem;

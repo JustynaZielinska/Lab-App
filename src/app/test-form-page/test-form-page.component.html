@@ -1,14 +1,15 @@
 <app-gender-choice-page
-    *ngIf="(service.currentForm | async) === 'gender-choice'"
+    *ngIf="(navigationService.currentForm | async) === 'gender-choice'"
     (selectedGender)="validGender($event)">
 </app-gender-choice-page>
 <app-test-choice-page
-    *ngIf="(service.currentForm | async) === 'test-choice'"
+    *ngIf="(navigationService.currentForm | async) === 'test-choice'"
     (selectedTest)="validTest($event)">
 </app-test-choice-page>
 <app-entering-results-page
-    *ngIf="(service.currentForm | async) === 'entering-results'"
+    *ngIf="(navigationService.currentForm | async) === 'entering-results'"
     [currentTest]="test"
     [currentGender]="gender"
-   (validResults)="validResults($event)">
+   (validForm)="validForm($event)"
+   (userResults)="sendResults($event)">
 </app-entering-results-page>

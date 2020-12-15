@@ -1,26 +1,26 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ITest } from '../InterfaceTest';
 
 const chol: ITest = {
-  name: 'chol',
+  name: 'Cholesterol',
   min: 115,
   max: 190,
   unit: 'mg/dl',
 };
 const hdl: ITest = {
-  name: 'hdl',
+  name: 'Cholesterol HDL',
   minFemale: 45,
   minMale: 40,
   unit: 'mg/dl',
 };
 const ldl: ITest = {
-  name: 'ldl',
+  name: 'Cholesterol LDL',
   max: 115,
   unit: 'mg/dl'
 };
 const tg: ITest = {
-  name: 'tg',
+  name: 'Triglicerydy',
   max: 150,
   unit: 'mg/dl'
 };
@@ -40,8 +40,8 @@ tg: ITest;
 results: ITest[];
 isDisabled: boolean;
 @Input() gender;
-@Output() validResults = new EventEmitter<string>();
-@Output() lipidsResults = new EventEmitter<object>();
+@Output() validTest = new EventEmitter<string>();
+@Output() submitResults = new EventEmitter<ITest[]>();
 
 constructor(private form: FormBuilder) {
   this.chol = chol;
@@ -62,10 +62,10 @@ getRange(test): string{
 
 ngOnInit(): void {
   this.lipidsForm = this.form.group({
-    chol: [null],
-    hdl: [null],
-    ldl: [null],
-    tg: [null],
+    chol: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
+    hdl: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
+    ldl: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
+    tg: [null,  Validators.compose([Validators.min(1), Validators.max(9999)])],
   });
   this.onChanges();
   this.isDisabled = true;
@@ -79,8 +79,10 @@ onChanges(): void {
     this.isDisabled = true;
   } else if ((lipids.chol < 0 ) || (lipids.hdl < 0) || (lipids.ldl < 0 ) || (lipids.tg < 0)){
       this.isDisabled = true;
+  } else if (this.lipidsForm.invalid){
+      this.isDisabled = true;
   } else {this.isDisabled = false; }
-  this.validResults.emit(null);
+  this.validTest.emit(null);
   this.chol.value = lipids.chol;
   this.hdl.value = lipids.hdl;
   this.ldl.value = lipids.ldl;
@@ -88,8 +90,7 @@ onChanges(): void {
  }); }
 
 submitLipids(): void{
-  this.validResults.emit('lipids');
+  this.validTest.emit('lipids');
   this.results = [this.chol, this.hdl, this.ldl, this.tg];
-  console.log(this.results);
-  this.lipidsResults.emit(this.results);
+  this.submitResults.emit(this.results);
 }}

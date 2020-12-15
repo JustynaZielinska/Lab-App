@@ -1,9 +1,17 @@
 <div class="box">
     <h2 class="title">Interpretacja</h2>
     <ul class="results">
-        <li class="results__item"></li>
+        <li class="results__item"
+        *ngFor="let result of results">
+            <span>{{result.name}}</span>
+            <span>{{result.value}}</span>
+            <span>{{result.unit}}</span>
+            <img class="icon icon--toLow" src="../../assets/images/High.svg" alt="ikona">
+            <img class="icon icon--toHigh" src="../../assets/images/High.svg" alt="ikona">
+            <img class="icon icon--check" src="../../assets/images/Check.svg" alt="ikona">
+        </li>
     </ul>
-    <div class="interpretation">
+    <article class="interpretation">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Pariatur temporibus eligendi dolorem et iure, voluptate unde
         vero alias fuga voluptatum facere a laborum recusandae obcaecati,
@@ -12,5 +20,13 @@
         et atque ex, at autem molestias natus nihil quia officia repellat
         temporibus voluptate laboriosam nostrum. Harum, provident?
         </p>
-    </div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Pariatur temporibus eligendi dolorem et iure, voluptate unde
+            vero alias fuga voluptatum facere a laborum recusandae obcaecati,
+            eveniet reiciendis ratione ad voluptas!Est nobis possimus, animi
+            harum praesentium earum odit eveniet molestiae ipsa ipsum eligendi
+            et atque ex, at autem molestias natus nihil quia officia repellat
+            temporibus voluptate laboriosam nostrum. Harum, provident?
+            </p>
+    </article>
 </div>

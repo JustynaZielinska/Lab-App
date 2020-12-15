@@ -1,46 +1,46 @@
 :host{
-    height: 10rem;
-    margin: 0 auto;
-    @media (orientation:landscape) and (max-width:1024px) {     
-        margin: 3rem auto;
-        order: -1}
-    @media (orientation:portrait) and (min-width:640px) {
-      height: 18rem;
-    }
+  height: 10rem;
+  margin: 0 auto;
+  @media (orientation:landscape) and (max-width:1024px) {     
+      margin: 3rem auto;
+      order: -1}
+  @media (orientation:portrait) and (min-width:640px) {
+    height: 18rem;
+  }
 }
 
 .svg {
-  opacity: 0;
-  transform: translateY(-2rem) rotate(30deg);
-  transform-origin: -100% -100%;
-  transition: 1.5s;
-  &--active{
-    opacity: 1;
-    transform: none;
-  }
+opacity: 0;
+transform: translateY(-2rem) rotate(30deg);
+transform-origin: -100% -100%;
+transition: 1.5s;
+&--active{
+  opacity: 1;
+  transform: none;
+}
 }
 
 .mouth {
-  transition: .7s 7s;
-  transform: scaleX(0) rotateX(45deg);
-  transform-origin: center;
-  opacity:0;
+transition: .7s 7s;
+transform: scaleX(0) rotateX(45deg);
+transform-origin: center;
+opacity:0;
 }
 .eye{
-  transition: .5s 6.3s;
-  opacity:0
+transition: .5s 6.3s;
+opacity:0
 }
 .svg--active .mouth{
-  transform: scaleX(1) rotateX(0);
-  opacity:1
-  }
+transform: scaleX(1) rotateX(0);
+opacity:1
+}
 
 .svg--active .eye{
-  opacity:1
+opacity:1
 }
 
 .line{
-  stroke: #5b5b5b;
-  stroke-width:3;
-  transform-origin: left;
+stroke: #5b5b5b;
+stroke-width:3;
+transform-origin: left;
 }
