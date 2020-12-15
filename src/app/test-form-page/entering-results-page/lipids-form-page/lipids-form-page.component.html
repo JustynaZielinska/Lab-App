@@ -1,6 +1,6 @@
 <div class="box">
     <h2 class="title">Wpisz wyniki</h2>
-    <form [formGroup]="lipidsForm" class="form">
+    <form [formGroup]="lipidsForm" class="form"(ngSubmit)="submitLipids()" >
         <div class="form__description">
             <span class="form__description--item">Badanie</span>
             <span class="form__description--item">Twój wynik</span>
@@ -9,39 +9,32 @@
     <label class="form__label">
         <span class="form__item">Cholesterol</span>
         <input class="form__input" type="number" formControlName="chol"
-        [class.form__input--alert]="lipidsForm.controls['chol'].dirty && lipidsForm.controls['chol'].invalid">
+        [class.form__input--alert]="lipidsForm.controls['chol'].dirty && ((lipidsForm.controls['chol'].value === 0) || (lipidsForm.controls['chol'].value < 0))">
         <span class="form__item">{{ chol.unit }}</span>
         <span class="form__item">{{ getRange(chol) }}</span>
     </label>
     <label class="form__label">
         <span class="form__item">Cholesterol HDL</span>
         <input class="form__input" type="number" formControlName="hdl"
-        [class.form__input--alert]="lipidsForm.controls['hdl'].dirty && lipidsForm.controls['hdl'].invalid">
+        [class.form__input--alert]="lipidsForm.controls['hdl'].dirty && ((lipidsForm.controls['hdl'].value === 0) || (lipidsForm.controls['hdl'].value < 0))">
         <span class="form__item">{{ hdl.unit }}</span>
         <span class="form__item">{{ getRange(hdl) }}</span>
     </label>
     <label class="form__label">
         <span class="form__item">Cholesterol LDL</span>
         <input class="form__input" type="number" formControlName="ldl"
-        [class.form__input--alert]="lipidsForm.controls['ldl'].dirty && lipidsForm.controls['ldl'].invalid">
+        [class.form__input--alert]="lipidsForm.controls['ldl'].dirty && ((lipidsForm.controls['ldl'].value === 0) || (lipidsForm.controls['ldl'].value < 0))">
         <span class="form__item">{{ ldl.unit }}</span>
         <span class="form__item">{{ getRange(ldl) }}</span>
     </label>
     <label class="form__label">
-        <span class="form__item">Cholesterol nie-HDL</span>
-        <input class="form__input" type="number" formControlName="nhdl"
-        [class.form__input--alert]="lipidsForm.controls['nhdl'].dirty && lipidsForm.controls['nhdl'].invalid">
-        <span class="form__item">{{ nhdl.unit }}</span>
-        <span class="form__item">{{ getRange(nhdl) }}</span>
-    </label>
-    <label class="form__label">
         <span class="form__item">Triglicerydy</span>
         <input class="form__input" type="number" formControlName="tg"
-        [class.form__input--alert]="lipidsForm.controls['tg'].dirty && lipidsForm.controls['tg'].invalid">
+        [class.form__input--alert]="lipidsForm.controls['tg'].dirty && ((lipidsForm.controls['tg'].value === 0) || (lipidsForm.controls['tg'].value < 0))">
         <span class="form__item">{{ tg.unit }}</span>
         <span class="form__item">{{ getRange(tg) }}</span>
     </label>
+    <span class="form__description--item">*wartość musi być większa niż 0</span>
     <button class="submit" [disabled]="isDisabled" type="submit">Wyślij</button>
-    <span class="form__description--item" *ngIf="lipidsForm.invalid">wartość musi być większa niż 0</span>
 </form>
 </div>

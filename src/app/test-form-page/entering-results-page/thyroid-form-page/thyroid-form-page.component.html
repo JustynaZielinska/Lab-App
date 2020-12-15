@@ -1,6 +1,6 @@
 <div class="box">
     <h2 class="title">Wpisz wyniki</h2>
-    <form [formGroup]="thyroidForm" class="form">
+    <form [formGroup]="thyroidForm" class="form" (ngSubmit)="submitThyroid()">
      <div class="form__description">
         <span class="form__description--item">Badanie</span>
         <span class="form__description--item">Twój wynik</span>
@@ -9,21 +9,21 @@
     <label class="form__label">
         <span class="form__item">TSH</span>
         <input class="form__input" type="number" formControlName="tsh"
-        [class.form__input--alert]="thyroidForm.controls['tsh'].dirty && thyroidForm.controls['tsh'].invalid">
+        [class.form__input--alert]="thyroidForm.controls['tsh'].touched && thyroidForm.controls['tsh'].invalid">
         <span class="form__item">{{ tsh.unit }}</span>
         <span class="form__item">{{ getRange(tsh) }}</span>
     </label>
     <label class="form__label">
         <span class="form__item">FT3</span>
         <input class="form__input" type="number" formControlName="ft3"
-        [class.form__input--alert]="thyroidForm.controls['ft3'].dirty && thyroidForm.controls['ft3'].invalid">
+        [class.form__input--alert]="thyroidForm.controls['ft3'].touched && thyroidForm.controls['ft3'].invalid">
         <span class="form__item">{{ ft3.unit }}</span>
         <span class="form__item">{{ getRange(ft3) }}</span>
     </label>
     <label class="form__label">
         <span class="form__item">FT4</span>
         <input class="form__input" type="number" formControlName="ft4"
-        [class.form__input--alert]="thyroidForm.controls['ft4'].dirty && thyroidForm.controls['ft4'].invalid">
+        [class.form__input--alert]="thyroidForm.controls['ft4'].touched && thyroidForm.controls['ft4'].invalid">
         <span class="form__item">{{ ft4.unit }}</span>
         <span class="form__item">{{ getRange(ft4) }}</span>
     </label>

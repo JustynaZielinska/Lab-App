@@ -9,11 +9,10 @@ import { NavigationService } from 'src/app/navigation.service';
 
 export class HeaderComponent{
 
-constructor(private service:NavigationService) {}
-  
+constructor(private service: NavigationService) {}
 isActive = false;
 
-goBack(){
+goBack(): void{
   this.service.changeIsValid(null);
 }
 }

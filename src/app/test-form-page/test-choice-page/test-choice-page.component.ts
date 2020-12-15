@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
@@ -11,14 +11,14 @@ export class TestChoicePageComponent{
   testForm: FormGroup;
   test: null | 'lipids' | 'thyroid';
   gender: null | 'lipids' | 'thyroid';
-  @Output() selectedTest= new EventEmitter<string>();
+  @Output() selectedTest = new EventEmitter<string>();
 
   constructor() {
     this.testForm = new FormGroup({
       test: new FormControl()
-    });}
+    }); }
 
-   changeTest(test){
+   changeTest(test): void{
     this.test = test;
-      this.selectedTest.emit(test);
+    this.selectedTest.emit(test);
 }}
