@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from 'src/app/navigation.service';
-import { ResultsService } from 'src/app/results.service';
+import { NavigationService } from '../navigation.service';
+import { LipidsService } from '../lipids.service';
+import { ThyroidService } from '../thyroid.service';
 import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 
 @Component({
@@ -10,13 +11,14 @@ import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 })
 export class TestFormPageComponent implements OnInit{
 
-  constructor(public navigationService: NavigationService, public resultsService: ResultsService ){}
+  constructor(public navigationService: NavigationService, public lipidsService: LipidsService, public thyroidService: ThyroidService ){}
 
   test: null | 'lipids'|'thyroid';
   gender: null | 'male'|'female';
   form: null | 'lipids' | 'thyroid';
   formPage: null | 'gender-choice' | 'test-choice' | 'entering-results' ;
-  userResults: ITest[];
+  userLipids: ITest[];
+  userThyroid: ITest[];
 
   ngOnInit(): void {
     this.navigationService.currentForm.subscribe(currentForm => {this.formPage = currentForm; });
@@ -34,8 +36,12 @@ export class TestFormPageComponent implements OnInit{
     this.form = form;
     this.navigationService.changeIsValid(this.form);
   }
-  sendResults(results): void{
-    this.userResults = results;
-    this.resultsService.pushResults(this.userResults);
+  sendLipids(results): void{
+    this.userLipids = results;
+    this.lipidsService.pushResults(this.userLipids);
+  }
+  sendThyroid(results): void{
+    this.userThyroid = results;
+    this.thyroidService.pushResults(this.userThyroid);
   }
 }

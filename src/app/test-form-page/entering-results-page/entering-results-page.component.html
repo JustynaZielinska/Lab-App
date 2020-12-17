@@ -1,11 +1,11 @@
 <app-thyroid-form-page
     *ngIf='(currentTest === "thyroid")'
     (validTest)="validTest($event)"
-    (submitResults)="sendResults($event)">
+    (submitThyroidResults)="sendThyroidResults($event)">
 </app-thyroid-form-page>
 <app-lipids-form-page
     *ngIf='(currentTest === "lipids")'
     [gender]="currentGender"
     (validTest)="validTest($event)"
-    (submitResults)="sendResults($event)">
+    (submitLipidsResults)="sendLipidsResults($event)">
 </app-lipids-form-page>

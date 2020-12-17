@@ -41,7 +41,7 @@ results: ITest[];
 isDisabled: boolean;
 @Input() gender;
 @Output() validTest = new EventEmitter<string>();
-@Output() submitResults = new EventEmitter<ITest[]>();
+@Output() submitLipidsResults = new EventEmitter<ITest[]>();
 
 constructor(private form: FormBuilder) {
   this.chol = chol;
@@ -92,5 +92,5 @@ onChanges(): void {
 submitLipids(): void{
   this.validTest.emit('lipids');
   this.results = [this.chol, this.hdl, this.ldl, this.tg];
-  this.submitResults.emit(this.results);
+  this.submitLipidsResults.emit(this.results);
 }}

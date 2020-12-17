@@ -6,4 +6,5 @@ export interface ITest{
     minMale?: number;
     value?: number;
     unit: string;
+    flag?: -1 | 0 | 1;
   }

@@ -6,9 +6,15 @@
             <span>{{result.name}}</span>
             <span>{{result.value}}</span>
             <span>{{result.unit}}</span>
-            <img class="icon icon--toLow" src="../../assets/images/High.svg" alt="ikona">
-            <img class="icon icon--toHigh" src="../../assets/images/High.svg" alt="ikona">
-            <img class="icon icon--check" src="../../assets/images/Check.svg" alt="ikona">
+            <span *ngIf="(result.flag === -1)">
+                <img class="icon icon--toLow" src="../../assets/images/High.svg" alt="ikona">
+            </span>
+            <span *ngIf="(result.flag === 1)">
+                <img class="icon icon--toHigh" src="../../assets/images/High.svg" alt="ikona">
+            </span>
+            <span *ngIf="(result.flag === 0)">
+                <img class="icon icon--check" src="../../assets/images/Check.svg" alt="ikona">
+            </span>
         </li>
     </ul>
     <article class="interpretation">
