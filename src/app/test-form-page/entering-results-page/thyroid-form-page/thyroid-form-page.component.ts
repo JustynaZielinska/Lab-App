@@ -36,7 +36,7 @@ ft4: ITest;
 results: ITest[];
 alert: string;
 @Output() validTest = new EventEmitter<string>();
-@Output() submitResults = new EventEmitter<ITest[]>();
+@Output() submitThyroidResults = new EventEmitter<ITest[]>();
 
   constructor(private form: FormBuilder) {
   this.tsh = tsh;
@@ -77,5 +77,5 @@ onChanges(): void{
 submitThyroid(): void{
   this.validTest.emit('thyroid');
   this.results = [this.tsh, this.ft3, this.ft4];
-  this.submitResults.emit(this.results);
+  this.submitThyroidResults.emit(this.results);
 }}

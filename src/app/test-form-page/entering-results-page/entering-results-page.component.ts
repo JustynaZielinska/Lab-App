@@ -11,17 +11,22 @@ export class EnteringResultsPageComponent {
   @Input() currentTest;
   @Input() currentGender;
   @Output() validForm = new EventEmitter<string>();
-  @Output() userResults = new EventEmitter<ITest[]>();
+  @Output() userLipids = new EventEmitter<ITest[]>();
+  @Output() userThyroid = new EventEmitter<ITest[]>();
   test: null | 'lipids' | 'thyroid';
-  results: ITest[];
+  thyroidResults: ITest[];
+  lipidsResults: ITest[];
 
 validTest(test): void{
   this.test = test;
   this.validForm.emit(this.test);
 }
-
-sendResults(results): void{
-  this.results = results;
-  this.userResults.emit(this.results);
+sendThyroidResults(thyroidResults): void{
+  this.thyroidResults = thyroidResults;
+  this.userThyroid.emit(this.thyroidResults);
+}
+sendLipidsResults(lipidsResults): void{
+  this.lipidsResults = lipidsResults;
+  this.userLipids.emit(this.lipidsResults);
 }
 }

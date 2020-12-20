@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResultsService } from '../results.service';
+import { LipidsService } from '../lipids.service';
+import { ThyroidService } from '../thyroid.service';
 import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 
 @Component({
@@ -9,12 +10,18 @@ import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 })
 export class InterpretationComponent implements OnInit {
 
-  constructor(public resultsService: ResultsService){}
+  constructor(public lipidsService: LipidsService, public thyroidService: ThyroidService ){}
   results: ITest[];
+  value: number;
+  min: number;
+  max: number;
+  flag: -1 | 0 | 1;
 
   ngOnInit(): void {
-    this.resultsService.results.subscribe(results => {
-    this.results = results.filter(result => result.value !== null);
+    this.thyroidService.thyroidResults.subscribe(results => {
+      this.results = results;
+      this.thyroidService.setFlag(this.results);
     });
-  }
-}
+   // this.lipidsService.lipidsResults.subscribe(results => {
+   // this.results = results.filter(result => result.value !== null); });
+}}
