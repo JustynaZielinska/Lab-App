@@ -1,10 +1,11 @@
 @import '../../styles.scss';
 
 .box {
-    width: 85vw;
+    width: 80vw;
     min-height: calc(100vh - (2.6rem*2));
+    grid-template-rows: 1fr 1fr 2fr;
     @media (min-width:1024px){
-        width: 52vw
+        width: 50vw
     }
     @media (orientation: landscape) and (max-width : 640px){
         height: calc(100vh - (2.2rem*2));
@@ -35,6 +36,7 @@
 .interpretation {
     color: rgb(87, 87, 87);
     padding: 1rem 0 4rem 0;
+    align-self: flex-start;
     @include text(.8rem, 1.2rem);
     @media (min-width:1024px){
         @include text(.9rem, 1.4rem);
