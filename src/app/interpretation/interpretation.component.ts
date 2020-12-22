@@ -26,8 +26,7 @@ export class InterpretationComponent implements OnInit {
       this.thyroidService.changeFlag(this.results);
       this.flags = results.map(result => result.flag);
       this.resultsFlags = this.flags.join(',');
-      this.thyroidService.getInterpretation(this.resultsFlags);
-      this.message = this.thyroidService.message;
+      this.message = this.thyroidService.getInterpretation(this.resultsFlags);
     });
    // this.lipidsService.lipidsResults.subscribe(results => {
    // this.results = results.filter(result => result.value !== null); });
