@@ -11,8 +11,7 @@ const chol: ITest = {
 };
 const hdl: ITest = {
   name: 'Cholesterol HDL',
-  minFemale: 45,
-  minMale: 40,
+  min: 40 || 45,
   unit: 'mg/dl',
 };
 const ldl: ITest = {
@@ -56,8 +55,8 @@ getRange(test): string{
   return `${test.min} - ${test.max}`;
 } else if (test === hdl){
     if (this.gender === 'male'){
-    return `> ${test.minMale}`;
-  } else { return `> ${test.minFemale}`; }
+    return `> 40`;
+  } else { return `> 45`; }
   } else { return `< ${test.max}`; }
   }
 

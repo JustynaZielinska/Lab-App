@@ -30,6 +30,7 @@ export class TestFormPageComponent implements OnInit{
   }
   validGender(gender): void{
     this.gender = gender;
+    this.lipidsService.validGender(this.gender);
     this.navigationService.changeIsValid('gender');
   }
   validForm(form): void{
