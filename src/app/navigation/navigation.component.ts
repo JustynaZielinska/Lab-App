@@ -32,7 +32,7 @@ changeCurrentForm(form): void{
 
 ngOnInit(): void{
   this.service.lastValidPage.subscribe(isValid => {this.isValid = isValid; });
-  this.service.currentForm.subscribe(currentForm => {this.currentForm = currentForm;})
+  this.service.currentForm.subscribe(currentForm => {this.currentForm = currentForm; });
 }
 
 ngDoCheck(): void{

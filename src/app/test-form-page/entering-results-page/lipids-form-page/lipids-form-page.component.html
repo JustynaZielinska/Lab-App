@@ -31,6 +31,6 @@
         <span class="form__item">{{ getRange(tg) }}</span>
     </label>
     <button class="submit" type="submit" *ngIf="lipidsForm.valid">Wyślij</button>
-    <span class="form__description--item" *ngIf="lipidsForm.invalid">{{ alert }}</span>
+    <span class="form__description--alert" *ngIf="lipidsForm.invalid">{{ alert }}</span>
 </form>
 </div>
