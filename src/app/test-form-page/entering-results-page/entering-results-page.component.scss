@@ -42,8 +42,9 @@
     text-align: center;
     border-bottom: 2px solid grey;
     transition: .3s linear;
-    &--alert {
-        border-bottom: 3px solid #8f0f0f
+
+    &.ng-touched.ng-invalid {
+        border-bottom: 3px solid #a11c1c;
     }
     &:focus {
         outline-style: none;

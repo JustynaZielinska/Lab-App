@@ -15,7 +15,7 @@ a {
 span {
     display: block;
 }
-$main-color: #3582a3;
+$main-color: #367F9B;
 
 @mixin text($font-size, $line-height){
     font-size: $font-size;
@@ -81,7 +81,7 @@ height: 7rem;}
     line-height: 3rem;
     font-size: 1rem;
     color: white;
-    background-color: #3582a3cb;
+    background-color: lighten($color: $main-color, $amount: 3);
     padding-left: 15px;
     border-radius: 5px;
     transition: .3s linear;

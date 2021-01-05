@@ -45,7 +45,7 @@ alert: string;
 }
 
 ngOnInit(): void{
-  this.alert = 'wypełnij wszystkie pola';
+  this.alert = 'Wypełnij wszystkie pola';
   this.thyroidForm = this.form.group({
     tsh: [null, Validators.compose([Validators.required, Validators.max(999), positiveNumberValidator()])],
     ft3: [null, Validators.compose([Validators.required, Validators.max(999), positiveNumberValidator()])],
@@ -66,12 +66,10 @@ onChanges(): void{
     if (((this.tsh.value === 0) || (this.tsh.value < 0)) ||
     ((this.ft3.value === 0) || (this.ft3.value < 0)) ||
     ((this.ft4.value === 0) || (this.ft4.value < 0))) {
-    this.alert = 'wartość musi być większa niż 0';
-  }else { this.alert = 'wypełnij wszystkie pola'; }
+    this.alert = 'Wartość musi być większa niż 0';
+  }else { this.alert = 'Wypełnij wszystkie pola'; }
     this.validTest.emit(null);
-    this.tsh.value = thyroid.tsh;
-    this.ft3.value = thyroid.ft3;
-    this.ft4.value = thyroid.ft4; });
+  });
 }
 
 submitThyroid(): void{

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { positiveNumberValidator } from '../positive-number.module';
 import { ITest } from '../InterfaceTest';
 
 const chol: ITest = {
@@ -10,8 +11,7 @@ const chol: ITest = {
 };
 const hdl: ITest = {
   name: 'Cholesterol HDL',
-  minFemale: 45,
-  minMale: 40,
+  min: 40 || 45,
   unit: 'mg/dl',
 };
 const ldl: ITest = {
@@ -38,7 +38,7 @@ hdl: ITest;
 ldl: ITest;
 tg: ITest;
 results: ITest[];
-isDisabled: boolean;
+alert: string;
 @Input() gender;
 @Output() validTest = new EventEmitter<string>();
 @Output() submitLipidsResults = new EventEmitter<ITest[]>();
@@ -55,38 +55,35 @@ getRange(test): string{
   return `${test.min} - ${test.max}`;
 } else if (test === hdl){
     if (this.gender === 'male'){
-    return `> ${test.minMale}`;
-  } else { return `> ${test.minFemale}`; }
+    return `> 40`;
+  } else { return `> 45`; }
   } else { return `< ${test.max}`; }
   }
 
 ngOnInit(): void {
+  this.alert = 'Wypełnij wszystkie pola';
   this.lipidsForm = this.form.group({
-    chol: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
-    hdl: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
-    ldl: [null, Validators.compose([Validators.min(1), Validators.max(9999)])],
-    tg: [null,  Validators.compose([Validators.min(1), Validators.max(9999)])],
+    chol: [null, Validators.compose([Validators.required, Validators.max(9999), positiveNumberValidator()])],
+    hdl: [null, Validators.compose([Validators.required, Validators.max(9999), positiveNumberValidator()])],
+    ldl: [null, Validators.compose([Validators.required, Validators.max(9999), positiveNumberValidator()])],
+    tg: [null,  Validators.compose([Validators.required, Validators.max(9999), positiveNumberValidator()])],
   });
   this.onChanges();
-  this.isDisabled = true;
 }
 
 onChanges(): void {
   this.lipidsForm.valueChanges.subscribe(lipids => {
-  if ((lipids.chol === null) && (lipids.hdl === null) && (lipids.ldl === null) && (lipids.tg === null)){
-    this.isDisabled = true;
-  } else if ((lipids.chol === 0 ) || (lipids.hdl === 0) || (lipids.ldl === 0 ) || (lipids.tg === 0)){
-    this.isDisabled = true;
-  } else if ((lipids.chol < 0 ) || (lipids.hdl < 0) || (lipids.ldl < 0 ) || (lipids.tg < 0)){
-      this.isDisabled = true;
-  } else if (this.lipidsForm.invalid){
-      this.isDisabled = true;
-  } else {this.isDisabled = false; }
-  this.validTest.emit(null);
-  this.chol.value = lipids.chol;
-  this.hdl.value = lipids.hdl;
-  this.ldl.value = lipids.ldl;
-  this.tg.value = lipids.tg;
+    this.chol.value = lipids.chol;
+    this.hdl.value = lipids.hdl;
+    this.ldl.value = lipids.ldl;
+    this.tg.value = lipids.tg;
+    if (((this.chol.value === 0) || (this.chol.value < 0)) ||
+    ((this.hdl.value === 0) || (this.hdl.value < 0)) ||
+    ((this.ldl.value === 0) || (this.ldl.value < 0)) ||
+    ((this.tg.value === 0) || (this.tg.value < 0))) {
+    this.alert = 'Wartość musi być większa niż 0';
+  }else { this.alert = 'Wypełnij wszystkie pola'; }
+    this.validTest.emit(null);
  }); }
 
 submitLipids(): void{
