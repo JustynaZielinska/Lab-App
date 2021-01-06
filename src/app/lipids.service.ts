@@ -61,4 +61,32 @@ export class LipidsService {
       this.flag = -1;
     } else { this.flag = 0; }
   }
+  public getLipidsIntrepretation(results): string {
+    if (results.every(element => element === 0)) {
+      return 'Wszystkie wpisane przez Ciebie wyniki znajdują się w granicach wartości pożądanych, co świadczy o prawidłowej gospodarce lipidowej Twojego organizmu.';
+  } else if (results.some(element => element !== 0)) {
+      return 'Wpisane przez Ciebie wyniki mogą świadczyć o zaburzeniach gospodarki lipidowej. Wskazana jest konsultacja lekarska.';
+    }
+  }
+  public getRatioLdlInterpretation(ratioLdl): string{
+    if (ratioLdl < 0.33) {
+      return 'Prawidłowy stosunek cholesterolu HDL do cholesterolu LDL wynosi od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL jest zbyt duże w stosunku do cholesterolu HDL, co może się wiązać ze zwiększeniem ryzyka chorób sercowo-naczyniowych.';
+  } else {
+      return 'Prawidłowy stosunek cholesterolu HDL do cholesterolu LDL wynosi od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL nie przekracza trzykrotności HDL, co jest dobrym wynikiem.';
+    }
+  }
+  public getRatioCholInterpretation(gender, ratioChol): string{
+    if (gender === 'male'){
+      if (ratioChol < 3.4) {
+        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL. U mężczyzn powinien on wynosić <3.4. U Ciebie stosunek obu tych frakcji jest mniejszy niż 3.4, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+      } else if (ratioChol > 9) {
+        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u mężczyzn powinien on wynosić <3.4. U Ciebie stosunek obu tych jest większy niż 9, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+  }} else if (gender === 'female') {
+      if (ratioChol < 3.3) {
+        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u kobiet wskaźnik ten powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest mniejszy niż 3.3, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+      } else if (ratioChol > 7) {
+        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u kobiet wskaźnik ten powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest większy niż 7, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+      }
+    }
+  }
 }
