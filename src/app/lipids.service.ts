@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { ITest } from './test-form-page/entering-results-page/InterfaceTest';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +9,42 @@ import { ITest } from './test-form-page/entering-results-page/InterfaceTest';
 export class LipidsService {
   gender: 'male' | 'female';
   min: number;
-  minFemale: number;
-  minMale: number;
   max: number;
   name: string;
   value: number;
+  results: ITest[];
   flag: -1 | 0 | 1;
+  flags: number[];
+  chol: number;
+  hdl: number;
+  ldl: number;
+  tg: number;
+  ratioLdl: number;
+  ratioChol: number;
+  lipidsInterpretation: string;
+  ratioCholIntrepretation: string;
+  ratioLdlInterpretation: string;
+  messages: string[];
+  message: string;
 
   lipidsResults = new BehaviorSubject<ITest[]>(null);
   choosenGender = new BehaviorSubject<null | 'male' | 'female'>(null);
+  interpretation = new BehaviorSubject<string>(null);
+
+  lipids$ = this.lipidsResults.asObservable();
+  userLipids$ = this.lipids$.pipe(
+    tap(results => {
+      this.results = results;
+      this.assignResults(this.results);
+      this.ratioLdl = (this.hdl / this.ldl);
+      this.ratioChol = (this.chol / this.hdl);
+      this.lipidsInterpretation = this.getLipidsIntrepretation(this.flags);
+      this.ratioLdlInterpretation = this.getRatioLdlInterpretation(this.ratioLdl);
+      this.ratioCholIntrepretation = this.getRatioCholInterpretation(this.gender, this.ratioChol);
+      this.messages = [this.lipidsInterpretation, this.ratioLdlInterpretation, this.ratioCholIntrepretation];
+      this.message = this.messages.join(' ');
+      this.pushIntrepretation(this.message);
+    }));
 
   public pushResults(newResults: ITest[]): void{
     this.lipidsResults.next(newResults);
@@ -24,7 +52,27 @@ export class LipidsService {
   public validGender(gender: 'male' | 'female'): void{
     this.choosenGender.next(gender);
   }
-
+  public pushIntrepretation(intrepretation: string): void{
+    this.interpretation.next(intrepretation);
+  }
+  public assignResults(results: ITest[]): void{
+    for (const result of results){
+      switch (result.name){
+        case 'Cholesterol':
+          this.chol = result.value;
+          break;
+        case 'Cholesterol HDL':
+          this.hdl = result.value;
+          break;
+        case 'Cholesterol LDL':
+          this.ldl = result.value;
+          break;
+        case 'Triglicerydy':
+          this.tg = result.value;
+          break;
+       }
+      }
+  }
   public changeFlag(results): void{
     for (const result of results){
       this.value = result.value;
