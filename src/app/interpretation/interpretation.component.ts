@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LipidsService } from '../lipids.service';
 import { ThyroidService } from '../thyroid.service';
+import { combineLatest } from 'rxjs';
 import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
 
 @Component({
@@ -29,13 +30,12 @@ export class InterpretationComponent implements OnInit {
   //    this.resultsFlags = this.flags.join(',');
   //    this.message = this.thyroidService.getInterpretation(this.resultsFlags);
   //   });
-  this.lipidsService.lipidsResults.subscribe(results => {
-  this.results = results;
-  this.lipidsService.changeFlag(this.results);
-  this.flags = results.map(result => result.flag);
-  });
-  this.lipidsService.interpretation.subscribe(interpretation => {
-    this.message = interpretation;
+  const connectStream = combineLatest([this.lipidsService.lipidsResults, this.lipidsService.choosenGender]);
+  const subscribe = connectStream.subscribe(([userLipids, userGender]) => {
+    this.results = userLipids;
+    this.gender = userGender;
+    this.lipidsService.changeFlag(this.results);
+    this.message = this.lipidsService.getUserLipidsInterpretation(this.results, this.gender);
   });
 }
 }
