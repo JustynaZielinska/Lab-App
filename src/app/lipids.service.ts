@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, combineLatest } from 'rxjs';
 import { ITest } from './test-form-page/entering-results-page/InterfaceTest';
 
 @Injectable({
@@ -8,15 +8,33 @@ import { ITest } from './test-form-page/entering-results-page/InterfaceTest';
 export class LipidsService {
   gender: 'male' | 'female';
   min: number;
-  minFemale: number;
-  minMale: number;
   max: number;
   name: string;
   value: number;
+  results: ITest[];
   flag: -1 | 0 | 1;
+  flags: number[];
+  chol: number;
+  hdl: number;
+  ldl: number;
+  tg: number;
 
   lipidsResults = new BehaviorSubject<ITest[]>(null);
   choosenGender = new BehaviorSubject<null | 'male' | 'female'>(null);
+
+  public getUserLipidsInterpretation(results, gender): string{
+      const flags = results.map(result => result.flag);
+      const values = this.assignResults(results);
+      const ratioLdl = (values.hdl / values.ldl);
+      const ratioChol = (values.chol / values.hdl);
+      const lipidsInterpretation = this.getLipidsIntrepretation(flags);
+      const ratioLdlInterpretation = this.getRatioLdlInterpretation(ratioLdl);
+      const ratioCholIntrepretation = this.getRatioCholInterpretation(gender, ratioChol);
+      console.log(ratioCholIntrepretation);
+      const messages = [lipidsInterpretation, ratioLdlInterpretation, ratioCholIntrepretation];
+      const message = messages.join(' ');
+      return message;
+  }
 
   public pushResults(newResults: ITest[]): void{
     this.lipidsResults.next(newResults);
@@ -25,6 +43,25 @@ export class LipidsService {
     this.choosenGender.next(gender);
   }
 
+  public assignResults(results: ITest[]): {chol: number; hdl: number; ldl: number; tg: number}{
+    for (const result of results){
+      switch (result.name){
+        case 'Cholesterol':
+          const chol = result.value;
+          break;
+        case 'Cholesterol HDL':
+          const hdl = result.value;
+          break;
+        case 'Cholesterol LDL':
+          const ldl = result.value;
+          break;
+        case 'Triglicerydy':
+          const tg = result.value;
+          break;
+       }
+      }
+    return {chol: this.chol, hdl: this.hdl, ldl: this.ldl, tg: this.tg};
+  }
   public changeFlag(results): void{
     for (const result of results){
       this.value = result.value;

@@ -17,15 +17,15 @@ export class EnteringResultsPageComponent {
   thyroidResults: ITest[];
   lipidsResults: ITest[];
 
-validTest(test): void{
+validTest(test: null | 'lipids' | 'thyroid'): void{
   this.test = test;
   this.validForm.emit(this.test);
 }
-sendThyroidResults(thyroidResults): void{
+sendThyroidResults(thyroidResults: ITest[]): void{
   this.thyroidResults = thyroidResults;
   this.userThyroid.emit(this.thyroidResults);
 }
-sendLipidsResults(lipidsResults): void{
+sendLipidsResults(lipidsResults: ITest[]): void{
   this.lipidsResults = lipidsResults;
   this.userLipids.emit(this.lipidsResults);
 }
