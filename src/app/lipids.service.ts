@@ -25,12 +25,11 @@ export class LipidsService {
   public getUserLipidsInterpretation(results, gender): string{
       const flags = results.map(result => result.flag);
       const values = this.assignResults(results);
-      const ratioLdl = (values.hdl / values.ldl);
-      const ratioChol = (values.chol / values.hdl);
+      const ratioLdl = (this.hdl / this.ldl);
+      const ratioChol = (this.chol / this.hdl);
       const lipidsInterpretation = this.getLipidsIntrepretation(flags);
       const ratioLdlInterpretation = this.getRatioLdlInterpretation(ratioLdl);
       const ratioCholIntrepretation = this.getRatioCholInterpretation(gender, ratioChol);
-      console.log(ratioCholIntrepretation);
       const messages = [lipidsInterpretation, ratioLdlInterpretation, ratioCholIntrepretation];
       const message = messages.join(' ');
       return message;
@@ -43,24 +42,23 @@ export class LipidsService {
     this.choosenGender.next(gender);
   }
 
-  public assignResults(results: ITest[]): {chol: number; hdl: number; ldl: number; tg: number}{
+  public assignResults(results: ITest[]): void{
     for (const result of results){
       switch (result.name){
         case 'Cholesterol':
-          const chol = result.value;
+          this.chol = result.value;
           break;
         case 'Cholesterol HDL':
-          const hdl = result.value;
+          this.hdl = result.value;
           break;
         case 'Cholesterol LDL':
-          const ldl = result.value;
+          this.ldl = result.value;
           break;
         case 'Triglicerydy':
-          const tg = result.value;
+          this.tg = result.value;
           break;
-       }
+        }
       }
-    return {chol: this.chol, hdl: this.hdl, ldl: this.ldl, tg: this.tg};
   }
   public changeFlag(results): void{
     for (const result of results){
@@ -107,22 +105,22 @@ export class LipidsService {
   }
   public getRatioLdlInterpretation(ratioLdl): string{
     if (ratioLdl < 0.33) {
-      return 'Prawidłowy stosunek cholesterolu HDL do cholesterolu LDL wynosi od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL jest zbyt duże w stosunku do cholesterolu HDL, co może się wiązać ze zwiększeniem ryzyka chorób sercowo-naczyniowych.';
+      return 'Wskaźnikiem aterogenności, czyli ryzyka chorób sercowo-naczyniowych związanych z nieprawidłową gospodarką lipidową jest stosunek cholesterolu HDL do cholesterolu LDL. Wskaźnik ten prawidłowo powinien wynosić od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL jest zbyt duże w stosunku do cholesterolu HDL, co może się wiązać ze zwiększeniem ryzyka chorób sercowo-naczyniowych.';
   } else {
-      return 'Prawidłowy stosunek cholesterolu HDL do cholesterolu LDL wynosi od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL nie przekracza trzykrotności HDL, co jest dobrym wynikiem.';
+      return 'Wskaźnikiem aterogenności, czyli ryzyka chorób sercowo-naczyniowych związanych z nieprawidłową gospodarką lipidową jest stosunek cholesterolu HDL do cholesterolu LDL. Wskaźnik ten prawidłowo powinien wynosić od 1:3 do 1:2, tzn. że stężenie cholesterolu LDL powinno być maksymalnie 3 razy większe niż stężenie cholesterolu HDL. Twoje stężenie cholesterolu LDL nie przekracza trzykrotności HDL, co jest dobrym wynikiem.';
     }
   }
   public getRatioCholInterpretation(gender, ratioChol): string{
     if (gender === 'male'){
       if (ratioChol < 3.4) {
-        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL. U mężczyzn powinien on wynosić <3.4. U Ciebie stosunek obu tych frakcji jest mniejszy niż 3.4, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+        return 'Innym wskaźnikiem aterogenności jest stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL. U mężczyzn powinien on być niższy niż 3.4. U Ciebie stosunek obu tych frakcji jest mniejszy niż podany indeks, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch.';
       } else if (ratioChol > 9) {
-        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u mężczyzn powinien on wynosić <3.4. U Ciebie stosunek obu tych jest większy niż 9, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+        return 'Innym wskaźnikiem aterogenności jest stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL. U mężczyzn powinien on być niższy niż 3.4. U Ciebie stosunek obu tych jest większy niż 9, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch.';
   }} else if (gender === 'female') {
       if (ratioChol < 3.3) {
-        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u kobiet wskaźnik ten powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest mniejszy niż 3.3, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+        return 'Innym wskaźnikiem aterogenności jest stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (prawidłowo u kobiet powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest mniejszy niż podany indeks, co wskazuje na niskie ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
       } else if (ratioChol > 7) {
-        return 'Stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (u kobiet wskaźnik ten powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest większy niż 7, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
+        return 'Innym wskaźnikiem atreogenności jest stosunek stężenia cholesterolu całkowitego do stężenia cholesterolu HDL (prawidłowo u kobiet powinien wynosić <3.3). U Ciebie stosunek obu tych frakcji jest większy niż 7, co może wskazywać na podwyższone ryzyko chorób sercowo-naczyniowch związanych z nieprawidłową gospodarką lipidową.';
       }
     }
   }
