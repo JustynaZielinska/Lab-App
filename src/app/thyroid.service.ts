@@ -16,7 +16,12 @@ thyroidResults = new BehaviorSubject<ITest[]>(null);
   public pushResults(newResults: ITest[]): void{
     this.thyroidResults.next(newResults);
   }
-
+  public getUserThyroidIntrepretation(results): string{
+    const flags = results.map(result => result.flag);
+    const resultsFlags = flags.join(',');
+    const message = this.getInterpretation(resultsFlags);
+    return message;
+  }
   public changeFlag(results): void{
     for (const result of results){
       this.value = result.value;
