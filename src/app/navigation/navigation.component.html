@@ -2,8 +2,8 @@
     <a [routerLink]='[currentPageData.previousPath]' class="small" (click)="changeCurrentForm(currentPageData.previousForm) ; goBack()" [style.display]="isHidden? 'none' : 'block'">
         <img class="arrow arrow--previous" src="../../assets/images/Arrow.svg" alt="strzałka wstecz">Wstecz</a>
     <a routerLink="/test-form-page" [style.display]="isHidden? 'block' : 'none'" (click)="changeCurrentForm('test-choice') ; goBack()">{{this.currentPageData.pageTitle}}</a>
-    <a *ngIf="isEnabled" [routerLink]="[currentPageData.nextPath]" (click)="changeCurrentForm(currentPageData.nextForm)" class="small" [style.display]="isHidden? 'none' : 'block'">
+    <a *ngIf="currentPageData.isEnabled" [routerLink]="[currentPageData.nextPath]" (click)="changeCurrentForm(currentPageData.nextForm)" class="small" [style.display]="isHidden? 'none' : 'block'">
         {{currentPageData.pageTitle}}<img class="arrow" src="../../assets/images/Arrow.svg" alt="strzałka dalej"></a>
-    <div *ngIf="!isEnabled" class="small disabled" [style.display]="isHidden? 'none' : 'block'">
+    <div *ngIf="!currentPageData.isEnabled" class="small disabled" [style.display]="isHidden? 'none' : 'block'">
         {{currentPageData.pageTitle}}<img class="arrow" src="../../assets/images/Arrow.svg" alt="strzałka dalej"></div>
 </div>

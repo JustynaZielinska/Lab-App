@@ -8,9 +8,6 @@ import { ICurrentPageData } from './navigation/InterfaceCurrentPageData';
 
 export class NavigationService {
 
-currentUrl: string;
-isValid: null | 'gender' | 'test' | 'lipids' | 'thyroid';
-currentPageData: ICurrentPageData;
 lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'lipids' | 'thyroid'>(null);
 currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'entering-results'>(null);
 
@@ -21,17 +18,37 @@ public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'):
 public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results'): void {
   this.currentForm.next(newValue);
 }
+changeIsEnabledProperty(isValid: null | string, title: string): boolean;
+changeIsEnabledProperty(isValid: null | string, title, title2: string): boolean;
+
+public changeIsEnabledProperty(isValid: null | string, title: string, title2?: string): boolean{
+  if (title2) {
+    if ((isValid === title ) || (isValid === title2)){
+      return true;
+    } else { return false; }
+  } else {
+    if (isValid === title) {
+      return true;
+    } else { return false; }
+  }
+}
 
 changeNavigationProperties(currentForm, isValid): ICurrentPageData{
+  let previousPath = '';
+  let previousForm = '';
+  let nextPath = '';
+  let nextForm = '';
+  let pageTitle = '';
+  let isEnabled = null;
   switch (currentForm) {
     case 'test-choice':
-      let previousPath = 'home-page';
-      let previousForm = null;
-      let nextPath = 'test-form-page';
-      let nextForm = 'gender-choice';
-      let pageTitle = 'Wybierz płeć';
-      let isEnabled = this.changeIsEnabledProperty(isValid, 'test');
-      break;
+      previousPath = 'home-page';
+      previousForm = null;
+      nextPath = 'test-form-page';
+      nextForm = 'gender-choice';
+      pageTitle = 'Wybierz płeć';
+      isEnabled = this.changeIsEnabledProperty(isValid, 'test');
+      return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
     case 'gender-choice':
       previousPath = 'test-form-page';
       previousForm = 'test-choice';
@@ -39,18 +56,14 @@ changeNavigationProperties(currentForm, isValid): ICurrentPageData{
       nextForm = 'entering-results';
       pageTitle = 'Wpisz wyniki';
       isEnabled = this.changeIsEnabledProperty(isValid, 'gender');
-      break;
+      return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
     case 'entering-results':
       previousPath = 'test-form-page';
       previousForm = 'gender-choice';
       nextPath = 'interpretation';
       pageTitle = 'Interpretacja';
       isEnabled = this.changeIsEnabledProperty(isValid, 'thyroid', 'lipids');
-      return {previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled}; }
-}
-changeIsEnabledProperty(isValid, title: string, title2?: string): boolean{
-  if ((isValid === title ) || (isValid === title2)){
-    return true;
-  } else { return false; }
-}
+      return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
+    }
+  }
 }
