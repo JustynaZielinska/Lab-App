@@ -21,7 +21,7 @@ export class ResultIconComponent implements OnInit {
   isLoad = false;
   isActive = false;
 
-  ngOnInit (): void{
+  ngOnInit(): void{
     this.isLoad = true;
-    setTimeout(()=>{this.isActive = true}, 100)}
+    setTimeout(() => {this.isActive = true; }, 100); }
 }
