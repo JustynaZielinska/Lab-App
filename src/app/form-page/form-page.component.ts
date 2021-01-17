@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../navigation.service';
-import { LipidsService } from '../lipids.service';
-import { ThyroidService } from '../thyroid.service';
-import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
+import { NavigationService } from '../core/services/navigation.service';
+import { LipidsService } from '../core/services/lipids.service';
+import { ThyroidService } from '../core/services/thyroid.service';
+import { ITest } from '../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-test-form-page',
-  templateUrl: './test-form-page.component.html',
-  styleUrls: ['./test-form-page.component.scss']
+  templateUrl: './form-page.component.html',
+  styleUrls: ['./form-page.component.scss']
 })
-export class TestFormPageComponent implements OnInit{
+export class FormPageComponent implements OnInit{
 
   constructor(public navigationService: NavigationService, public lipidsService: LipidsService, public thyroidService: ThyroidService ){}
 

@@ -1,9 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
-import { NavigationService } from 'src/app/navigation.service';
+import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NavigationStart, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { ICurrentPageData } from './InterfaceCurrentPageData';
+import { filter, combineLatest } from 'rxjs/operators';
+import { ICurrentPageData } from 'src/app/core/interfaces/InterfaceCurrentPageData';
 
 @Component({
   selector: 'app-navigation',

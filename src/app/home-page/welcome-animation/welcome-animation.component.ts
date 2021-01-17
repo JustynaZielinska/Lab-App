@@ -14,8 +14,8 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
       ])
     ])
     ])],
-  templateUrl: './result-icon.component.html',
-  styleUrls: ['./result-icon.component.scss'],
+  templateUrl: './welcome-animation.component.html',
+  styleUrls: ['./welcome-animation.component.scss'],
 })
 export class ResultIconComponent implements OnInit {
   isLoad = false;

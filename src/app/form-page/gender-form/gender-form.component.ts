@@ -3,10 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-gender-choice-page',
-  templateUrl: './gender-choice-page.component.html',
-  styleUrls: ['./gender-choice-page.component.scss'],
+  templateUrl: './gender-form.component.html',
+  styleUrls: ['./gender-form.component.scss'],
 })
-export class GenderChoicePageComponent {
+export class GenderFormComponent {
 
   genderForm: FormGroup;
   gender: null|'male'|'female';

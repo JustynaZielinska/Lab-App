@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ThyroidFormPageComponent } from './thyroid-form-page.component';
+import { ThyroidFormComponent } from './thyroid-form.component';
 
 describe('ThyroidFormPageComponent', () => {
-  let component: ThyroidFormPageComponent;
-  let fixture: ComponentFixture<ThyroidFormPageComponent>;
+  let component: ThyroidFormComponent;
+  let fixture: ComponentFixture<ThyroidFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThyroidFormPageComponent ]
+      declarations: [ ThyroidFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ThyroidFormPageComponent);
+    fixture = TestBed.createComponent(ThyroidFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LipidsFormPageComponent } from './lipids-form-page.component';
+import { FormPageComponent } from './form-page.component';
 
-describe('LipidsFormPageComponent', () => {
-  let component: LipidsFormPageComponent;
-  let fixture: ComponentFixture<LipidsFormPageComponent>;
+describe('TestFormPageComponent', () => {
+  let component: FormPageComponent;
+  let fixture: ComponentFixture<FormPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LipidsFormPageComponent ]
+      declarations: [ FormPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LipidsFormPageComponent);
+    fixture = TestBed.createComponent(FormPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

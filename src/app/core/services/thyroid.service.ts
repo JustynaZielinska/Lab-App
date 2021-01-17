@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITest } from './test-form-page/entering-results-page/InterfaceTest';
+import { ITest } from '../interfaces/InterfaceTest';
 
 @Injectable({
   providedIn: 'root'

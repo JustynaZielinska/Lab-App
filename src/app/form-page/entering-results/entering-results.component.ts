@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ITest } from '../entering-results-page/InterfaceTest';
+import { ITest } from '../../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-entering-results-page',
-  templateUrl: './entering-results-page.component.html',
-  styleUrls: ['./entering-results-page.component.scss']
+  templateUrl: './entering-results.component.html',
+  styleUrls: ['./entering-results.component.scss']
 })
-export class EnteringResultsPageComponent {
+export class EnteringResultsComponent {
 
   @Input() currentTest;
   @Input() currentGender;
