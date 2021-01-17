@@ -1,7 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { NavigationService } from 'src/app/core/services/navigation.service';
-import { NavigationStart, Router } from '@angular/router';
-import { filter, combineLatest } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, withLatestFrom } from 'rxjs/operators';
 import { ICurrentPageData } from 'src/app/core/interfaces/InterfaceCurrentPageData';
 
 @Component({
@@ -13,10 +13,7 @@ export class NavigationComponent implements OnInit{
 
 constructor(public navigationService: NavigationService, private router: Router) {}
 
-isHidden = true;
-currentUrl: string;
-currentForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
-isValid: null | 'gender' | 'test' | 'lipids' | 'thyroid';
+isHidden: boolean;
 currentPageData: ICurrentPageData;
 
 goBack(): void {
@@ -28,9 +25,8 @@ changeCurrentForm(form): void{
 }
 
 ngOnInit(): void{
-  console.log(this.isHidden);
   this.currentPageData = {
-    pageTitle: 'Wybierz badanie',
+    pageTitle: '',
     previousPath: '',
     nextPath: '',
     previousForm: '',
@@ -38,25 +34,30 @@ ngOnInit(): void{
     isEnabled: false,
 };
   this.router.events
-  .pipe(filter(event => event instanceof NavigationStart))
-  .subscribe((event: NavigationStart) => {
-    this.currentUrl = event.url;
-    const connectStream = combineLatest([this.navigationService.lastValidPage, this.navigationService.currentForm]);
-    const subscribe = connectStream.subscribe(([lastValidPage, currentForm]) => {
-    this.isValid = lastValidPage;
-    this.currentForm = currentForm;
-    if (this.currentUrl === '/home-page' ) {
+  .pipe(
+    filter(event => event instanceof NavigationEnd),
+    withLatestFrom(
+      this.navigationService.lastValidPage,
+      this.navigationService.currentForm
+    ),
+  )
+  .subscribe(([
+    event,
+    lastValidPage,
+    currentForm,
+  ]) => {
+    const currentUrl = (event as NavigationEnd).urlAfterRedirects;
+    if (currentUrl === '/home-page' ) {
       this.currentPageData.pageTitle = 'Wybierz badanie';
       this.isHidden = true;
-    } else if (this.currentUrl === '/test-form-page') {
+    } else if (currentUrl === '/test-form-page') {
       this.isHidden = false;
-      this.currentPageData = this.navigationService.changeNavigationProperties(this.currentForm, this.isValid);
-      console.log(this.currentPageData);
-    } else if (this.currentUrl === '/interpretation') {
+      console.log(lastValidPage);
+      this.currentPageData = this.navigationService.changeNavigationProperties(currentForm, lastValidPage);
+    } else if (currentUrl === '/interpretation') {
       this.isHidden = true;
       this.currentPageData.pageTitle = 'Wybierz badanie ponownie';
     } else { this.isHidden = false; }
   });
-  });
-}
+  }
 }

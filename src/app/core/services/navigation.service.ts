@@ -13,7 +13,6 @@ currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'ente
 
 public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'): void {
   this.lastValidPage.next(newValue);
-  console.log(`zmieniam isValid na ${newValue}`);
 }
 
 public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results'): void {
