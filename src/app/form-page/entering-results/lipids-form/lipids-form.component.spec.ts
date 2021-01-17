@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GenderChoicePageComponent } from './gender-choice-page.component';
+import { LipidsFormComponent } from './lipids-form.component';
 
-describe('GenderChoicePageComponent', () => {
-  let component: GenderChoicePageComponent;
-  let fixture: ComponentFixture<GenderChoicePageComponent>;
+describe('LipidsFormPageComponent', () => {
+  let component: LipidsFormComponent;
+  let fixture: ComponentFixture<LipidsFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenderChoicePageComponent ]
+      declarations: [ LipidsFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenderChoicePageComponent);
+    fixture = TestBed.createComponent(LipidsFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

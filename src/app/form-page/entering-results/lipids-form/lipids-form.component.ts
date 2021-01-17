@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { positiveNumberValidator } from '../positive-number.module';
-import { ITest } from '../InterfaceTest';
+import { ITest } from 'src/app/core/interfaces/InterfaceTest';
 
 const chol: ITest = {
   name: 'Cholesterol',
@@ -27,10 +27,10 @@ const tg: ITest = {
 
 @Component({
   selector: 'app-lipids-form-page',
-  templateUrl: './lipids-form-page.component.html',
-  styleUrls: ['./lipids-form-page.component.scss']
+  templateUrl: './lipids-form.component.html',
+  styleUrls: ['./lipids-form.component.scss']
 })
-export class LipidsFormPageComponent implements OnInit {
+export class LipidsFormComponent implements OnInit {
 
 lipidsForm: FormGroup;
 chol: ITest;

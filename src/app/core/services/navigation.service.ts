@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ICurrentPageData } from './navigation/InterfaceCurrentPageData';
+import { ICurrentPageData } from '../interfaces/InterfaceCurrentPageData';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'ente
 
 public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'): void {
   this.lastValidPage.next(newValue);
+  console.log(`zmieniam isValid na ${newValue}`);
 }
 
 public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results'): void {
@@ -33,7 +34,7 @@ public changeIsEnabledProperty(isValid: null | string, title: string, title2?: s
   }
 }
 
-changeNavigationProperties(currentForm, isValid): ICurrentPageData{
+changeNavigationProperties(currentForm, lastValidPage): ICurrentPageData{
   let previousPath = '';
   let previousForm = '';
   let nextPath = '';
@@ -47,7 +48,7 @@ changeNavigationProperties(currentForm, isValid): ICurrentPageData{
       nextPath = 'test-form-page';
       nextForm = 'gender-choice';
       pageTitle = 'Wybierz płeć';
-      isEnabled = this.changeIsEnabledProperty(isValid, 'test');
+      isEnabled = this.changeIsEnabledProperty(lastValidPage, 'test');
       return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
     case 'gender-choice':
       previousPath = 'test-form-page';
@@ -55,14 +56,14 @@ changeNavigationProperties(currentForm, isValid): ICurrentPageData{
       nextPath = 'test-form-page';
       nextForm = 'entering-results';
       pageTitle = 'Wpisz wyniki';
-      isEnabled = this.changeIsEnabledProperty(isValid, 'gender');
+      isEnabled = this.changeIsEnabledProperty(lastValidPage, 'gender');
       return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
     case 'entering-results':
       previousPath = 'test-form-page';
       previousForm = 'gender-choice';
       nextPath = 'interpretation';
       pageTitle = 'Interpretacja';
-      isEnabled = this.changeIsEnabledProperty(isValid, 'thyroid', 'lipids');
+      isEnabled = this.changeIsEnabledProperty(lastValidPage, 'thyroid', 'lipids');
       return { previousPath, previousForm, nextPath, nextForm, pageTitle, isEnabled };
     }
   }

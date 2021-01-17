@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestFormPageComponent } from './test-form-page.component';
+import { GenderFormComponent } from './gender-form.component';
 
-describe('TestFormPageComponent', () => {
-  let component: TestFormPageComponent;
-  let fixture: ComponentFixture<TestFormPageComponent>;
+describe('GenderChoicePageComponent', () => {
+  let component: GenderFormComponent;
+  let fixture: ComponentFixture<GenderFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestFormPageComponent ]
+      declarations: [ GenderFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestFormPageComponent);
+    fixture = TestBed.createComponent(GenderFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

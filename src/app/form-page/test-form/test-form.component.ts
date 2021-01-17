@@ -3,10 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-test-choice-page',
-  templateUrl: './test-choice-page.component.html',
-  styleUrls: ['./test-choice-page.component.scss']
+  templateUrl: './test-form.component.html',
+  styleUrls: ['./test-form.component.scss']
 })
-export class TestChoicePageComponent{
+export class TestFormComponent{
 
   testForm: FormGroup;
   test: null | 'lipids' | 'thyroid';

@@ -7,15 +7,14 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ResultIconComponent } from './home-page/result-icon/result-icon.component';
-import { TestChoicePageComponent } from './test-form-page/test-choice-page/test-choice-page.component';
-import { TestFormPageComponent } from './test-form-page/test-form-page.component';
-import { GenderChoicePageComponent } from './test-form-page/gender-choice-page/gender-choice-page.component';
+import { ResultIconComponent } from './home-page/welcome-animation/welcome-animation.component';
+import { TestFormComponent } from './form-page/test-form/test-form.component';
+import { FormPageComponent } from './form-page/form-page.component';
+import { GenderFormComponent } from './form-page/gender-form/gender-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EnteringResultsPageComponent } from './test-form-page/entering-results-page/entering-results-page.component';
-import { NavigationService } from './navigation.service';
-import { ThyroidFormPageComponent } from './test-form-page/entering-results-page/thyroid-form-page/thyroid-form-page.component';
-import { LipidsFormPageComponent } from './test-form-page/entering-results-page/lipids-form-page/lipids-form-page.component';
+import { EnteringResultsComponent } from './form-page/entering-results/entering-results.component';
+import { ThyroidFormComponent } from './form-page/entering-results/thyroid-form/thyroid-form.component';
+import { LipidsFormComponent } from './form-page/entering-results/lipids-form/lipids-form.component';
 import { InterpretationComponent } from './interpretation/interpretation.component';
 
 @NgModule({
@@ -26,12 +25,12 @@ import { InterpretationComponent } from './interpretation/interpretation.compone
     HomePageComponent,
     PageNotFoundComponent,
     ResultIconComponent,
-    TestChoicePageComponent,
-    TestFormPageComponent,
-    GenderChoicePageComponent,
-    EnteringResultsPageComponent,
-    ThyroidFormPageComponent,
-    LipidsFormPageComponent,
+    FormPageComponent,
+    TestFormComponent,
+    GenderFormComponent,
+    EnteringResultsComponent,
+    ThyroidFormComponent,
+    LipidsFormComponent,
     InterpretationComponent,
   ],
   imports: [
