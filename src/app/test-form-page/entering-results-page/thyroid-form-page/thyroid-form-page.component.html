@@ -1,30 +1,58 @@
 <div class="box">
     <h2 class="title">Wpisz wyniki</h2>
-    <form [formGroup]="thyroidForm" class="form" (ngSubmit)="submitThyroid()">
-     <div class="form__description">
-        <span class="form__description--item">Badanie</span>
-        <span class="form__description--item">Twój wynik</span>
-        <span class="form__description--item">Jednostka</span>
-        <span class="form__description--item">Zakres</span></div>
-    <label class="form__label">
-        <span class="form__item">TSH</span>
-        <input class="form__input" type="number" formControlName="tsh">
-        <span class="form__item">{{ tsh.unit }}</span>
-        <span class="form__item">{{ getRange(tsh) }}</span>
-    </label>
-    <label class="form__label">
-        <span class="form__item">FT3</span>
-        <input class="form__input" type="number" formControlName="ft3">
-        <span class="form__item">{{ ft3.unit }}</span>
-        <span class="form__item">{{ getRange(ft3) }}</span>
-    </label>
-    <label class="form__label">
-        <span class="form__item">FT4</span>
-        <input class="form__input" type="number" formControlName="ft4">
-        <span class="form__item">{{ ft4.unit }}</span>
-        <span class="form__item">{{ getRange(ft4) }}</span>
-    </label>
-    <button class="submit" type="submit" *ngIf="thyroidForm.valid">Wyślij</button>
-    <span class="form__description--alert" *ngIf="thyroidForm.invalid">{{ alert }}</span>
-</form>
+    <form
+        [formGroup]="thyroidForm"
+        class="form"
+        (ngSubmit)="submitThyroid()"
+    >
+        <div class="form__description">
+            <span class="form__description--item">Badanie</span>
+            <span class="form__description--item">Twój wynik</span>
+            <span class="form__description--item">Jednostka</span>
+            <span class="form__description--item">Zakres</span>
+        </div>
+        <label class="form__label">
+            <span class="form__item">TSH</span>
+            <input
+                class="form__input"
+                type="number"
+                formControlName="tsh"
+            >
+            <span class="form__item">{{ tsh.unit }}</span>
+            <span class="form__item">{{ getRange(tsh) }}</span>
+        </label>
+        <label class="form__label">
+            <span class="form__item">FT3</span>
+            <input
+                class="form__input"
+                type="number"
+                formControlName="ft3"
+            >
+            <span class="form__item">{{ ft3.unit }}</span>
+            <span class="form__item">{{ getRange(ft3) }}</span>
+        </label>
+        <label class="form__label">
+            <span class="form__item">FT4</span>
+            <input
+                class="form__input"
+                type="number"
+                formControlName="ft4"
+            >
+            <span class="form__item">{{ ft4.unit }}</span>
+            <span class="form__item">{{ getRange(ft4) }}</span>
+        </label>
+        <button
+            class="submit"
+            type="submit"
+            *ngIf="thyroidForm.valid"
+        >
+            Wyślij
+        </button>
+        <span
+            class="form__description--alert"
+            *ngIf="thyroidForm.invalid"
+        >
+            {{ alert }}
+        </span>
+    </form>
 </div>

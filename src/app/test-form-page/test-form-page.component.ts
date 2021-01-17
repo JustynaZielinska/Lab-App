@@ -3,7 +3,6 @@ import { NavigationService } from '../navigation.service';
 import { LipidsService } from '../lipids.service';
 import { ThyroidService } from '../thyroid.service';
 import { ITest } from '../test-form-page/entering-results-page/InterfaceTest';
-import { ConsoleReporter } from 'jasmine';
 
 @Component({
   selector: 'app-test-form-page',

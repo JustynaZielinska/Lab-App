@@ -10,11 +10,11 @@ import { ICurrentPageData } from './InterfaceCurrentPageData';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit{
 
 constructor(public navigationService: NavigationService, private router: Router) {}
 
-isHidden: boolean;
+isHidden = true;
 currentUrl: string;
 currentForm: null | 'gender-choice' | 'test-choice' | 'entering-results';
 isValid: null | 'gender' | 'test' | 'lipids' | 'thyroid';
@@ -29,13 +29,14 @@ changeCurrentForm(form): void{
 }
 
 ngOnInit(): void{
+  console.log(this.isHidden);
   this.currentPageData = {
-    pageTitle: '',
+    pageTitle: 'Wybierz badanie',
     previousPath: '',
     nextPath: '',
     previousForm: '',
     nextForm: '',
-    isEnabled: null,
+    isEnabled: false,
 };
   this.router.events
   .pipe(filter(event => event instanceof NavigationStart))
@@ -51,6 +52,7 @@ ngOnInit(): void{
     } else if (this.currentUrl === '/test-form-page') {
       this.isHidden = false;
       this.currentPageData = this.navigationService.changeNavigationProperties(this.currentForm, this.isValid);
+      console.log(this.currentPageData);
     } else if (this.currentUrl === '/interpretation') {
       this.isHidden = true;
       this.currentPageData.pageTitle = 'Wybierz badanie ponownie';

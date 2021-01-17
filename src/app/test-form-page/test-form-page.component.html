@@ -10,7 +10,7 @@
     *ngIf="(navigationService.currentForm | async) === 'entering-results'"
     [currentTest]="test"
     [currentGender]="gender"
-   (validForm)="validForm($event)"
-   (userLipids)="sendLipids($event)"
-   (userThyroid)="sendThyroid($event)">
+    (validForm)="validForm($event)"
+    (userLipids)="sendLipids($event)"
+    (userThyroid)="sendThyroid($event)">
 </app-entering-results-page>
