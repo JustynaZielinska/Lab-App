@@ -6,10 +6,10 @@ import { ITest } from '../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-test-form-page',
-  templateUrl: './form-page.component.html',
-  styleUrls: ['./form-page.component.scss']
+  templateUrl: './forms.component.html',
+  styleUrls: ['./forms.component.scss']
 })
-export class FormPageComponent implements OnInit{
+export class FormsComponent implements OnInit{
 
   constructor(public navigationService: NavigationService, public lipidsService: LipidsService, public thyroidService: ThyroidService ){}
 
