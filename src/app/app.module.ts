@@ -8,13 +8,13 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ResultIconComponent } from './home-page/welcome-animation/welcome-animation.component';
-import { TestFormComponent } from './form-page/test-form/test-form.component';
-import { FormPageComponent } from './form-page/form-page.component';
-import { GenderFormComponent } from './form-page/gender-form/gender-form.component';
+import { TestFormComponent } from './forms/test-form/test-form.component';
+import { FormsComponent } from './forms/forms.component';
+import { GenderFormComponent } from './forms/gender-form/gender-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { EnteringResultsComponent } from './form-page/entering-results/entering-results.component';
-import { ThyroidFormComponent } from './form-page/entering-results/thyroid-form/thyroid-form.component';
-import { LipidsFormComponent } from './form-page/entering-results/lipids-form/lipids-form.component';
+import { ResultsFormsComponent } from './forms/results-forms/results-forms.component';
+import { ThyroidFormComponent } from './forms/results-forms/thyroid-form/thyroid-form.component';
+import { LipidsFormComponent } from './forms/results-forms/lipids-form/lipids-form.component';
 import { InterpretationComponent } from './interpretation/interpretation.component';
 
 @NgModule({
@@ -25,10 +25,10 @@ import { InterpretationComponent } from './interpretation/interpretation.compone
     HomePageComponent,
     PageNotFoundComponent,
     ResultIconComponent,
-    FormPageComponent,
+    FormsComponent,
     TestFormComponent,
     GenderFormComponent,
-    EnteringResultsComponent,
+    ResultsFormsComponent,
     ThyroidFormComponent,
     LipidsFormComponent,
     InterpretationComponent,

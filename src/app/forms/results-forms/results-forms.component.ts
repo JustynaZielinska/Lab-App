@@ -3,10 +3,10 @@ import { ITest } from '../../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-entering-results-page',
-  templateUrl: './entering-results.component.html',
-  styleUrls: ['./entering-results.component.scss']
+  templateUrl: './results-forms.component.html',
+  styleUrls: ['./results-forms.component.scss']
 })
-export class EnteringResultsComponent {
+export class ResultsFormsComponent {
 
   @Input() currentTest;
   @Input() currentGender;

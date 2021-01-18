@@ -1,7 +1,8 @@
 import { Component, OnInit  } from '@angular/core';
 import { NavigationService } from 'src/app/core/services/navigation.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { filter, withLatestFrom } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 import { ICurrentPageData } from 'src/app/core/interfaces/InterfaceCurrentPageData';
 
 @Component({
@@ -33,14 +34,10 @@ ngOnInit(): void{
     nextForm: '',
     isEnabled: false,
 };
-  this.router.events
-  .pipe(
-    filter(event => event instanceof NavigationEnd),
-    withLatestFrom(
-      this.navigationService.lastValidPage,
-      this.navigationService.currentForm
-    ),
-  )
+combineLatest([
+  this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
+  this.navigationService.lastValidPage,
+  this.navigationService.currentForm])
   .subscribe(([
     event,
     lastValidPage,
@@ -52,7 +49,6 @@ ngOnInit(): void{
       this.isHidden = true;
     } else if (currentUrl === '/test-form-page') {
       this.isHidden = false;
-      console.log(lastValidPage);
       this.currentPageData = this.navigationService.changeNavigationProperties(currentForm, lastValidPage);
     } else if (currentUrl === '/interpretation') {
       this.isHidden = true;
