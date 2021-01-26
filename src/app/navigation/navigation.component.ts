@@ -26,14 +26,6 @@ changeCurrentForm(form): void{
 }
 
 ngOnInit(): void{
-  this.currentPageData = {
-    pageTitle: '',
-    previousPath: '',
-    nextPath: '',
-    previousForm: '',
-    nextForm: '',
-    isEnabled: false,
-};
 combineLatest([
   this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
   this.navigationService.lastValidPage,
@@ -43,6 +35,14 @@ combineLatest([
     lastValidPage,
     currentForm,
   ]) => {
+    this.currentPageData = {
+      pageTitle: '',
+      previousPath: '',
+      nextPath: '',
+      previousForm: '',
+      nextForm: '',
+      isEnabled: false,
+  };
     const currentUrl = (event as NavigationEnd).urlAfterRedirects;
     if (currentUrl === '/home-page' ) {
       this.currentPageData.pageTitle = 'Wybierz badanie';

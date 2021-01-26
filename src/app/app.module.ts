@@ -16,6 +16,7 @@ import { ResultsFormsComponent } from './forms/results-forms/results-forms.compo
 import { ThyroidFormComponent } from './forms/results-forms/thyroid-form/thyroid-form.component';
 import { LipidsFormComponent } from './forms/results-forms/lipids-form/lipids-form.component';
 import { InterpretationComponent } from './interpretation/interpretation.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { InterpretationComponent } from './interpretation/interpretation.compone
     ThyroidFormComponent,
     LipidsFormComponent,
     InterpretationComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
