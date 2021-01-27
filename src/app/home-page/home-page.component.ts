@@ -19,7 +19,8 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-isVisible = false;
+  
+  isVisible: boolean;
 
 ngOnInit(): void{
   this.isVisible = true;
