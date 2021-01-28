@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { trigger, transition, style, query, stagger, animate, state } from '@angular/animations';
+import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-sidebar',

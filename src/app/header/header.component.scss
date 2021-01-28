@@ -23,6 +23,7 @@
     &__burger {
     position: relative;
     @include square(1.6rem);
+    display: block;
     background-color: transparent;
     transition: 0.5s;
     cursor: pointer;

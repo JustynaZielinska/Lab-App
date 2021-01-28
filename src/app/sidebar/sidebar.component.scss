@@ -5,7 +5,7 @@
     top: 2.6rem;
     left:0;
     height: calc(100vh - 2.6rem);
-    width: 100vw;
+    width: 30rem;
     background: white;
     text-align: center;
     @media (orientation: landscape) and (max-width : 640px){
@@ -23,6 +23,9 @@
     }
     &__item{
         line-height: 4rem;
+        @media (orientation:landscape) and (max-width:640px) {
+            line-height: 3rem;
+        }
     }
     &__item p{
         font-weight: bold;
