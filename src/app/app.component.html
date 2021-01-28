@@ -1,3 +1,8 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+<div
+    class="routerContainer"
+    [@routerAnimation]=getDepth(myOutlet)
+>
+    <router-outlet #myOutlet='outlet'></router-outlet>
+</div>
 <app-navigation></app-navigation>

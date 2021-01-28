@@ -4,8 +4,8 @@
     position: fixed;
     top: 2.6rem;
     left:0;
-    height: calc(100vh - (2.6rem*2));
-    width: 100vw;
+    height: calc(100vh - 2.6rem);
+    width: 30rem;
     background: white;
     text-align: center;
     @media (orientation: landscape) and (max-width : 640px){
@@ -15,14 +15,17 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        width: 12rem;
         transform: translate(-50%, -50%);
+        width: 12rem;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
     }
     &__item{
         line-height: 4rem;
+        @media (orientation:landscape) and (max-width:640px) {
+            line-height: 3rem;
+        }
     }
     &__item p{
         font-weight: bold;

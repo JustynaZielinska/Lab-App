@@ -6,10 +6,10 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FormsComponent } from './forms/forms.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: '/home-page', pathMatch: 'full'},
-    {path: 'home-page', component: HomePageComponent},
-    {path: 'test-form-page', component: FormsComponent},
-    {path: 'interpretation', component: InterpretationComponent},
+    {path: '', redirectTo: '/home-page', pathMatch: 'full', data: {depth: 0}},
+    {path: 'home-page', component: HomePageComponent, data: { depth: 1 }},
+    {path: 'test-form-page', component: FormsComponent, data: { depth: 2 }},
+    {path: 'interpretation', component: InterpretationComponent, data: { depth: 3}},
     {path: '**', component: PageNotFoundComponent },
 ];
 
