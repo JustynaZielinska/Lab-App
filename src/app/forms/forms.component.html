@@ -1,16 +1,24 @@
-<app-gender-choice-page
-    *ngIf="(navigationService.currentForm | async) === 'gender-choice'"
-    (selectedGender)="validGender($event)">
-</app-gender-choice-page>
-<app-test-choice-page
-    *ngIf="(navigationService.currentForm | async) === 'test-choice'"
-    (selectedTest)="validTest($event)">
-</app-test-choice-page>
-<app-entering-results-page
-    *ngIf="(navigationService.currentForm | async) === 'entering-results'"
-    [currentTest]="test"
-    [currentGender]="gender"
-    (validForm)="validForm($event)"
-    (userLipids)="sendLipids($event)"
-    (userThyroid)="sendThyroid($event)">
-</app-entering-results-page>
+<div
+    class="formsContainer"
+    [@routerAnimation]='(navigationService.currentForm | async)'
+>
+    <app-gender-choice-page
+        *ngIf="(navigationService.currentForm | async) === 'gender-choice'"
+        (selectedGender)="validGender($event)"
+    >
+    </app-gender-choice-page>
+    <app-test-choice-page
+        *ngIf="(navigationService.currentForm | async) === 'test-choice'"
+        (selectedTest)="validTest($event)"
+    >
+    </app-test-choice-page>
+    <app-entering-results-page
+        *ngIf="(navigationService.currentForm | async) === 'entering-results'"
+        [currentTest]="test"
+        [currentGender]="gender"
+        (validForm)="validForm($event)"
+        (userLipids)="sendLipids($event)"
+        (userThyroid)="sendThyroid($event)"
+    >
+    </app-entering-results-page>
+</div>

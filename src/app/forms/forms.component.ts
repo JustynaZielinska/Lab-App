@@ -2,11 +2,42 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationService } from '../core/services/navigation.service';
 import { LipidsService } from '../core/services/lipids.service';
 import { ThyroidService } from '../core/services/thyroid.service';
+import { trigger, transition, style, query, animate, group } from '@angular/animations';
 import { ITest } from '../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-test-form-page',
   templateUrl: './forms.component.html',
+  animations: [
+    trigger('routerAnimation', [
+      transition('test-choice => gender-choice, gender-choice => entering-results', [
+          query(':enter', style({ transform: 'translateX(50%)', opacity: 0 })),
+          query(':leave', style({ transform: 'translateX(0)', opacity: 1 })),
+          query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
+          group([
+              query(':leave', [
+                  animate('0.4s', style({ transform: 'translateX(-50%)', opacity: 0 })),
+              ]),
+              query(':enter', [
+                animate('0.4s', style({ transform: 'translateX(0)', opacity: 1 })),
+          ]),
+      ]),
+  ]),
+  transition('gender-choice => test-choice, entering-results => gender-choice', [
+    query(':enter', style({ transform: 'translateX(-50%)', opacity: 0 })),
+    query(':leave', style({ transform: 'translateX(0)', opacity: 1 })),
+    query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
+    group([
+        query(':leave', [
+            animate('0.4s', style({ transform: 'translateX(100%)', opacity: 0 })),
+        ]),
+        query(':enter', [
+          animate('0.4s', style({ transform: 'translateX(0)', opacity: 1 })),
+    ]),
+]),
+])
+])
+],
   styleUrls: ['./forms.component.scss']
 })
 export class FormsComponent implements OnInit{
