@@ -3,9 +3,13 @@
     @include flex(column, space-around);
     width:100vw;
     padding: 1rem 0;
+    z-index: 1;
     @media (orientation:landscape) and (max-width:1024px) {
         justify-content: space-around;
         flex-wrap: wrap-reverse;
         align-items: center;
     }
+}
+.description{
+    z-index: -1;
 }

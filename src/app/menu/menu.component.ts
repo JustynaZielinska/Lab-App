@@ -2,7 +2,7 @@ import { Component, OnInit, } from '@angular/core';
 import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-menu',
   animations: [
     trigger('enterLeave', [
       transition( ':enter', [
@@ -21,8 +21,8 @@ import { trigger, transition, style, query, stagger, animate } from '@angular/an
       ])
     ])
   ],
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
 export class SidebarComponent implements OnInit {
 

@@ -9,7 +9,7 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
     query('.description span', [
       style({opacity: 0, transform: 'translateY(1.5rem)'}),
       stagger(700, [
-        animate('0.9s 1.2s', style ({opacity: 1, transform: 'none'}))
+        animate('0.9s 1.2s', style ({opacity: 1, transform: 'translateY(0)'}))
       ])
     ])
     ])
