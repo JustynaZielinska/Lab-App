@@ -53,7 +53,8 @@ combineLatest([
     } else if (currentUrl === '/interpretation') {
       this.isHidden = true;
       this.currentPageData.pageTitle = 'Wybierz badanie ponownie';
-    } else { this.isHidden = false; }
+    } else { this.isHidden = true; 
+      this.currentPageData.pageTitle = 'Wybierz badanie'}
   });
   }
 }

@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavigationComponent } from './navbar/navigation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -16,7 +16,8 @@ import { ResultsFormsComponent } from './forms/results-forms/results-forms.compo
 import { ThyroidFormComponent } from './forms/results-forms/thyroid-form/thyroid-form.component';
 import { LipidsFormComponent } from './forms/results-forms/lipids-form/lipids-form.component';
 import { InterpretationComponent } from './interpretation/interpretation.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './menu/menu.component';
+import { ContactSubpageComponent } from './menu-subpages/contact-subpage/contact-subpage.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LipidsFormComponent,
     InterpretationComponent,
     SidebarComponent,
+    ContactSubpageComponent,
   ],
   imports: [
     BrowserModule,

@@ -21,13 +21,13 @@ transition: 1.5s;
 }
 
 .mouth {
-transition: .7s 7s;
+transition: .7s 1s;
 transform: scaleX(0) rotateX(45deg);
 transform-origin: center;
 opacity:0;
 }
 .eye{
-transition: .5s 6.3s;
+transition: .5s 1.3s;
 opacity:0
 }
 .svg--active .mouth{
