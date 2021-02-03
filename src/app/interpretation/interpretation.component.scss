@@ -17,9 +17,9 @@
 .results__item{
     display: grid;
     grid-template-columns: 1fr 3rem 2.5rem 2rem;
-    @include text(.8rem, 1.4rem);
+    @include text(.8rem, 1.4rem, center);
     @media (min-width:1024px){
-        @include text(.9rem, 1.6rem);
+        @include text(.9rem, 1.6rem, center);
     }
 }
 .icon {
@@ -37,12 +37,11 @@
     color: rgb(87, 87, 87);
     padding: 1rem 0 4rem 0;
     align-self: flex-start;
-    @include text(.8rem, 1.2rem);
+    @include text(.8rem, 1.2rem, justify);
     @media (min-width:1024px){
-        @include text(.9rem, 1.4rem);
+        @include text(.9rem, 1.4rem, justify);
     }
 }
 .interpretation p{
-    text-align: justify;
     text-align-last: center;
 }
