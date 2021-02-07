@@ -18,6 +18,7 @@ import { LipidsFormComponent } from './forms/results-forms/lipids-form/lipids-fo
 import { InterpretationComponent } from './interpretation/interpretation.component';
 import { SidebarComponent } from './menu/menu.component';
 import { ContactSubpageComponent } from './menu-subpages/contact-subpage/contact-subpage.component';
+import { AboutSubpageComponent } from './menu-subpages/about-subpage/about-subpage.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ContactSubpageComponent } from './menu-subpages/contact-subpage/contact
     InterpretationComponent,
     SidebarComponent,
     ContactSubpageComponent,
+    AboutSubpageComponent,
   ],
   imports: [
     BrowserModule,
