@@ -16,8 +16,9 @@ constructor(public navigationService: NavigationService, private router: Router)
 
 isHidden: boolean;
 currentPageData: ICurrentPageData;
+isVisible: boolean;
 
-goBack(): void {
+resetIsValid(): void {
   this.navigationService.changeIsValid(null);
 }
 
@@ -56,5 +57,7 @@ combineLatest([
     } else { this.isHidden = true; 
       this.currentPageData.pageTitle = 'Wybierz badanie'}
   });
+  this.navigationService.isNavigationHidden.subscribe(isHidden =>
+    this.isVisible = isHidden);
   }
 }

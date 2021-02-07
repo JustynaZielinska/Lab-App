@@ -1,5 +1,6 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
+import { NavigationService } from '../core/services/navigation.service';
 
 @Component({
   selector: 'app-menu',
@@ -15,8 +16,8 @@ import { trigger, transition, style, query, stagger, animate } from '@angular/an
       transition( ':leave', [
         query('.menu__item', [
           style({opacity: 1, transform: 'translateY(0)'}),
-          stagger(150, 
-            animate('0.3s', style({opacity: 0, transform: 'translateY(-30px)'})))
+          stagger(120, 
+            animate('0.25s', style({opacity: 0, transform: 'translateY(-30px)'})))
         ])
       ])
     ])
@@ -26,11 +27,20 @@ import { trigger, transition, style, query, stagger, animate } from '@angular/an
 })
 export class SidebarComponent implements OnInit {
 
-    
-  ngOnInit(): void {
-   // this.isOpen = true;
+  constructor(private service: NavigationService) {}
+
+  @Output() isMenuActive = new EventEmitter<boolean>();
+
+  resetIsValid(): void{
+    this.service.changeIsValid(null);
+    this.service.changeCurrentForm('test-choice');
   }
-  ngOnDestroy(): void{
-//this.isOpen = false
+  hideMenu(): void{
+    this.isMenuActive.emit(false);
+    this.service.hideNavigation(false);
+  }
+
+  ngOnInit(): void {
+
   }
 }

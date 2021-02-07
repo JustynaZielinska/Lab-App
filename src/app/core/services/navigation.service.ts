@@ -10,6 +10,11 @@ export class NavigationService {
 
 lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'lipids' | 'thyroid'>(null);
 currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'entering-results'>(null);
+isNavigationHidden = new BehaviorSubject<true | false>(false);
+
+public hideNavigation(newValue: true | false): void{
+  this.isNavigationHidden.next(newValue)
+}
 
 public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'): void {
   this.lastValidPage.next(newValue);
@@ -18,6 +23,7 @@ public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'):
 public changeCurrentForm(newValue: null | 'gender-choice' | 'test-choice' | 'entering-results'): void {
   this.currentForm.next(newValue);
 }
+
 changeIsEnabledProperty(isValid: null | string, title: string): boolean;
 changeIsEnabledProperty(isValid: null | string, title, title2: string): boolean;
 

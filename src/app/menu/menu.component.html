@@ -4,22 +4,34 @@
         [@enterLeave]
     >
         <li class="menu__item">
-            <a routerLink="/test-form-page">
+            <a
+                routerLink="/test-form-page"
+                (click)="hideMenu() ; resetIsValid()"
+            >
                 <p>Wybór badań</p>
             </a>
         </li>
         <li class="menu__item">
-            <a routerLink="/about-tests">
+            <a
+                routerLink="/about-tests"
+                (click)="hideMenu() ; resetIsValid()"
+            >
                 <p>Więcej o badaniach</p>
             </a>
         </li>
         <li class="menu__item">
-            <a routerLink="/about-project">
+            <a
+                routerLink="/about-project"
+                (click)="hideMenu() ; resetIsValid()"
+            >
                 <p>Więcej o projekcie</p>
             </a>
         </li>
         <li class="menu__item">
-            <a routerLink="/contact">
+            <a
+                routerLink="/contact"
+                (click)="hideMenu() ; resetIsValid()"
+            >
                 <p>Kontakt</p>
             </a>
         </li>
