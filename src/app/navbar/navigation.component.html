@@ -1,8 +1,11 @@
-<div class = "navigation">
+<div
+    class = "navigation"
+    [class.isHidden] = "isVisible"
+>
     <a
         class="small"
         [routerLink]='[currentPageData.previousPath]'
-        (click)="changeCurrentForm(currentPageData.previousForm) ; goBack()"
+        (click)="changeCurrentForm(currentPageData.previousForm) ; resetIsValid()"
         [style.display]="isHidden? 'none' : 'block'"
     >
         <img
@@ -15,7 +18,7 @@
     <a
         routerLink="/test-form-page"
         [style.display]="isHidden? 'block' : 'none'"
-        (click)="changeCurrentForm('test-choice') ; goBack()"
+        (click)="changeCurrentForm('test-choice') ; resetIsValid()"
     >
         {{currentPageData.pageTitle}}
     </a>

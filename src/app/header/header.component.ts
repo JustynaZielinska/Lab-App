@@ -12,7 +12,13 @@ export class HeaderComponent{
 constructor(private service: NavigationService) {}
 isActive = false;
 
-goBack(): void{
+resetIsValid(): void{
   this.service.changeIsValid(null);
+}
+hideMenu(event): void{
+  this.isActive = event;
+}
+hideNavbar(): void{
+  this.service.hideNavigation(this.isActive);
 }
 }

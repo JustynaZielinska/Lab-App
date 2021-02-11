@@ -18,6 +18,9 @@
     @media (orientation:landscape) and (min-width:1024px){
         @include flex (row, space-around)}
 }
+.isHidden > * {
+    visibility: hidden;
+}
 .arrow{
     height: .8rem;
     margin: 0 .4rem;
