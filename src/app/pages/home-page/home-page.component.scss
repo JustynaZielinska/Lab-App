@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import '/src/styles.scss';
 .box {
     @include flex(column, space-around);
     width:100vw;

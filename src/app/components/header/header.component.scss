@@ -1,4 +1,4 @@
-@import '../../styles.scss';
+@import '/src/styles.scss';
 .header {
     @include flex (row, space-between);
     position: fixed;

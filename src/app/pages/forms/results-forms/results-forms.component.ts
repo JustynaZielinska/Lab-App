@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ITest } from '../../core/interfaces/InterfaceTest';
+import { ITest } from '../../../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-entering-results-page',

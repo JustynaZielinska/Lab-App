@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
-import { NavigationService } from '../core/services/navigation.service';
+import { NavigationService } from '../../core/services/navigation.service';
 
 @Component({
   selector: 'app-menu',
