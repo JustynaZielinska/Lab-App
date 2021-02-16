@@ -18,8 +18,13 @@
     @media (orientation:landscape) and (min-width:1024px){
         @include flex (row, space-around)}
 }
+.navigation > * {
+    transition: 0.5s linear;
+}
 .isHidden > * {
-    visibility: hidden;
+    pointer-events: none;
+    cursor: default;
+    filter: blur(1px);
 }
 .arrow{
     height: .8rem;

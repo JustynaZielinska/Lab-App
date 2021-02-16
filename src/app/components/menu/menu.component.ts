@@ -33,6 +33,8 @@ export class SidebarComponent implements OnInit {
 
   resetIsValid(): void{
     this.service.changeIsValid(null);
+  }
+  redirectToTestForm(): void{
     this.service.changeCurrentForm('test-choice');
   }
   hideMenu(): void{

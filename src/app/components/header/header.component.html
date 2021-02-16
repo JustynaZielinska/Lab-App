@@ -1,7 +1,8 @@
 <header class="header">
     <a
         routerLink="/home-page"
-        (click)="resetIsValid() ; hideMenu(false) ; hideNavbar()"
+        (click)="resetIsValid()"
+        [class.isDisabled]="isActive"
     >
         <img
             class="header__logo"
