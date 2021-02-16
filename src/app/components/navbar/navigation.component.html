@@ -1,12 +1,12 @@
 <div
     class = "navigation"
-    [class.isHidden] = "isVisible"
+    [class.isHidden] = "isNavigationVisible"
 >
     <a
         class="small"
         [routerLink]='[currentPageData.previousPath]'
         (click)="changeCurrentForm(currentPageData.previousForm) ; resetIsValid()"
-        [style.display]="isHidden? 'none' : 'block'"
+        [style.display]="isButtonHidden? 'none' : 'block'"
     >
         <img
             class="arrow arrow--previous"
@@ -17,7 +17,7 @@
     </a>
     <a
         routerLink="/test-form-page"
-        [style.display]="isHidden? 'block' : 'none'"
+        [style.display]="isButtonHidden? 'block' : 'none'"
         (click)="changeCurrentForm('test-choice') ; resetIsValid()"
     >
         {{currentPageData.pageTitle}}
@@ -27,7 +27,7 @@
         *ngIf="currentPageData.isEnabled"
         [routerLink]="[currentPageData.nextPath]"
         (click)="changeCurrentForm(currentPageData.nextForm)"
-        [style.display]="isHidden? 'none' : 'block'"
+        [style.display]="isButtonHidden? 'none' : 'block'"
     >
         {{currentPageData.pageTitle}}
         <img
@@ -39,7 +39,7 @@
     <div
         class="small disabled"
         *ngIf="!currentPageData.isEnabled"
-        [style.display]="isHidden? 'none' : 'block'"
+        [style.display]="isButtonHidden? 'none' : 'block'"
     >
         {{currentPageData.pageTitle}}
         <img

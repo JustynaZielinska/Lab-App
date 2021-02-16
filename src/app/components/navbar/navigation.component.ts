@@ -14,9 +14,9 @@ export class NavigationComponent implements OnInit{
 
 constructor(public navigationService: NavigationService, private router: Router) {}
 
-isHidden: boolean;
+isButtonHidden: boolean;
 currentPageData: ICurrentPageData;
-isVisible: boolean;
+isNavigationVisible: boolean;
 
 resetIsValid(): void {
   this.navigationService.changeIsValid(null);
@@ -30,12 +30,15 @@ ngOnInit(): void{
 combineLatest([
   this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
   this.navigationService.lastValidPage,
-  this.navigationService.currentForm])
+  this.navigationService.currentForm,
+  this.navigationService.isNavigationHidden])
   .subscribe(([
     event,
     lastValidPage,
     currentForm,
+    isHidden
   ]) => {
+    this.isNavigationVisible = isHidden;
     this.currentPageData = {
       pageTitle: '',
       previousPath: '',
@@ -47,17 +50,15 @@ combineLatest([
     const currentUrl = (event as NavigationEnd).urlAfterRedirects;
     if (currentUrl === '/home-page' ) {
       this.currentPageData.pageTitle = 'Wybierz badanie';
-      this.isHidden = true;
+      this.isButtonHidden = true;
     } else if (currentUrl === '/test-form-page') {
-      this.isHidden = false;
+      this.isButtonHidden = false;
       this.currentPageData = this.navigationService.changeNavigationProperties(currentForm, lastValidPage);
     } else if (currentUrl === '/interpretation') {
-      this.isHidden = true;
+      this.isButtonHidden = true;
       this.currentPageData.pageTitle = 'Wybierz badanie ponownie';
-    } else { this.isHidden = true; 
+    } else { this.isButtonHidden = true; 
       this.currentPageData.pageTitle = 'Wybierz badanie'}
   });
-  this.navigationService.isNavigationHidden.subscribe(isHidden =>
-    this.isVisible = isHidden);
   }
 }

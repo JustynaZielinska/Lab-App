@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationService } from '../core/services/navigation.service';
-import { LipidsService } from '../core/services/lipids.service';
-import { ThyroidService } from '../core/services/thyroid.service';
+import { NavigationService } from '../../core/services/navigation.service';
+import { LipidsService } from '../../core/services/lipids.service';
+import { ThyroidService } from '../../core/services/thyroid.service';
 import { combineLatest } from 'rxjs';
-import { ITest } from '../core/interfaces/InterfaceTest';
+import { ITest } from '../../core/interfaces/InterfaceTest';
 
 @Component({
   selector: 'app-interpretation',
