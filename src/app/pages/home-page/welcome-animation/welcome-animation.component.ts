@@ -8,8 +8,8 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
       transition(':enter', [
       query('.line', [
       style({transform: 'translateX(-4rem)'}),
-      stagger(500, [
-        animate('.7s 3.8s', style ({transform: 'none'}))
+      stagger(300, [
+        animate('.6s 3.6s', style ({transform: 'none'}))
       ])
       ])
     ])

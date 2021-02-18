@@ -9,7 +9,7 @@ import { ICurrentPageData } from '../interfaces/InterfaceCurrentPageData';
 export class NavigationService {
 
 lastValidPage = new BehaviorSubject<null | 'gender' | 'test' | 'lipids' | 'thyroid'>(null);
-currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'entering-results'>(null);
+currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'entering-results'>('test-choice');
 isNavigationHidden = new BehaviorSubject<true | false>(false);
 
 public hideNavigation(newValue: true | false): void{

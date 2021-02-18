@@ -64,4 +64,12 @@
     &--active .header__burger--inner::after {
         transform: translateY(-0.5rem) rotate(-45deg);
     }
+}
+a{
+    transition: .5s linear;
+}
+.isDisabled{
+    pointer-events: none;
+    cursor: default;
+    filter: blur(1px);
 }}
