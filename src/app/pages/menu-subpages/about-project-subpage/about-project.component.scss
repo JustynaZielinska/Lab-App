@@ -1,6 +1,6 @@
 @import '/src/styles.scss';
 .box{
-   grid-template-rows: 1fr 2fr 3fr;
+    grid-template-rows: 2fr 2fr 3fr 1fr;
 }
 .description__container{
     display: flex;
@@ -21,17 +21,13 @@
         @include text(1rem, 1.4rem, justify);
     }
 }
-a{  
-    color: $main-color
-}
 img{
     margin: auto 0
+}
+a{  
+    color: $main-color
 }
 .warning__icon{
     width: 3rem;
     margin-right: 1rem;
-}
-.heart__icon{
-    width: 5rem;
-    margin-left: 1rem;
 }

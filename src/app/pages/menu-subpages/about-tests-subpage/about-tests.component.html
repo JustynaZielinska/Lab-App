@@ -1,0 +1,14 @@
+<div class="box">
+    <section class="menu__container">
+        <div *ngFor="let test of tests">
+            <button (click)="toggleTest(test.name)">{{test.name}}</button>
+            <ng-container *ngIf="currentTest === test.name">
+                <nav *ngFor="let item of test.items">
+                    <ul>
+                        <li>{{item.name}}</li>
+                    </ul>
+                </nav>
+            </ng-container>
+        </div>
+    </section>
+</div>

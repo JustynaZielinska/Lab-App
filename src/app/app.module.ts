@@ -18,7 +18,8 @@ import { LipidsFormComponent } from './pages/forms/results-forms/lipids-form/lip
 import { InterpretationComponent } from './pages/interpretation/interpretation.component';
 import { SidebarComponent } from './components/menu/menu.component';
 import { ContactSubpageComponent } from './pages/menu-subpages/contact-subpage/contact-subpage.component';
-import { AboutSubpageComponent } from './pages/menu-subpages/about-subpage/about-subpage.component';
+import { AboutProjectComponent } from './pages/menu-subpages/about-project-subpage/about-project.component';
+import { AboutTestsComponent } from './pages/menu-subpages/about-tests-subpage/about-tests.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AboutSubpageComponent } from './pages/menu-subpages/about-subpage/about
     InterpretationComponent,
     SidebarComponent,
     ContactSubpageComponent,
-    AboutSubpageComponent,
+    AboutProjectComponent,
+    AboutTestsComponent,
   ],
   imports: [
     BrowserModule,
