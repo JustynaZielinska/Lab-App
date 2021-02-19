@@ -4,13 +4,14 @@
     position: fixed;
     left: 0;
     bottom: 0;
-    font-weight: bold;
-    font-size: 1.2rem;
-    @include flex (row, space-between);
     width: 100vw;
     height: 2.6rem;
+    @include flex (row, space-between);
+    font-weight: bold;
+    font-size: 1.2rem;
     padding: .5rem 0;
     color: white;
+    z-index: 3;
     background-color: $main-color;
     @media (orientation: landscape) and (max-width : 640px){
         height: 2.2rem
@@ -24,7 +25,7 @@
 .isHidden > * {
     pointer-events: none;
     cursor: default;
-    filter: blur(1px);
+    filter: blur(1.2px);
 }
 .arrow{
     height: .8rem;

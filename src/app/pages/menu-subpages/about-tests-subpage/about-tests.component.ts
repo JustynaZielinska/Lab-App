@@ -9,24 +9,40 @@ export class AboutTestsComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
   currentTest: 'Hormony tarczycy' | 'Profil lipidowy';
- tests = [
+  selectedTest: string;
+  description: string;
+
+  tests = [
    {name: 'Hormony tarczycy', items:[
-     {name: 'TSH', description: ''},
-     {name: 'Ft4', description: ''},
-     {name: 'Ft3', description: ''}
+     {name: 'TSH',
+     description: 'TSH czyli tyreotropina, to hormon produkowany przez przysadkę mózgową. Jego zadaniem jest pobudzanie tarczycy do produkcji i wydzielania hormonów: trójjodotyroniny – T3 oraz tyroksyny – T4. Przysadka mózgowa zwiększa wydzielanie TSH, jeśli w organizmie występuje zbyt niskie stężenie T3 i T4 oraz zmniejsza wydzielane TSH w przypadku, gdy hormonów tarczycy jest za dużo. Oznaczenie TSH to podstawowe badanie w diagnostyce niedoczynności oraz nadczynności tarczycy. Badanie TSH pozwala także na monitorowanie leczenia u pacjentów z niedoczynnością tarczycy.'},
+     {name: 'Ft4',
+     description: 'Tyroksyna inaczej tetrajodotyronina (Ft4) jest hormonem tarczycowym, którego głownym zadaniem jest regulacja procesu przemiany materii. Stężenie FT4, podobniej jak FT3, zależy od ilości hormonu tyreotropowego (TSH), wytwarzanego przez przysadkę mózgową. Oznaczenie poziomu Ft4 powinno się wykonywać zawsze z oznaczeniem TSH, gdyż oba badania dadzą pełniejszy obraz funkcjonowania tarczycy.'},
+     {name: 'Ft3',
+     description: 'Ft3, czyli trójjodotyronina jest to hormon produkowany przez tarczycę, natomiast w większości powstaje z rozpadu Ft4 w tkankach. Stężenie FT3, podobniej jak FT4, zależy od ilości hormonu tyreotropowego (TSH), wytwarzanego przez przysadkę mózgową. Jego główną funkcją jest tak samo jak w pryzpadku Ft4 regulowanie procesu przemiany materii. Badanie poziomu Ft3 powinno być wykonywane jednocześnie z oznaczeniem TSH oraz Ft4.'}
    ]},
    {name: 'Profil lipidowy', items:[
-    {name: 'Cholesterol', description: ''},
-    {name: 'Cholesterol HDL', description: ''},
-    {name: 'Cholesterol LDL', description: ''},
-    {name: 'Triglicerydy', description:''}
+    {name: 'Cholesterol',
+    description: 'Cholesterol całkowity jest to substancja tłuszczowa obecna we krwi, a także będąca składnikiem błon większości komórek organizmu. Cholesterol wykorzystywany jest do produkcji niektórych hormonów (np. płciowych), w syntezie kwasów żółciowych, odgrywa także rolę w wytwarzaniu witaminy D.'},
+    {name: 'Cholesterol HDL',
+    description: 'Cholesterol HDL (tzw. "dobry cholesterol") jest to frakcja cholesterolu całkowitego odpowiedzialna m.in. za usuwanie lipidów ze ścian naczyń krwionośnych. Dzięki temu działaniu przyczynia się do zapobiegania chorób układu krwionośnego np. miażdżycy.'},
+    {name: 'Cholesterol LDL',
+    description: 'Cholesterol LDL (tzw. "zły cholesterol") jest to frakcja cholestrolu całkowitego odpowiedzialna za transport lipidów z wątroby do tkanek m.in. do ścian naczyń krwionośnych. Odkładanie się cholesterolu w ścianach tętnic może powodować miażdżycę.'},
+    {name: 'Triglicerydy',
+    description: 'Triglicerydy są cząsteczkami tłuszczu, które dostarczają energię organizmowi. Większość trafia do organizmu wraz z pokarmami, a ich nadmiar powoduje odkładanie się tkanki tłuszczowej. Wysoki poziom triglicerydów zwiększa także ryzyko wystąpienia cukrzycy typu II czy chorób sercowo-naczyniowych.'}
   ]}
 ]
-toggleTest(item): void{
-  this.currentTest = item
-  console.log(this.currentTest)
+toggleMenu(item): void{
+  if(this.currentTest === item){
+    this.currentTest = null
+  } else {
+  this.currentTest = item}
 }
- }
+toogleTest(test, description){
+  this.selectedTest = test;
+  this.description = description
+}
+ngOnInit(): void {
+
+}}

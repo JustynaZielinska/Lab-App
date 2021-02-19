@@ -1,1 +1,56 @@
 @import '/src/styles.scss';
+
+.box{
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+
+    @media (min-width:640px){
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 180px 3fr 1fr;
+        }
+
+    @media (min-width:1024px){
+        grid-template-rows: 1fr;
+        grid-template-columns: 2fr 200px 3fr 2fr;
+    }
+}
+button{
+    background-color: white;
+    width: 168px;
+    font-size: .8rem;
+    margin: .5rem auto;
+    text-align: left;
+    @media (min-width: 1024px){
+        font-size: .9rem;
+    }
+}
+.arrow{
+    height: .9rem;
+    padding: 3px 5px 0 0;
+    transform: rotate(0);
+
+    &--marked{
+        transform: rotate(90deg);
+        padding: 5px 0 0 5px}
+}
+.menu__container{
+    margin: 1.2rem 1.6rem 1rem 0;
+    @media (min-width:640px){
+        align-self: start;
+        margin-top: 1.4rem;
+        grid-column: 2/3;
+    }
+    @media (min-width: 1024px){
+        margin-top: 4rem;
+    }
+}
+.menu__item{
+    @include text(.8rem, 1rem, center);
+    color: grey;
+    text-align: left;
+    padding-left: 1rem;
+
+    &:hover{
+        color: $main-color
+    }
+}
