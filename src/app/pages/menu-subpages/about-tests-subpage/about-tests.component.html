@@ -1,14 +1,34 @@
 <div class="box">
     <section class="menu__container">
         <div *ngFor="let test of tests">
-            <button (click)="toggleTest(test.name)">{{test.name}}</button>
+            <button (click)="toggleMenu(test.name)">
+                <img
+                    class="arrow"
+                    [class.arrow--marked]="currentTest === test.name"
+                    src="../../assets/images/Menu-arrow.svg"
+                    alt="strzałka wstecz"
+                >
+                    {{test.name}}
+            </button>
             <ng-container *ngIf="currentTest === test.name">
                 <nav *ngFor="let item of test.items">
                     <ul>
-                        <li>{{item.name}}</li>
+                        <li>
+                            <button
+                                class="menu__item"
+                                (click)="toogleTest(item.name, item.description)"
+                            >
+                                {{item.name}}
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </ng-container>
         </div>
     </section>
+    <app-test-card
+        [test]="selectedTest"
+        [description]="description"
+    >
+    </app-test-card>
 </div>

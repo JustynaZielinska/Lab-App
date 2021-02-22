@@ -20,6 +20,7 @@ import { SidebarComponent } from './components/menu/menu.component';
 import { ContactSubpageComponent } from './pages/menu-subpages/contact-subpage/contact-subpage.component';
 import { AboutProjectComponent } from './pages/menu-subpages/about-project-subpage/about-project.component';
 import { AboutTestsComponent } from './pages/menu-subpages/about-tests-subpage/about-tests.component';
+import { TestCardComponent } from './components/test-card/test-card.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AboutTestsComponent } from './pages/menu-subpages/about-tests-subpage/a
     ContactSubpageComponent,
     AboutProjectComponent,
     AboutTestsComponent,
+    TestCardComponent,
   ],
   imports: [
     BrowserModule,
