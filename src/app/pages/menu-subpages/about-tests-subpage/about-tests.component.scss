@@ -35,8 +35,8 @@ button{
 }
 .menu__container{
     margin: 1.2rem 1.6rem 1rem 0;
+    align-self: start;
     @media (min-width:640px){
-        align-self: start;
         margin-top: 1.4rem;
         grid-column: 2/3;
     }

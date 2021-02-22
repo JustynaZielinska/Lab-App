@@ -9,7 +9,7 @@ import { trigger, transition, style, query, animate, group } from '@angular/anim
       transition('1 => 2, 2 => 3', [
           query(':enter', style({ transform: 'translateX(50%)', opacity: 0 })),
           query(':leave', style({ transform: 'translateX(0)', opacity: 1 })),
-          query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
+          query(':enter, :leave', style({ position: 'fixed', left: 0, right: 0 })),
           group([
               query(':leave', [
                   animate('0.4s', style({ transform: 'translateX(-50%)', opacity: 0 })),
@@ -22,7 +22,7 @@ import { trigger, transition, style, query, animate, group } from '@angular/anim
   transition('2 => 1, 3 => 2', [
     query(':enter', style({ transform: 'translateX(-50%)', opacity: 0 })),
     query(':leave', style({ transform: 'translateX(0)', opacity: 1 })),
-    query(':enter, :leave', style({ position: 'absolute', top: 0, left: 0, right: 0 })),
+    query(':enter, :leave', style({ position: 'fixed', left: 0, right: 0 })),
     group([
         query(':leave', [
             animate('0.4s', style({ transform: 'translateX(50%)', opacity: 0 })),

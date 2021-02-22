@@ -1,8 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, query, stagger, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-tests-subpage',
   templateUrl: './about-tests.component.html',
+  animations: [
+    trigger('enterLeave', [
+      transition( ':enter', [
+        query('li', [
+          style({opacity: 0, transform: 'translateY(-20px)'}),
+          stagger(200, 
+            animate('0.3s', style({opacity: 1, transform: 'translateY(0)'})))
+        ])
+      ]),
+      transition( ':leave', [
+        query('li', [
+          style({opacity: 1, transform: 'translateY(0)'}),
+          stagger(100, 
+            animate('0.2s', style({opacity: 0, transform: 'translateY(-20px)'})))
+        ])
+      ])
+    ])
+  ],
   styleUrls: ['./about-tests.component.scss']
 })
 export class AboutTestsComponent implements OnInit {

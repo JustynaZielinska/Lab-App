@@ -12,7 +12,7 @@
             </button>
             <ng-container *ngIf="currentTest === test.name">
                 <nav *ngFor="let item of test.items">
-                    <ul>
+                    <ul  [@enterLeave]>
                         <li>
                             <button
                                 class="menu__item"
