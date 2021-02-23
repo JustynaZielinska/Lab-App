@@ -65,6 +65,7 @@ li {
     place-items: center;
     text-align: center;
     @media (orientation: landscape) and (max-width : 640px){
+        margin: 2.2rem auto 0 auto;
         height: calc(100vh - (2.2rem*2));
     }
 }
