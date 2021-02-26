@@ -37,15 +37,14 @@
 }
 a {
     margin: auto;
-    transition: .3s;
+    transition: .5s;
 }
 .small {
     margin: auto 0;
     font-size: 1rem;;
 }
 .disabled {
-    margin: auto 0;
-    opacity: .5;
+    opacity: .3;
     cursor: auto;
 }
 a:hover{
