@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { InterpretationGuard } from './core/services/guard.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './components/header/header.component';
 import { NavigationComponent } from './components/navbar/navigation.component';
@@ -49,7 +50,7 @@ import { TestCardComponent } from './components/test-card/test-card.component';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [InterpretationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
