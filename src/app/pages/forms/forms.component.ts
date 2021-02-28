@@ -51,9 +51,8 @@ export class FormsComponent implements OnInit{
   userLipids: ITest[];
   userThyroid: ITest[];
 
-  ngOnInit(): void {
-    this.navigationService.currentForm.subscribe(currentForm => {this.formPage = currentForm; });
-  }
+ ngOnInit(): void {
+ }
 
   validTest(test): void{
     this.test = test;

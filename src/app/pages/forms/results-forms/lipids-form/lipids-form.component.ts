@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { positiveNumberValidator } from '../positive-number.module';
+import { positiveNumberValidator } from '../../../../core/services/positive-number-validator.module';
 import { ITest } from 'src/app/core/interfaces/InterfaceTest';
 
 const chol: ITest = {
