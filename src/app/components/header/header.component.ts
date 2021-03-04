@@ -9,16 +9,16 @@ import { NavigationService } from '../../core/services/navigation.service';
 
 export class HeaderComponent{
 
-constructor(private service: NavigationService) {}
-isActive = false;
+constructor(private navigationService: NavigationService) {}
+isMenuActive = false;
 
 resetIsValid(): void{
-  this.service.changeIsValid(null);
+  this.navigationService.changeIsValid(null);
 }
 hideMenu(event): void{
-  this.isActive = event;
+  this.isMenuActive = event;
 }
 hideNavbar(): void{
-  this.service.hideNavigation(this.isActive);
+  this.navigationService.hideNavigation(this.isMenuActive);
 }
 }

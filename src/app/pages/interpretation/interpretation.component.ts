@@ -17,7 +17,7 @@ export class InterpretationComponent implements OnInit, OnDestroy {
   lastValidPage: 'gender' | 'test' | 'lipids' | 'thyroid';
   results: ITest[];
   message: string;
-  navigationSubscription: Subscription
+  navigationSubscription: Subscription;
 
   ngOnInit(): void {
     this.navigationSubscription = this.navigationService.lastValidPage.subscribe(isValid => {this.lastValidPage = isValid; });

@@ -2,7 +2,8 @@
     <a
         routerLink="/home-page"
         (click)="resetIsValid()"
-        [class.isDisabled]="isActive"
+        [class.isDisabled]="isMenuActive"
+        test-id="logoLink"
     >
         <img
             class="header__logo"
@@ -12,14 +13,15 @@
     </a>
     <button
         class="header__burger"
-        [class.header__burger--active]="isActive"
-        (click)="isActive = !isActive ; hideNavbar()"
+        [class.header__burger--active]="isMenuActive"
+        (click)="isMenuActive = !isMenuActive ; hideNavbar()"
+        test-id="burgerButton"
     >
         <span class="header__burger--inner"></span>
     </button>
 </header>
 <app-menu
-    *ngIf="isActive"
+    *ngIf="isMenuActive"
     (isMenuActive) = "hideMenu($event)"
     >
 </app-menu>

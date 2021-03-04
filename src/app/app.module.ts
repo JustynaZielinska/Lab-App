@@ -17,7 +17,7 @@ import { ResultsFormsComponent } from './pages/forms/results-forms/results-forms
 import { ThyroidFormComponent } from './pages/forms/results-forms/thyroid-form/thyroid-form.component';
 import { LipidsFormComponent } from './pages/forms/results-forms/lipids-form/lipids-form.component';
 import { InterpretationComponent } from './pages/interpretation/interpretation.component';
-import { SidebarComponent } from './components/menu/menu.component';
+import { MenuComponent } from './components/menu/menu.component';
 import { ContactSubpageComponent } from './pages/menu-subpages/contact-subpage/contact-subpage.component';
 import { AboutProjectComponent } from './pages/menu-subpages/about-project-subpage/about-project.component';
 import { AboutTestsComponent } from './pages/menu-subpages/about-tests-subpage/about-tests.component';
@@ -38,7 +38,7 @@ import { TestCardComponent } from './components/test-card/test-card.component';
     ThyroidFormComponent,
     LipidsFormComponent,
     InterpretationComponent,
-    SidebarComponent,
+    MenuComponent,
     ContactSubpageComponent,
     AboutProjectComponent,
     AboutTestsComponent,
