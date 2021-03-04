@@ -28,14 +28,6 @@ changeCurrentForm(form): void{
 }
 
 ngOnInit(): void{
-  this.currentPageData = {
-    pageTitle: '',
-    previousPath: '',
-    nextPath: '',
-    previousForm: '',
-    nextForm: '',
-    isEnabled: false,
-  };
   this.navigationSubscription = combineLatest([
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
     this.navigationService.lastValidPage,
@@ -47,6 +39,14 @@ ngOnInit(): void{
       currentForm,
       isHidden
     ]) => {
+      this.currentPageData = {
+        pageTitle: '',
+        previousPath: '',
+        nextPath: '',
+        previousForm: '',
+        nextForm: '',
+        isEnabled: false,
+      };
       this.isNavigationVisible = isHidden;
       const currentUrl = (event as NavigationEnd).urlAfterRedirects;
       if (currentUrl === '/home-page' ) {
@@ -58,6 +58,7 @@ ngOnInit(): void{
       } else if (currentUrl === '/interpretation') {
         this.isButtonHidden = true;
         this.currentPageData.pageTitle = 'Wybierz badanie ponownie';
+        console.log(this.currentPageData.pageTitle)
       } else { this.isButtonHidden = true;
                this.currentPageData.pageTitle = 'Wybierz badanie'; }
     });
