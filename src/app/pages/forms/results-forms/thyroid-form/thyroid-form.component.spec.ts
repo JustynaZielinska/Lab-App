@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ThyroidFormComponent } from './thyroid-form.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('ThyroidFormPageComponent', () => {
   let component: ThyroidFormComponent;
@@ -8,7 +8,8 @@ describe('ThyroidFormPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ThyroidFormComponent ]
+      declarations: [ ThyroidFormComponent ],
+      providers: [ FormBuilder ]
     })
     .compileComponents();
   });

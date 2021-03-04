@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LipidsFormComponent } from './lipids-form.component';
+import { FormBuilder } from '@angular/forms';
 
 describe('LipidsFormPageComponent', () => {
   let component: LipidsFormComponent;
@@ -8,7 +8,8 @@ describe('LipidsFormPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LipidsFormComponent ]
+      declarations: [ LipidsFormComponent ],
+      providers: [ FormBuilder ]
     })
     .compileComponents();
   });

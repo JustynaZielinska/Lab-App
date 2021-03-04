@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, transition, style, query, animate, group } from '@angular/animations';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ import { trigger, transition, style, query, animate, group } from '@angular/anim
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  getDepth(outlet){
-    return outlet.activatedRouteData['depth']
+  getDepth(outlet: RouterOutlet): RouterOutlet{
+    return outlet.activatedRouteData.depth;
   }
 }

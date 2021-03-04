@@ -13,7 +13,7 @@ currentForm = new BehaviorSubject<null | 'gender-choice' | 'test-choice' | 'ente
 isNavigationHidden = new BehaviorSubject<true | false>(false);
 
 public hideNavigation(newValue: true | false): void{
-  this.isNavigationHidden.next(newValue)
+  this.isNavigationHidden.next(newValue);
 }
 
 public changeIsValid(newValue: null | 'gender' | 'test' | 'lipids' | 'thyroid'): void {

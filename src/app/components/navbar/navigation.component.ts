@@ -28,6 +28,14 @@ changeCurrentForm(form): void{
 }
 
 ngOnInit(): void{
+  this.currentPageData = {
+    pageTitle: '',
+    previousPath: '',
+    nextPath: '',
+    previousForm: '',
+    nextForm: '',
+    isEnabled: false,
+  };
   this.navigationSubscription = combineLatest([
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)),
     this.navigationService.lastValidPage,
@@ -40,14 +48,6 @@ ngOnInit(): void{
       isHidden
     ]) => {
       this.isNavigationVisible = isHidden;
-      this.currentPageData = {
-        pageTitle: '',
-        previousPath: '',
-        nextPath: '',
-        previousForm: '',
-        nextForm: '',
-        isEnabled: false,
-      };
       const currentUrl = (event as NavigationEnd).urlAfterRedirects;
       if (currentUrl === '/home-page' ) {
         this.currentPageData.pageTitle = 'Wybierz badanie';
@@ -58,11 +58,11 @@ ngOnInit(): void{
       } else if (currentUrl === '/interpretation') {
         this.isButtonHidden = true;
         this.currentPageData.pageTitle = 'Wybierz badanie ponownie';
-      } else { this.isButtonHidden = true; 
-        this.currentPageData.pageTitle = 'Wybierz badanie'}
-      });
-    }
-    ngOnDestroy(): void{
-      this.navigationSubscription.unsubscribe();
-    }
+      } else { this.isButtonHidden = true;
+               this.currentPageData.pageTitle = 'Wybierz badanie'; }
+    });
+  }
+  ngOnDestroy(): void{
+    this.navigationSubscription.unsubscribe();
+  }
 }

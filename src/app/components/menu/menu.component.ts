@@ -9,14 +9,14 @@ import { NavigationService } from '../../core/services/navigation.service';
       transition( ':enter', [
         query('.menu__item', [
           style({opacity: 0, transform: 'translateY(-30px)'}),
-          stagger(200, 
+          stagger(200,
             animate('0.4s', style({opacity: 1, transform: 'translateY(0)'})))
         ])
       ]),
       transition( ':leave', [
         query('.menu__item', [
           style({opacity: 1, transform: 'translateY(0)'}),
-          stagger(120, 
+          stagger(120,
             animate('0.25s', style({opacity: 0, transform: 'translateY(-30px)'})))
         ])
       ])
@@ -25,7 +25,7 @@ import { NavigationService } from '../../core/services/navigation.service';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class MenuComponent implements OnInit {
 
   constructor(private service: NavigationService) {}
 
