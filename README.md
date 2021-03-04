@@ -5,7 +5,7 @@
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Development server](#development-server)
-* [Running unit tests](#running-unit-tests)
+* [Running unit test](#running-unit-test)
 * [Inspiration](#inspiration)
 * [Contact](#contact)
 
