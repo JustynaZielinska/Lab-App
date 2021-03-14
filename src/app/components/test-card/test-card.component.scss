@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr;
-    width: 320px;
+    width: 330px;
     align-self: start;
     @media (min-width:640px) {
         width: 380px;
@@ -22,5 +22,6 @@ h2{
     justify-self: left;
 }
 .description{
-    @include text(.8rem, 1.2rem, justify);
+    @include text(1rem, 1.2rem, justify);
+    padding-bottom: 3rem;
 }

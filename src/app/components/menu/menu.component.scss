@@ -20,9 +20,9 @@
         transform: translate(-50%, -50%); 
     }
     &__item{
-        @include text(1.2rem, 3.6rem, center);
+        @include text(1.4rem, 3.8rem, center);
         @media (min-width:1024px){
-            @include text(1.2rem, 5rem, center);
+            @include text(1.4rem, 5rem, center);
         }
         color: rgb(87, 87, 87);
     }
