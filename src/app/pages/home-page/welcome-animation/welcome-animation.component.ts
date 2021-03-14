@@ -7,7 +7,7 @@ import { trigger, transition, query, style, animate, stagger } from '@angular/an
     trigger('isLoad', [
       transition(':enter', [
       query('.line', [
-      style({transform: 'translateX(-4rem)'}),
+      style({transform: 'translateX(-4.8rem)'}),
       stagger(300, [
         animate('.6s 3.6s', style ({transform: 'none'}))
       ])
