@@ -1,10 +1,10 @@
 @import '/src/styles.scss';
 .box{
-    grid-template-rows: 2fr 2fr 3fr 1fr;
+    grid-template-rows: 2fr 2fr 3fr 0.5fr;
 }
 .description__container{
     display: flex;
-    width: 90vw;
+    width: 92vw;
     justify-content: space-between;
     @media (min-width : 640px){
         width: 30rem;
@@ -12,7 +12,7 @@
 }
 .description{
     display: inline;
-    @include text(.8rem, 1rem, justify);
+    @include text(.9rem, 1.1rem, justify);
     margin: auto 0;
     @media (min-width: 640px){
         margin: auto .5rem
