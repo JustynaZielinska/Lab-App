@@ -15,10 +15,8 @@
         @include flex (row, space-around)}
 
 &__logo{
-    height: 1.6rem;
-    @media (orientation: landscape) and (max-width : 640px){
-        height: 1.4rem
-    }}
+    height: 1.8rem;
+    }
 
     &__burger {
     position: relative;
