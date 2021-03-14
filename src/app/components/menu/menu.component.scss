@@ -2,7 +2,7 @@
 
 .menu{
     position: fixed;
-    top: 2.6rem;
+    top: 2.4rem;
     left:0;
     height: calc(100vh - (2.6rem*2));
     width: 100vw;
@@ -20,7 +20,7 @@
         transform: translate(-50%, -50%); 
     }
     &__item{
-        @include text(1.4rem, 3.8rem, center);
+        @include text(1.4rem, 4rem, center);
         @media (min-width:1024px){
             @include text(1.4rem, 5rem, center);
         }
