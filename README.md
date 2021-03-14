@@ -15,6 +15,8 @@ The main objective of this project was to create an app, that would return a mes
 LabApp is an app based on simple forms, consisting in entering results of laboratory tests in form fields and receiving an interpretation of these results.
 Another functionality available from the menu is a section with brief information about selected test.
 
+[LIVE](https://justynazielinska.github.io/Lab-App/)
+
 *Remember, this app doesn't replace contact with a doctor! LabApp was created only for informational and educational purposes.
 
 ## Technologies
